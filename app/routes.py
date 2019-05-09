@@ -16,6 +16,7 @@ def before_request():
         db.session.commit()
 
 @app.route('/', methods=['GET', 'POST'])
+@app.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
     form = PollForm()
