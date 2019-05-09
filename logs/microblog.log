@@ -1,0 +1,94 @@
+2019-05-09 20:48:43,843 ERROR: Exception on /index [GET] [in c:\users\jonat\microblog\venv\lib\site-packages\flask\app.py:1761]
+Traceback (most recent call last):
+  File "c:\users\jonat\microblog\venv\lib\site-packages\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\jonat\microblog\venv\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\jonat\microblog\venv\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\jonat\microblog\venv\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "c:\users\jonat\microblog\venv\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\jonat\microblog\venv\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\jonat\microblog\venv\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\jonat\microblog\app\routes.py", line 33, in index
+    return render_template("index.html", title='Home Page', form=form, polls=polls.items, next_url=next_url, prev_url=prev_url)
+  File "c:\users\jonat\microblog\venv\lib\site-packages\flask\templating.py", line 135, in render_template
+    context, ctx.app)
+  File "c:\users\jonat\microblog\venv\lib\site-packages\flask\templating.py", line 117, in _render
+    rv = template.render(context)
+  File "c:\users\jonat\microblog\venv\lib\site-packages\jinja2\asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "c:\users\jonat\microblog\venv\lib\site-packages\jinja2\environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "c:\users\jonat\microblog\venv\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\jonat\microblog\venv\lib\site-packages\jinja2\_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\jonat\microblog\app\templates\index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\jonat\microblog\app\templates\base.html", line 31, in top-level template code
+    {% block content %}{% endblock %}
+  File "C:\Users\jonat\microblog\app\templates\index.html", line 19, in block "content"
+    {% include '_poll.html' %}
+  File "c:\users\jonat\microblog\venv\lib\site-packages\flask\templating.py", line 58, in get_source
+    return self._get_source_fast(environment, template)
+  File "c:\users\jonat\microblog\venv\lib\site-packages\flask\templating.py", line 86, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: _poll.html
+2019-05-09 20:48:59,523 INFO: Microblog startup [in C:\Users\jonat\microblog\app\__init__.py:41]
+2019-05-09 20:58:33,474 INFO: Microblog startup [in C:\Users\jonat\microblog\app\__init__.py:41]
+2019-05-09 22:07:19,295 INFO: Microblog startup [in C:\Users\jonat\microblog\app\__init__.py:43]
+2019-05-09 22:13:44,196 INFO: Microblog startup [in C:\Users\jonat\microblog\app\__init__.py:43]
+2019-05-09 22:18:45,108 INFO: Microblog startup [in C:\Users\jonat\microblog\app\__init__.py:43]
+2019-05-09 22:20:42,918 INFO: Microblog startup [in C:\Users\jonat\microblog\app\__init__.py:43]
+2019-05-09 22:25:53,452 INFO: Microblog startup [in C:\Users\jonat\microblog\app\__init__.py:43]
+2019-05-09 22:26:40,966 INFO: Microblog startup [in C:\Users\jonat\microblog\app\__init__.py:43]
+2019-05-09 22:26:43,677 INFO: Microblog startup [in C:\Users\jonat\microblog\app\__init__.py:43]
+2019-05-09 22:29:43,045 INFO: Microblog startup [in C:\Users\jonat\microblog\app\__init__.py:43]
+2019-05-09 22:40:07,203 INFO: Microblog startup [in C:\Users\jonat\microblog\app\__init__.py:43]
+2019-05-09 22:40:20,588 INFO: Microblog startup [in C:\Users\jonat\microblog\app\__init__.py:43]
+2019-05-09 22:40:26,333 INFO: Microblog startup [in C:\Users\jonat\microblog\app\__init__.py:43]
+2019-05-09 22:41:03,196 ERROR: Exception on /reset_password_request [POST] [in c:\users\jonat\microblog\venv\lib\site-packages\flask\app.py:1761]
+Traceback (most recent call last):
+  File "c:\users\jonat\microblog\venv\lib\site-packages\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\jonat\microblog\venv\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\jonat\microblog\venv\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\jonat\microblog\venv\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "c:\users\jonat\microblog\venv\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\jonat\microblog\venv\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\jonat\microblog\app\routes.py", line 149, in reset_password_request
+    send_password_reset_email(user)
+  File "C:\Users\jonat\microblog\app\email.py", line 19, in send_password_reset_email
+    user=user, token=token))
+  File "c:\users\jonat\microblog\venv\lib\site-packages\flask\templating.py", line 134, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "c:\users\jonat\microblog\venv\lib\site-packages\jinja2\environment.py", line 869, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "c:\users\jonat\microblog\venv\lib\site-packages\jinja2\environment.py", line 830, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "c:\users\jonat\microblog\venv\lib\site-packages\jinja2\environment.py", line 804, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "c:\users\jonat\microblog\venv\lib\site-packages\jinja2\loaders.py", line 113, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "c:\users\jonat\microblog\venv\lib\site-packages\flask\templating.py", line 58, in get_source
+    return self._get_source_fast(environment, template)
+  File "c:\users\jonat\microblog\venv\lib\site-packages\flask\templating.py", line 86, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: email/reset_password.html
+2019-05-09 22:43:31,338 INFO: Microblog startup [in C:\Users\jonat\microblog\app\__init__.py:43]
+2019-05-09 22:45:16,841 INFO: Microblog startup [in C:\Users\jonat\microblog\app\__init__.py:43]
+2019-05-09 22:46:59,967 INFO: Microblog startup [in C:\Users\jonat\microblog\app\__init__.py:43]
+2019-05-09 23:04:06,907 INFO: Microblog startup [in C:\Users\jonat\microblog\app\__init__.py:43]
+2019-05-09 23:20:04,239 INFO: Microblog startup [in C:\Users\jonat\microblog\app\__init__.py:45]
+2019-05-09 23:22:15,201 INFO: Microblog startup [in C:\Users\jonat\microblog\app\__init__.py:45]
+2019-05-09 23:23:22,177 INFO: Microblog startup [in C:\Users\jonat\microblog\app\__init__.py:45]
