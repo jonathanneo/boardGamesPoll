@@ -12,3 +12,7 @@ pip install flask-login
 pip install flask-mail  
 pip install pyjwt  
 pip install flask-bootstrap  
+
+Running the code:  
+source venv/bin/activate  
+python ./setup.py
