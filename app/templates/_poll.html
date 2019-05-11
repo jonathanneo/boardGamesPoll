@@ -1,25 +1,32 @@
 <table class="table table-hover">
-  
-    <tr>
-            <td width="70px">
-                <a href="{{ url_for('user', username=poll.author.username) }}">
-                    <img src="{{ poll.author.avatar(70) }}" />
-                </a>
-            </td>
-            <td>
-                <a href="{{ url_for('user', username=poll.author.username) }}">
-                    {{ poll.author.username }}
-                </a>
-                started a poll:
-                <br>
-                <img src="{{ poll.image_url }}" width="150" height="150"/> 
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+</head>
                 
-                <a href = "{{ url_for('viewPoll', poll_id=poll.id) }}"> {{ poll.title }} </a>
-                
-                <br>
-                {{ poll.body }}
-            </td>
-        </tr>
-    </table>
+    <tr id = "{{ poll.id }}">
+        <td width="70px">
+            <a href="{{ url_for('user', username=poll.author.username) }}">
+                <img src="{{ poll.author.avatar(70) }}" />
+            </a>
+        </td>
+        <td>
+            <a href="{{ url_for('user', username=poll.author.username) }}">
+                {{ poll.author.username }}
+            </a>
+            started a poll:
+            <br>
+            <img src="{{ poll.image_url }}" width="150" height="150"/> 
+            
+            <a href = "{{ url_for('viewPoll', poll_id=poll.id) }}"> {{ poll.title }} </a>
+            
+            <br>
+            {{ poll.body }}
+        </td>
+    </tr>
+</table>
 
-
+<script>
+$("#{{ poll.id }}").click(function(){
+    window.location.href = "{{ url_for('viewPoll', poll_id=poll.id) }}";
+});
+</script>
