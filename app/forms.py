@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, Length
-from app.models import User
+from app.models import User, Option, Poll
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
@@ -43,7 +43,16 @@ class EditProfileForm(FlaskForm):
                 raise ValidationError('Please use a different username.')
 
 class PollForm(FlaskForm):
-    poll = TextAreaField('Say something', validators=[
+    title = TextAreaField('Poll title', validators=[
+        DataRequired(), Length(min=1, max=140)])
+    body = TextAreaField('Poll description', validators=[
+        DataRequired(), Length(min=1, max=140)])
+    image_url = TextAreaField('Image URL', validators=[
+        DataRequired(), Length(min=1, max=255)])
+    submit = SubmitField('Submit')
+
+class OptionForm(FlaskForm):
+    body = TextAreaField('Option', validators=[
         DataRequired(), Length(min=1, max=140)])
     submit = SubmitField('Submit')
 

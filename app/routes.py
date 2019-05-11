@@ -1,13 +1,12 @@
 from flask import render_template, request, redirect, url_for, flash
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, EditProfileForm, PollForm
+from app.forms import LoginForm, RegistrationForm, EditProfileForm, PollForm, OptionForm
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User, Poll
+from app.models import User, Poll, Option
 from werkzeug.urls import url_parse
 from datetime import datetime
 from app.forms import ResetPasswordRequestForm
 from app.email import send_password_reset_email
-
 
 @app.before_request
 def before_request():
@@ -20,8 +19,9 @@ def before_request():
 @login_required
 def index():
     form = PollForm()
+    optionForm = OptionForm()
     if form.validate_on_submit(): # if form validation is true 
-        poll = Poll(body=form.poll.data, author=current_user)
+        poll = Poll(title=form.title.data, body=form.body.data, image_url=form.image_url.data, author=current_user)
         db.session.add(poll)
         db.session.commit()
         flash('Your poll is now live!')
@@ -34,6 +34,20 @@ def index():
     prev_url = url_for('index', page=polls.prev_num) if polls.has_prev else None
     
     return render_template("index.html", title='Home Page', form=form, polls=polls.items, next_url=next_url, prev_url=prev_url)
+
+
+@app.route('/viewPoll/<poll>', methods=['GET', 'POST'])
+@login_required
+def viewPoll(poll):
+    form = OptionForm()
+    if form.validate_on_submit():
+        option = Option(body=form.body.data, id_poll=poll)
+        db.session.add(option)
+        db.session.commit()
+        # return redirect(url_for('viewPoll'))
+    
+    return render_template('viewPoll.html', title='View Poll', form=form)
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

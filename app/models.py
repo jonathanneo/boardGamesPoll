@@ -12,6 +12,23 @@ followers = db.Table('followers',
     db.Column('followed_id', db.Integer, db.ForeignKey('user.id'))
 )
 
+# option_user table
+option_user = db.Table('option_user',
+    db.Column('id_option', db.Integer, db.ForeignKey('option.id')),
+    db.Column('id_user', db.Integer, db.ForeignKey('user.id'))
+)
+
+class Option(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    body = db.Column(db.String(140))
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    id_poll = db.Column(db.Integer, db.ForeignKey('poll.id'))
+    option_selection = db.relationship(
+        'Option', secondary=option_user,
+        primaryjoin=(option_user.c.id_option == id),
+        backref=db.backref('option_user', lazy='dynamic'),lazy='dynamic'
+    )
+
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
@@ -75,10 +92,12 @@ class User(UserMixin, db.Model):
 
 class Poll(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(140))
     body = db.Column(db.String(140))
+    image_url = db.Column(db.String(255))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-
+    
     def __repr__(self):
         return '<Poll {}>'.format(self.body)
 
