@@ -2,9 +2,7 @@
         <tr>
             <td>
                 {{ option.body }} 
-                <a href="{{ url_for('vote', option_id=option.id) }}">
-                        Vote
-                </a> 
+                <input type="button" href="{{ url_for('vote', option_id=option.id) }}" value = "Vote"/>
             </td>
         </tr>
     </table>
