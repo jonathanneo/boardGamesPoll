@@ -10,5 +10,5 @@ pip install flask-sqlalchemy
 pip install flask-migrate  
 pip install flask-login  
 pip install flask-mail  
+pip install pyjwt  
 pip install flask-bootstrap  
-pip install jwt  
