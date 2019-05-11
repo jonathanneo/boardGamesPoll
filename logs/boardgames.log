@@ -1,13 +1,4 @@
-2019-05-11 11:46:17,023 ERROR: Exception on /viewPoll/6 [POST] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
-Traceback (most recent call last):
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\base.py", line 1193, in _execute_context
-    context)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\default.py", line 509, in do_execute
-    cursor.execute(statement, parameters)
-sqlite3.OperationalError: table option has no column named id_poll
-
-The above exception was the direct cause of the following exception:
-
+2019-05-11 13:22:38,527 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
 Traceback (most recent call last):
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -23,56 +14,65 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 46, in viewPoll
-    db.session.commit()
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\scoping.py", line 153, in do
-    return getattr(self.registry(), name)(*args, **kwargs)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\session.py", line 954, in commit
-    self.transaction.commit()
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\session.py", line 467, in commit
-    self._prepare_impl()
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\session.py", line 447, in _prepare_impl
-    self.session.flush()
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\session.py", line 2313, in flush
-    self._flush(objects)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\session.py", line 2440, in _flush
-    transaction.rollback(_capture_exception=True)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\util\langhelpers.py", line 66, in __exit__
-    compat.reraise(exc_type, exc_value, exc_tb)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\util\compat.py", line 249, in reraise
-    raise value
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\session.py", line 2404, in _flush
-    flush_context.execute()
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 395, in execute
-    rec.execute(self)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 560, in execute
-    uow
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\persistence.py", line 181, in save_obj
-    mapper, table, insert)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\persistence.py", line 872, in _emit_insert_statements
-    execute(statement, params)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\base.py", line 948, in execute
-    return meth(self, multiparams, params)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\sql\elements.py", line 269, in _execute_on_connection
-    return connection._execute_clauseelement(self, multiparams, params)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\base.py", line 1060, in _execute_clauseelement
-    compiled_sql, distilled_params
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\base.py", line 1200, in _execute_context
-    context)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\base.py", line 1413, in _handle_dbapi_exception
-    exc_info
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\util\compat.py", line 265, in raise_from_cause
-    reraise(type(exception), exception, tb=exc_tb, cause=cause)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\util\compat.py", line 248, in reraise
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 52, in viewPoll
+    return render_template('viewPoll.html', title='View Poll', form=form, options=options, polls=polls)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\templating.py", line 135, in render_template
+    context, ctx.app)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\templating.py", line 117, in _render
+    rv = template.render(context)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\base.py", line 1193, in _execute_context
-    context)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\default.py", line 509, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) table option has no column named id_poll [SQL: 'INSERT INTO option (body, timestamp, id_poll) VALUES (?, ?, ?)'] [parameters: ('test2', '2019-05-11 03:46:17.023832', '6')] (Background on this error at: http://sqlalche.me/e/e3q8)
-2019-05-11 11:46:33,367 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-11 11:46:36,472 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-11 11:48:53,818 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-11 11:50:07,963 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-11 11:51:06,533 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-11 12:35:17,770 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\viewPoll.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\base.html", line 48, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\viewPoll.html", line 7, in block "app_content"
+    {{ polls.author.username }}
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\environment.py", line 430, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'author'
+2019-05-11 13:23:00,670 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-11 13:24:09,566 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-11 13:25:53,402 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-11 13:26:53,930 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-11 13:28:16,301 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-11 13:29:30,383 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-11 13:30:43,538 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-11 13:31:27,875 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-11 13:32:04,992 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-11 13:32:37,037 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-11 13:33:57,412 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-11 13:34:44,615 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-11 13:35:23,498 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-11 13:35:39,706 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-11 14:00:38,864 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-11 14:03:33,780 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-11 14:09:19,808 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-11 14:11:00,252 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-11 14:16:08,215 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-11 14:27:05,450 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-11 14:28:42,513 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-11 14:38:54,554 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-11 14:44:13,004 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-11 14:44:28,677 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-11 14:44:37,138 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-11 14:46:31,612 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-11 14:46:38,805 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-11 14:46:43,566 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-11 14:46:59,641 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]

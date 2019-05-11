@@ -36,18 +36,43 @@ def index():
     return render_template("index.html", title='Home Page', form=form, polls=polls.items, next_url=next_url, prev_url=prev_url)
 
 
-@app.route('/viewPoll/<poll>', methods=['GET', 'POST'])
+@app.route('/viewPoll/<poll_id>', methods=['GET', 'POST'])
 @login_required
-def viewPoll(poll):
+def viewPoll(poll_id):
     form = OptionForm()
+    polls = db.session.query(Poll).filter(Poll.id==poll_id).all()[0]
     if form.validate_on_submit():
-        option = Option(body=form.body.data, id_poll=poll)
+        option = Option(body=form.body.data, id_poll=poll_id)
         db.session.add(option)
         db.session.commit()
-        # return redirect(url_for('viewPoll'))
+        return redirect(url_for('viewPoll', poll_id=poll_id))
     
-    return render_template('viewPoll.html', title='View Poll', form=form)
+    options = db.session.query(Option).filter(Option.id_poll==poll_id).all()
 
+    return render_template('viewPoll.html', title='View Poll', form=form, options=options, polls=polls)
+
+
+@app.route('/vote/<option>')
+@login_required
+def vote(option_id, user):
+    options = db.session.query(Option).filter(Option.id_option==option_id).all()
+
+    options.vote(user)
+    db.session.commit()
+
+    ''' 
+    user = User.query.filter_by(username=username).first()
+    if user is None:
+        flash('User {} not found.'.format(username))
+        return redirect(url_for('index'))
+    if user == current_user:
+        flash('You cannot follow yourself!')
+        return redirect(url_for('user', username=username))
+    current_user.follow(user)
+    db.session.commit()
+    flash('You are following {}!'.format(username))
+    return redirect(url_for('user', username=username))
+''' 
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

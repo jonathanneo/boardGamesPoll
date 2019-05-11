@@ -1,0 +1,126 @@
+2019-05-11 11:19:14,662 ERROR: Exception on /index [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
+Traceback (most recent call last):
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 38, in index
+    return render_template("index.html", title='Home Page', form=form, polls=polls.items, next_url=next_url, prev_url=prev_url)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\templating.py", line 135, in render_template
+    context, ctx.app)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\templating.py", line 117, in _render
+    rv = template.render(context)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\_poll.html", line 18, in template
+    <a href="{{ url_for('viewPoll', poll.title }}"></a>
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\environment.py", line 1005, in render
+    return concat(self.root_render_func(self.new_context(vars)))
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\index.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\base.html", line 48, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\index.html", line 11, in block "app_content"
+    {% include '_poll.html' %}
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\_poll.html", line 18, in template
+    <a href="{{ url_for('viewPoll', poll.title }}"></a>
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\environment.py", line 497, in _parse
+    return Parser(self, source, name, encode_filename(filename)).parse()
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\parser.py", line 901, in parse
+    result = nodes.Template(self.subparse(), lineno=1)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\parser.py", line 875, in subparse
+    add_data(self.parse_tuple(with_condexpr=True))
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\parser.py", line 620, in parse_tuple
+    args.append(parse())
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\parser.py", line 432, in parse_expression
+    return self.parse_condexpr()
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\parser.py", line 437, in parse_condexpr
+    expr1 = self.parse_or()
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\parser.py", line 450, in parse_or
+    left = self.parse_and()
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\parser.py", line 459, in parse_and
+    left = self.parse_not()
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\parser.py", line 470, in parse_not
+    return self.parse_compare()
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\parser.py", line 474, in parse_compare
+    expr = self.parse_math1()
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\parser.py", line 496, in parse_math1
+    left = self.parse_concat()
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\parser.py", line 507, in parse_concat
+    args = [self.parse_math2()]
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\parser.py", line 517, in parse_math2
+    left = self.parse_pow()
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\parser.py", line 528, in parse_pow
+    left = self.parse_unary()
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\parser.py", line 547, in parse_unary
+    node = self.parse_postfix(node)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\parser.py", line 676, in parse_postfix
+    node = self.parse_call(node)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\parser.py", line 790, in parse_call
+    args.append(self.parse_expression())
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\parser.py", line 432, in parse_expression
+    return self.parse_condexpr()
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\parser.py", line 437, in parse_condexpr
+    expr1 = self.parse_or()
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\parser.py", line 450, in parse_or
+    left = self.parse_and()
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\parser.py", line 459, in parse_and
+    left = self.parse_not()
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\parser.py", line 470, in parse_not
+    return self.parse_compare()
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\parser.py", line 474, in parse_compare
+    expr = self.parse_math1()
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\parser.py", line 496, in parse_math1
+    left = self.parse_concat()
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\parser.py", line 507, in parse_concat
+    args = [self.parse_math2()]
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\parser.py", line 517, in parse_math2
+    left = self.parse_pow()
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\parser.py", line 528, in parse_pow
+    left = self.parse_unary()
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\parser.py", line 547, in parse_unary
+    node = self.parse_postfix(node)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\parser.py", line 672, in parse_postfix
+    node = self.parse_subscript(node)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\parser.py", line 700, in parse_subscript
+    next(self.stream)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\lexer.py", line 359, in __next__
+    self.current = next(self._iter)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\lexer.py", line 562, in wrap
+    for lineno, token, value in stream:
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\lexer.py", line 690, in tokeniter
+    filename)
+jinja2.exceptions.TemplateSyntaxError: unexpected '}', expected ')'
+2019-05-11 11:20:02,318 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-11 11:20:06,719 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-11 11:20:10,143 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]

@@ -1,16 +1,4 @@
-2019-05-09 23:26:14,935 INFO: Board Games startup [in C:\Users\jonat\microblog\app\__init__.py:45]
-2019-05-11 09:32:09,428 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-11 09:51:00,262 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-11 09:51:03,305 ERROR: Exception on /index [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
-Traceback (most recent call last):
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\base.py", line 1193, in _execute_context
-    context)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\default.py", line 509, in do_execute
-    cursor.execute(statement, parameters)
-sqlite3.OperationalError: no such column: poll.title
-
-The above exception was the direct cause of the following exception:
-
+2019-05-11 11:20:12,460 ERROR: Exception on /index [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
 Traceback (most recent call last):
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -26,45 +14,40 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 31, in index
-    page, app.config['POLLS_PER_PAGE'], False)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_sqlalchemy\__init__.py", line 496, in paginate
-    items = self.limit(per_page).offset((page - 1) * per_page).all()
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\query.py", line 2843, in all
-    return list(self)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\query.py", line 2995, in __iter__
-    return self._execute_and_instances(context)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\query.py", line 3018, in _execute_and_instances
-    result = conn.execute(querycontext.statement, self._params)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\base.py", line 948, in execute
-    return meth(self, multiparams, params)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\sql\elements.py", line 269, in _execute_on_connection
-    return connection._execute_clauseelement(self, multiparams, params)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\base.py", line 1060, in _execute_clauseelement
-    compiled_sql, distilled_params
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\base.py", line 1200, in _execute_context
-    context)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\base.py", line 1413, in _handle_dbapi_exception
-    exc_info
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\util\compat.py", line 265, in raise_from_cause
-    reraise(type(exception), exception, tb=exc_tb, cause=cause)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\util\compat.py", line 248, in reraise
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 38, in index
+    return render_template("index.html", title='Home Page', form=form, polls=polls.items, next_url=next_url, prev_url=prev_url)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\templating.py", line 135, in render_template
+    context, ctx.app)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\templating.py", line 117, in _render
+    rv = template.render(context)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\base.py", line 1193, in _execute_context
-    context)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\default.py", line 509, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: poll.title [SQL: 'SELECT anon_1.poll_id AS anon_1_poll_id, anon_1.poll_title AS anon_1_poll_title, anon_1.poll_body AS anon_1_poll_body, anon_1.poll_image_url AS anon_1_poll_image_url, anon_1.poll_timestamp AS anon_1_poll_timestamp, anon_1.poll_user_id AS anon_1_poll_user_id \nFROM (SELECT poll.id AS poll_id, poll.title AS poll_title, poll.body AS poll_body, poll.image_url AS poll_image_url, poll.timestamp AS poll_timestamp, poll.user_id AS poll_user_id \nFROM poll JOIN followers ON followers.followed_id = poll.user_id \nWHERE followers.follower_id = ? UNION SELECT poll.id AS poll_id, poll.title AS poll_title, poll.body AS poll_body, poll.image_url AS poll_image_url, poll.timestamp AS poll_timestamp, poll.user_id AS poll_user_id \nFROM poll \nWHERE poll.user_id = ?) AS anon_1 ORDER BY anon_1.poll_timestamp DESC\n LIMIT ? OFFSET ?'] [parameters: (1, 1, 1, 0)] (Background on this error at: http://sqlalche.me/e/e3q8)
-2019-05-11 09:51:06,054 ERROR: Exception on /index [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
-Traceback (most recent call last):
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\base.py", line 1193, in _execute_context
-    context)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\default.py", line 509, in do_execute
-    cursor.execute(statement, parameters)
-sqlite3.OperationalError: no such column: poll.title
-
-The above exception was the direct cause of the following exception:
-
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\index.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\base.html", line 48, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\index.html", line 11, in block "app_content"
+    {% include '_poll.html' %}
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\_poll.html", line 18, in top-level template code
+    <a href="{{ url_for('viewPoll', poll.title) }}"></a>
+TypeError: url_for() takes 1 positional argument but 2 were given
+2019-05-11 11:20:14,115 ERROR: Exception on /index [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
 Traceback (most recent call last):
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -80,36 +63,36 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 31, in index
-    page, app.config['POLLS_PER_PAGE'], False)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_sqlalchemy\__init__.py", line 496, in paginate
-    items = self.limit(per_page).offset((page - 1) * per_page).all()
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\query.py", line 2843, in all
-    return list(self)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\query.py", line 2995, in __iter__
-    return self._execute_and_instances(context)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\query.py", line 3018, in _execute_and_instances
-    result = conn.execute(querycontext.statement, self._params)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\base.py", line 948, in execute
-    return meth(self, multiparams, params)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\sql\elements.py", line 269, in _execute_on_connection
-    return connection._execute_clauseelement(self, multiparams, params)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\base.py", line 1060, in _execute_clauseelement
-    compiled_sql, distilled_params
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\base.py", line 1200, in _execute_context
-    context)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\base.py", line 1413, in _handle_dbapi_exception
-    exc_info
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\util\compat.py", line 265, in raise_from_cause
-    reraise(type(exception), exception, tb=exc_tb, cause=cause)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\util\compat.py", line 248, in reraise
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 38, in index
+    return render_template("index.html", title='Home Page', form=form, polls=polls.items, next_url=next_url, prev_url=prev_url)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\templating.py", line 135, in render_template
+    context, ctx.app)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\templating.py", line 117, in _render
+    rv = template.render(context)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\base.py", line 1193, in _execute_context
-    context)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\default.py", line 509, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: poll.title [SQL: 'SELECT anon_1.poll_id AS anon_1_poll_id, anon_1.poll_title AS anon_1_poll_title, anon_1.poll_body AS anon_1_poll_body, anon_1.poll_image_url AS anon_1_poll_image_url, anon_1.poll_timestamp AS anon_1_poll_timestamp, anon_1.poll_user_id AS anon_1_poll_user_id \nFROM (SELECT poll.id AS poll_id, poll.title AS poll_title, poll.body AS poll_body, poll.image_url AS poll_image_url, poll.timestamp AS poll_timestamp, poll.user_id AS poll_user_id \nFROM poll JOIN followers ON followers.followed_id = poll.user_id \nWHERE followers.follower_id = ? UNION SELECT poll.id AS poll_id, poll.title AS poll_title, poll.body AS poll_body, poll.image_url AS poll_image_url, poll.timestamp AS poll_timestamp, poll.user_id AS poll_user_id \nFROM poll \nWHERE poll.user_id = ?) AS anon_1 ORDER BY anon_1.poll_timestamp DESC\n LIMIT ? OFFSET ?'] [parameters: (1, 1, 1, 0)] (Background on this error at: http://sqlalche.me/e/e3q8)
-2019-05-11 09:51:35,195 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-11 09:51:40,356 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-11 09:51:43,040 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-11 09:54:45,922 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\index.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\base.html", line 48, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\index.html", line 11, in block "app_content"
+    {% include '_poll.html' %}
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\_poll.html", line 18, in top-level template code
+    <a href="{{ url_for('viewPoll', poll.title) }}"></a>
+TypeError: url_for() takes 1 positional argument but 2 were given

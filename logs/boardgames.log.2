@@ -1,4 +1,4 @@
-2019-05-11 11:20:14,814 ERROR: Exception on /index [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
+2019-05-11 13:21:16,065 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
 Traceback (most recent call last):
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,8 +14,8 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 38, in index
-    return render_template("index.html", title='Home Page', form=form, polls=polls.items, next_url=next_url, prev_url=prev_url)
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 52, in viewPoll
+    return render_template('viewPoll.html', title='View Poll', form=form, options=options, polls=polls)
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\templating.py", line 135, in render_template
     context, ctx.app)
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\templating.py", line 117, in _render
@@ -28,7 +28,7 @@ Traceback (most recent call last):
     reraise(exc_type, exc_value, tb)
   File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\index.html", line 2, in top-level template code
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\viewPoll.html", line 2, in top-level template code
     {% import 'bootstrap/wtf.html' as wtf %}
   File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\base.html", line 1, in top-level template code
     {% extends 'bootstrap/base.html' %}
@@ -42,15 +42,12 @@ Traceback (most recent call last):
     {% block content -%}
   File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\base.html", line 48, in block "content"
     {% block app_content %}{% endblock %}
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\index.html", line 11, in block "app_content"
-    {% include '_poll.html' %}
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\_poll.html", line 18, in top-level template code
-    <a href="{{ url_for('viewPoll', poll.title) }}"></a>
-TypeError: url_for() takes 1 positional argument but 2 were given
-2019-05-11 11:22:13,696 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-11 11:22:36,422 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-11 11:23:33,966 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-11 11:23:36,420 ERROR: Exception on /viewPoll/6 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\viewPoll.html", line 7, in block "app_content"
+    <a href="{{ url_for('user', username=poll.author.username) }}">
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\environment.py", line 430, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'poll' is undefined
+2019-05-11 13:21:18,010 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
 Traceback (most recent call last):
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -66,66 +63,37 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 50, in viewPoll
-    options = Option.all()
-NameError: name 'Option' is not defined
-2019-05-11 11:25:46,410 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-11 11:25:53,109 ERROR: Exception on /viewPoll/6 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
-Traceback (most recent call last):
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 52, in viewPoll
+    return render_template('viewPoll.html', title='View Poll', form=form, options=options, polls=polls)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\templating.py", line 135, in render_template
+    context, ctx.app)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\templating.py", line 117, in _render
+    rv = template.render(context)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
     reraise(exc_type, exc_value, tb)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\_compat.py", line 35, in reraise
-    raise value
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 50, in viewPoll
-    options = Option.all()
-NameError: name 'Option' is not defined
-2019-05-11 11:26:50,965 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-11 11:26:52,533 ERROR: Exception on /viewPoll/6 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
-Traceback (most recent call last):
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\_compat.py", line 35, in reraise
-    raise value
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 50, in viewPoll
-    options = Option.all()
-AttributeError: type object 'Option' has no attribute 'all'
-2019-05-11 11:26:55,303 ERROR: Exception on /viewPoll/6 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
-Traceback (most recent call last):
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\_compat.py", line 35, in reraise
-    raise value
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 50, in viewPoll
-    options = Option.all()
-AttributeError: type object 'Option' has no attribute 'all'
-2019-05-11 11:27:37,324 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\viewPoll.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\base.html", line 48, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\viewPoll.html", line 7, in block "app_content"
+    <a href="{{ url_for('user', username=poll.author.username) }}">
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\environment.py", line 430, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'poll' is undefined
+2019-05-11 13:22:12,930 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
