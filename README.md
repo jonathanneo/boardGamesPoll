@@ -1,7 +1,7 @@
 # boardGamesPoll
 Board Games Poll for CITS3304
 
-Installation:
+Installation:  
 source venv/bin/activate  
 pip install flask  
 pip install python-dotenv  
