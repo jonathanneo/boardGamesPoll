@@ -1,24 +1,11 @@
 {% extends "base.html" %}
-{% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
-
-    <h1>{{ polls.title }}</h1>
+    <h1>Hi, {{ current_user.username }}!</h1>
     
-    <br>
-    <p> <b>Poll Description:</b> {{ polls.body }} </p>
-    
-    <br>
-
-    {% if form %}
-    {{ wtf.quick_form(form) }}
-    {% endif %}
-    <br>
-    
-    {% for option in options %}
-        <p> {{ option.body }} </p>
+    {% for poll in polls %}
+        {% include '_poll.html' %}
     {% endfor %}
-
     <nav aria-label="...">
         <ul class="pager">
             <li class="previous{% if not prev_url %} disabled{% endif %}">

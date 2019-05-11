@@ -23,18 +23,7 @@ class Option(db.Model):
     body = db.Column(db.String(140))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     id_poll = db.Column(db.Integer, db.ForeignKey('poll.id'))
-    ''' 
-    option_selection = db.relationship(
-        'Option', secondary=option_user,
-        primaryjoin=(option_user.c.id_option == id),
-        secondaryjoin=(option_user.c.id_user == current_user.id),
-        backref=db.backref('option_user', lazy='dynamic'),lazy='dynamic'
-    )
-
-    def vote(self, current_user):
-        self.option_selection.append(current_user)
-    '''
-
+    
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
@@ -48,10 +37,17 @@ class User(UserMixin, db.Model):
         primaryjoin=(followers.c.follower_id == id),
         secondaryjoin=(followers.c.followed_id == id),
         backref=db.backref('followers', lazy='dynamic'), lazy='dynamic')
-    
     votes = db.relationship(
         'Option', secondary = votes, backref = db.backref('voters', lazy='dynamic')
     )
+
+    def vote(self, option):
+        if not self.has_voted(option):
+            self.votes.append(option)
+    
+    def unvote(self,option):
+        if self.has_voted(option):
+            self.votes.remove(option)
 
     def __repr__(self):
         return '<User {}>'.format(self.username)

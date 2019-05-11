@@ -1,0 +1,10 @@
+<table class="table table-hover">
+        <tr>
+            <td>
+                {{ option.body }} 
+                <a href="{{ url_for('vote', option_id=option.id) }}">
+                        Vote
+                </a> 
+            </td>
+        </tr>
+    </table>

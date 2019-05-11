@@ -36,43 +36,31 @@ def index():
     return render_template("index.html", title='Home Page', form=form, polls=polls.items, next_url=next_url, prev_url=prev_url)
 
 
-@app.route('/viewPoll/<poll_id>', methods=['GET', 'POST'])
+@app.route('/addOption/<poll_id>', methods=['GET', 'POST'])
 @login_required
-def viewPoll(poll_id):
+def addOption(poll_id):
     form = OptionForm()
     polls = db.session.query(Poll).filter(Poll.id==poll_id).all()[0]
     if form.validate_on_submit():
         option = Option(body=form.body.data, id_poll=poll_id)
         db.session.add(option)
         db.session.commit()
-        return redirect(url_for('viewPoll', poll_id=poll_id))
+        return redirect(url_for('addOption', poll_id=poll_id))
     
     options = db.session.query(Option).filter(Option.id_poll==poll_id).all()
 
-    return render_template('viewPoll.html', title='View Poll', form=form, options=options, polls=polls)
+    return render_template('addOption.html', title='View Poll', form=form, options=options, polls=polls)
 
 
-@app.route('/vote/<option>')
+@app.route('/vote/<option_id>')
 @login_required
-def vote(option_id, user):
-    options = db.session.query(Option).filter(Option.id_option==option_id).all()
-
-    options.vote(user)
+def vote(option_id):
+    user = current_user
+    option = db.session.query(Option).filter(Option.id_option==option_id).all()
+    user.vote(option)
     db.session.commit()
-
-    ''' 
-    user = User.query.filter_by(username=username).first()
-    if user is None:
-        flash('User {} not found.'.format(username))
-        return redirect(url_for('index'))
-    if user == current_user:
-        flash('You cannot follow yourself!')
-        return redirect(url_for('user', username=username))
-    current_user.follow(user)
-    db.session.commit()
-    flash('You are following {}!'.format(username))
+    flash('You have voted for  {}!'.format(option))
     return redirect(url_for('user', username=username))
-''' 
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -175,7 +163,15 @@ def explore():
         page, app.config['POLLS_PER_PAGE'], False)
     next_url = url_for('explore', page=polls.next_num) if polls.has_next else None 
     prev_url = url_for('explore', page=polls.prev_num) if polls.has_prev else None
-    return render_template('index.html', title='Explore', polls=polls.items, next_url=next_url, prev_url=prev_url)
+    return render_template('explore.html', title='Explore', polls=polls.items, next_url=next_url, prev_url=prev_url)
+
+@app.route('/viewPoll/<poll_id>')
+@login_required
+def viewPoll(poll_id):
+    polls = db.session.query(Poll).filter(Poll.id==poll_id).all()[0]
+    options = db.session.query(Option).filter(Option.id_poll==poll_id).all()
+
+    return render_template('vote.html', title='View Poll', options=options, polls=polls)
 
 @app.route('/reset_password_request', methods=['GET', 'POST'])
 def reset_password_request():
