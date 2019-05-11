@@ -16,4 +16,5 @@ pip install flask-bootstrap
 
 Running the code:  
 source venv/bin/activate  
-python ./setup.py
+python ./setup.py  
+http://jsfiddle.net/vlastislavnovak/oaqo2kgs/
