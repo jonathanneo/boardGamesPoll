@@ -2,7 +2,8 @@
 Board Games Poll for CITS3304
 
 Installation:  
-source venv/bin/activate  
+virtualenv venv  
+source venv/bin/activate (Linux)  
 pip install flask  
 pip install python-dotenv  
 pip install flask-wtf  
