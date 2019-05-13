@@ -184,7 +184,7 @@ def viewPoll(poll_id):
     polls = db.session.query(Poll).filter(Poll.id==poll_id).all()[0]
     # sorts list
     result = db.session.query(Option, func.count(votes.c.id_option).label('total_count')).outerjoin(votes).group_by(Option.id).filter(Option.id_poll==poll_id).order_by('total_count DESC').all()
-    options = [i[0] for i in result]
+    options = [i[0] for i in result] # returns only the objects as a list
     
     return render_template('vote.html', title='View Poll', options=options, polls=polls)
 
