@@ -51,8 +51,8 @@ class User(UserMixin, db.Model):
             self.votes.remove(user)
 
     def has_voted(self, user):
-	return self.votes.filter(
-	    votes.c.id_user == user.id).count() > 0
+        return self.votes.filter(
+            votes.c.id_user == user.id).count() > 0
 
     def __repr__(self):
         return '<User {}>'.format(self.username)

@@ -1,4 +1,4 @@
-2019-05-11 13:21:16,065 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
+2019-05-11 13:22:14,193 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
 Traceback (most recent call last):
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -43,11 +43,11 @@ Traceback (most recent call last):
   File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\base.html", line 48, in block "content"
     {% block app_content %}{% endblock %}
   File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\viewPoll.html", line 7, in block "app_content"
-    <a href="{{ url_for('user', username=poll.author.username) }}">
+    {{ poll.author.username }}
   File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\environment.py", line 430, in getattr
     return getattr(obj, attribute)
 jinja2.exceptions.UndefinedError: 'poll' is undefined
-2019-05-11 13:21:18,010 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
+2019-05-11 13:22:16,274 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
 Traceback (most recent call last):
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -92,8 +92,8 @@ Traceback (most recent call last):
   File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\base.html", line 48, in block "content"
     {% block app_content %}{% endblock %}
   File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\viewPoll.html", line 7, in block "app_content"
-    <a href="{{ url_for('user', username=poll.author.username) }}">
+    {{ poll.author.username }}
   File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\environment.py", line 430, in getattr
     return getattr(obj, attribute)
 jinja2.exceptions.UndefinedError: 'poll' is undefined
-2019-05-11 13:22:12,930 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-11 13:22:37,575 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
