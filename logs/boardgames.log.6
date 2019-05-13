@@ -1,4 +1,4 @@
-2019-05-13 20:03:52,429 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
+2019-05-13 20:42:49,079 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
 Traceback (most recent call last):
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -42,18 +42,15 @@ Traceback (most recent call last):
     {% block content -%}
   File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\base.html", line 52, in block "content"
     {% block app_content %}{% endblock %}
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\vote.html", line 12, in block "app_content"
-    {% if current_user.has_voted(options) %}
-jinja2.exceptions.UndefinedError: 'app.models.User object' has no attribute 'has_voted'
-2019-05-13 20:23:24,404 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-13 20:23:28,053 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
-Traceback (most recent call last):
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\sql\elements.py", line 684, in __getattr__
-    return getattr(self.comparator, key)
-AttributeError: 'Comparator' object has no attribute 'selectable'
-
-During handling of the above exception, another exception occurred:
-
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\vote.html", line 15, in block "app_content"
+    {% include '_unvoteOption.html' %}
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\_unvoteOption.html", line 8, in top-level template code
+    {{ option.votes.count() }} votes
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\environment.py", line 430, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'app.models.Option object' has no attribute 'votes'
+2019-05-13 20:46:29,673 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-13 20:46:37,403 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
 Traceback (most recent call last):
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -97,21 +94,11 @@ Traceback (most recent call last):
     {% block content -%}
   File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\base.html", line 52, in block "content"
     {% block app_content %}{% endblock %}
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\vote.html", line 12, in block "app_content"
-    {% if current_user.has_voted_poll(polls) %}
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\models.py", line 57, in has_voted_poll
-    return db.session.query(Option, votes).join(Option.id == votes.c.id_option).filter(Option.id_poll == poll.id).count() > 0
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\query.py", line 2137, in join
-    from_joinpoint=from_joinpoint)
-  File "<string>", line 2, in _join
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\base.py", line 201, in generate
-    fn(self, *args[1:], **kw)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\query.py", line 2288, in _join
-    outerjoin, full, create_aliases, prop)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\query.py", line 2341, in _join_left_to_right
-    l_info.selectable is r_info.selectable:
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\sql\elements.py", line 690, in __getattr__
-    key)
-AttributeError: Neither 'BinaryExpression' object nor 'Comparator' object has an attribute 'selectable'
-2019-05-13 20:25:29,856 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-13 20:27:55,965 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\vote.html", line 15, in block "app_content"
+    {% include '_unvoteOption.html' %}
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\_unvoteOption.html", line 8, in top-level template code
+    {{ option.votes.count() }} votes
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\environment.py", line 430, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'app.models.Option object' has no attribute 'votes'
+2019-05-13 20:46:51,924 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]

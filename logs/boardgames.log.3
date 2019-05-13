@@ -1,4 +1,4 @@
-2019-05-13 20:35:23,146 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
+2019-05-13 21:05:59,554 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
 Traceback (most recent call last):
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -45,11 +45,12 @@ Traceback (most recent call last):
   File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\vote.html", line 15, in block "app_content"
     {% include '_unvoteOption.html' %}
   File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\_unvoteOption.html", line 8, in top-level template code
-    {{ option.votes.count() }} votes
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\environment.py", line 430, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'app.models.Option object' has no attribute 'votes'
-2019-05-13 20:35:24,525 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
+    {{ option.votes(polls) }}
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\models.py", line 28, in votes
+    return self.filter(self.id_poll == poll.id).count()
+AttributeError: 'Option' object has no attribute 'filter'
+2019-05-13 21:06:26,847 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-13 21:06:28,642 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
 Traceback (most recent call last):
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -96,9 +97,17 @@ Traceback (most recent call last):
   File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\vote.html", line 15, in block "app_content"
     {% include '_unvoteOption.html' %}
   File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\_unvoteOption.html", line 8, in top-level template code
-    {{ option.votes.count() }} votes
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\environment.py", line 430, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'app.models.Option object' has no attribute 'votes'
-2019-05-13 20:38:57,150 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-13 20:42:45,748 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+    {{ option.votes(polls) }}
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\models.py", line 28, in votes
+    return db.session.query(self).filter(self.id_poll == poll.id).count()
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\scoping.py", line 153, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\session.py", line 1458, in query
+    return self._query_cls(entities, self, **kwargs)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\query.py", line 154, in __init__
+    self._set_entities(entities)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\query.py", line 184, in _set_entities
+    entity_wrapper(self, ent)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\query.py", line 4118, in __init__
+    "expected - got '%r'" % (column, )
+sqlalchemy.exc.InvalidRequestError: SQL expression, column, or mapped entity expected - got '<Option 1>'

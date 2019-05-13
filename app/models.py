@@ -24,6 +24,9 @@ class Option(db.Model):
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     id_poll = db.Column(db.Integer, db.ForeignKey('poll.id'))
     
+    def voters(self):
+        return db.session.query(votes).filter(votes.id_option == self.id).count()
+
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
