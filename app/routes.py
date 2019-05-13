@@ -51,29 +51,33 @@ def addOption(poll_id):
 
     return render_template('addOption.html', title='View Poll', form=form, options=options, polls=polls)
 
-@app.route('/vote/<option_id>-<poll_id>')
+@app.route('/vote/<poll_id>/<option_id>')
 @login_required
-def vote(option_id, poll_id):
+def vote(poll_id, option_id):
     user = current_user
     option = db.session.query(Option).filter(Option.id==option_id).all()
     user.vote(option[0])
     db.session.commit()
-    flash('You have voted for  {}!'.format(option[0].body))
+    flash('You have voted for {}'.format(option[0].body))
     
     options = db.session.query(Option).filter(Option.id_poll==poll_id).all()
     polls = db.session.query(Poll).filter(Poll.id==poll_id).all()[0]
 
     return render_template('vote.html', title='View Poll', options=options, polls=polls)
 
-@app.route('/unvote/<option_id>')
+@app.route('/unvote/<poll_id>/<option_id>')
 @login_required
-def unvote(option_id):
+def unvote(poll_id, option_id):
     user = current_user
     option = db.session.query(Option).filter(Option.id==option_id).all()
-    user.unvote(option)
+    user.unvote(option[0])
     db.session.commit()
-    flash('Your vote has been canceled.'.format(option))
-    return redirect(url_for('user', username=username))
+    flash('You have unvoted for {}'.format(option[0].body))
+    
+    options = db.session.query(Option).filter(Option.id_poll==poll_id).all()
+    polls = db.session.query(Poll).filter(Poll.id==poll_id).all()[0]
+    
+    return render_template('vote.html', title='View Poll', options=options, polls=polls)
 
 
 @app.route('/login', methods=['GET', 'POST'])

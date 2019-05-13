@@ -1,0 +1,10 @@
+<table class="table table-hover">
+    <tr>
+        <td>
+            {{ option.body }} 
+            {% if current_user.has_voted_option(option) %}
+                <a href="{{ url_for('unvote', poll_id=polls.id, option_id=option.id) }}" class="button"> Unvote </a>
+            {% endif %}
+        </td>
+    </tr>
+</table>
