@@ -1,4 +1,4 @@
-2019-05-13 21:06:30,162 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
+2019-05-13 21:13:21,594 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
 Traceback (most recent call last):
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -45,22 +45,13 @@ Traceback (most recent call last):
   File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\vote.html", line 15, in block "app_content"
     {% include '_unvoteOption.html' %}
   File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\_unvoteOption.html", line 8, in top-level template code
-    {{ option.votes(polls) }}
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\models.py", line 28, in votes
-    return db.session.query(self).filter(self.id_poll == poll.id).count()
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\scoping.py", line 153, in do
-    return getattr(self.registry(), name)(*args, **kwargs)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\session.py", line 1458, in query
-    return self._query_cls(entities, self, **kwargs)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\query.py", line 154, in __init__
-    self._set_entities(entities)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\query.py", line 184, in _set_entities
-    entity_wrapper(self, ent)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\query.py", line 4118, in __init__
-    "expected - got '%r'" % (column, )
-sqlalchemy.exc.InvalidRequestError: SQL expression, column, or mapped entity expected - got '<Option 1>'
-2019-05-13 21:07:20,566 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-13 21:07:22,377 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
+    {{ option.voters() }}
+TypeError: 'AppenderBaseQuery' object is not callable
+2019-05-13 21:13:55,637 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-13 21:14:44,055 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-13 21:14:47,559 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-13 21:14:53,916 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-13 21:14:56,714 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
 Traceback (most recent call last):
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -107,12 +98,6 @@ Traceback (most recent call last):
   File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\vote.html", line 15, in block "app_content"
     {% include '_unvoteOption.html' %}
   File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\_unvoteOption.html", line 8, in top-level template code
-    {{ option.votes(polls) }}
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\models.py", line 28, in votes
-    return db.session.query.filter(Option.id_poll == poll.id, Option.id == self.id).count()
-AttributeError: 'function' object has no attribute 'filter'
-2019-05-13 21:07:35,830 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-13 21:08:21,246 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-13 21:08:34,638 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-13 21:11:44,403 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-13 21:12:20,628 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+    {{ option.voters() }}
+TypeError: 'AppenderBaseQuery' object is not callable
+2019-05-13 21:18:41,237 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]

@@ -5,7 +5,7 @@
             {% if current_user.has_voted_option(option) %}
                 <a href="{{ url_for('unvote', poll_id=polls.id, option_id=option.id) }}" class="button"> Unvote </a>
             {% endif %}
-            {{ option.voters() }}
+            {{ option.voters.count() }}
         </td>
     </tr>
 </table>
