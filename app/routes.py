@@ -56,9 +56,9 @@ def addOption(poll_id):
 def vote(option_id):
     user = current_user
     option = db.session.query(Option).filter(Option.id==option_id).all()
-    user.vote(option)
+    user.vote(option[0])
     db.session.commit()
-    flash('You have voted for  {}!'.format(option))
+    flash('You have voted for  {}!'.format(option[0].body))
     return redirect(url_for('user', username=username))
 
 @app.route('/unvote/<option_id>')
