@@ -38,16 +38,21 @@ class User(UserMixin, db.Model):
         secondaryjoin=(followers.c.followed_id == id),
         backref=db.backref('followers', lazy='dynamic'), lazy='dynamic')
     votes = db.relationship(
-        'Option', secondary = votes, backref = db.backref('voters', lazy='dynamic')
-    )
+        'Option', secondary = votes, 
+	primaryjoin=(votes.c.id_user == id),
+	backref=db.backref('votes', lazy='dynamic'), lazy='dynamic')
 
-    def vote(self, option):
-        if not self.has_voted(option):
-            self.votes.append(option)
+    def vote(self, user):
+        if not self.has_voted(user):
+            self.votes.append(user)
     
-    def unvote(self,option):
-        if self.has_voted(option):
-            self.votes.remove(option)
+    def unvote(self,user):
+        if self.has_voted(user):
+            self.votes.remove(user)
+
+    def has_voted(self, user):
+	return self.votes.filter(
+	    votes.c.id_user == user.id).count() > 0
 
     def __repr__(self):
         return '<User {}>'.format(self.username)

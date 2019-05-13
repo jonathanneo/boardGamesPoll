@@ -2,7 +2,12 @@
         <tr>
             <td>
                 {{ option.body }} 
-                <input type="button" href="{{ url_for('vote', option_id=option.id) }}" value = "Vote"/>
+		{% if current_user.has_voted(option) %}
+                <a href="{{ url_for('unvote', option_id=option.id) }}" class="button"> Unvote </a>
+		{% else %}
+                <a href="{{ url_for('vote', option_id=option.id) }}" class="button"> Vote </a>
+		{% endif %}
+		{{ option.votes.count() }} votes
             </td>
         </tr>
     </table>

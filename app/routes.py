@@ -51,16 +51,26 @@ def addOption(poll_id):
 
     return render_template('addOption.html', title='View Poll', form=form, options=options, polls=polls)
 
-
 @app.route('/vote/<option_id>')
 @login_required
 def vote(option_id):
     user = current_user
-    option = db.session.query(Option).filter(Option.id_option==option_id).all()
+    option = db.session.query(Option).filter(Option.id==option_id).all()
     user.vote(option)
     db.session.commit()
     flash('You have voted for  {}!'.format(option))
     return redirect(url_for('user', username=username))
+
+@app.route('/unvote/<option_id>')
+@login_required
+def unvote(option_id):
+    user = current_user
+    option = db.session.query(Option).filter(Option.id==option_id).all()
+    user.unvote(option)
+    db.session.commit()
+    flash('Your vote has been canceled.'.format(option))
+    return redirect(url_for('user', username=username))
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
