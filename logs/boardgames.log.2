@@ -1,4 +1,4 @@
-2019-05-13 21:13:21,594 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
+2019-05-13 22:03:31,456 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
 Traceback (most recent call last):
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,7 +14,7 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 192, in viewPoll
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 194, in viewPoll
     return render_template('vote.html', title='View Poll', options=options, polls=polls)
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\templating.py", line 135, in render_template
     context, ctx.app)
@@ -44,14 +44,16 @@ Traceback (most recent call last):
     {% block app_content %}{% endblock %}
   File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\vote.html", line 15, in block "app_content"
     {% include '_unvoteOption.html' %}
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\_unvoteOption.html", line 8, in top-level template code
-    {{ option.voters() }}
-TypeError: 'AppenderBaseQuery' object is not callable
-2019-05-13 21:13:55,637 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-13 21:14:44,055 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-13 21:14:47,559 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-13 21:14:53,916 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-13 21:14:56,714 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\_unvoteOption.html", line 5, in top-level template code
+    {% if current_user.has_voted_option(option) %}
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\models.py", line 54, in has_voted_option
+    return db.session.query(votes).filter(votes.c.id_option == option.id, votes.c.id_user == self.id).count() > 0
+AttributeError: 'result' object has no attribute 'id'
+2019-05-13 22:14:03,499 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-13 22:20:40,756 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-13 22:21:06,412 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-13 22:24:21,349 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-13 22:24:25,546 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
 Traceback (most recent call last):
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -67,7 +69,7 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 192, in viewPoll
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 194, in viewPoll
     return render_template('vote.html', title='View Poll', options=options, polls=polls)
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\templating.py", line 135, in render_template
     context, ctx.app)
@@ -95,9 +97,8 @@ Traceback (most recent call last):
     {% block content -%}
   File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\base.html", line 52, in block "content"
     {% block app_content %}{% endblock %}
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\vote.html", line 15, in block "app_content"
-    {% include '_unvoteOption.html' %}
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\_unvoteOption.html", line 8, in top-level template code
-    {{ option.voters() }}
-TypeError: 'AppenderBaseQuery' object is not callable
-2019-05-13 21:18:41,237 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\vote.html", line 13, in block "app_content"
+    {% for option in options %}
+TypeError: 'Option' object is not iterable
+2019-05-13 22:25:21,836 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-13 22:26:58,858 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]

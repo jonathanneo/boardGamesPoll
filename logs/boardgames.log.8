@@ -1,4 +1,4 @@
-2019-05-13 20:42:49,079 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
+2019-05-13 21:18:44,110 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
 Traceback (most recent call last):
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -45,12 +45,11 @@ Traceback (most recent call last):
   File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\vote.html", line 15, in block "app_content"
     {% include '_unvoteOption.html' %}
   File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\_unvoteOption.html", line 8, in top-level template code
-    {{ option.votes.count() }} votes
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\environment.py", line 430, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'app.models.Option object' has no attribute 'votes'
-2019-05-13 20:46:29,673 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-13 20:46:37,403 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
+    {{ option.voters() }}
+TypeError: 'AppenderBaseQuery' object is not callable
+2019-05-13 21:19:54,564 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-13 21:21:36,713 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-13 21:21:37,256 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
 Traceback (most recent call last):
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -97,8 +96,5 @@ Traceback (most recent call last):
   File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\vote.html", line 15, in block "app_content"
     {% include '_unvoteOption.html' %}
   File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\_unvoteOption.html", line 8, in top-level template code
-    {{ option.votes.count() }} votes
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\environment.py", line 430, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'app.models.Option object' has no attribute 'votes'
-2019-05-13 20:46:51,924 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+    {{ option.voters() }}
+TypeError: 'AppenderBaseQuery' object is not callable

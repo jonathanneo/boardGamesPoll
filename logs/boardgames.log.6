@@ -1,4 +1,4 @@
-2019-05-13 20:48:13,434 ERROR: Exception on /unvote/1/2 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
+2019-05-13 21:53:23,116 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
 Traceback (most recent call last):
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,37 +14,11 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 74, in unvote
-    db.session.commit()
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\scoping.py", line 153, in do
-    return getattr(self.registry(), name)(*args, **kwargs)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\session.py", line 954, in commit
-    self.transaction.commit()
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\session.py", line 467, in commit
-    self._prepare_impl()
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\session.py", line 447, in _prepare_impl
-    self.session.flush()
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\session.py", line 2313, in flush
-    self._flush(objects)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\session.py", line 2440, in _flush
-    transaction.rollback(_capture_exception=True)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\util\langhelpers.py", line 66, in __exit__
-    compat.reraise(exc_type, exc_value, exc_tb)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\util\compat.py", line 249, in reraise
-    raise value
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\session.py", line 2404, in _flush
-    flush_context.execute()
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 395, in execute
-    rec.execute(self)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 511, in execute
-    self.dependency_processor.process_saves(uow, states)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\dependency.py", line 1082, in process_saves
-    secondary_update, secondary_delete)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\dependency.py", line 1103, in _run_crud
-    result.rowcount)
-sqlalchemy.orm.exc.StaleDataError: DELETE statement on table 'votes' expected to delete 1 row(s); Only 6 were matched.
-2019-05-13 20:49:10,933 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-13 20:49:13,593 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 190, in viewPoll
+    options = db.session.query(Option, func.count(votes.c.id_option)).join(votes).group_by(Option).filter(Option.id_poll==poll_id).order_by('count DESC')
+NameError: name 'func' is not defined
+2019-05-13 21:54:27,398 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-13 21:54:28,673 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
 Traceback (most recent call last):
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -60,7 +34,36 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 192, in viewPoll
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 191, in viewPoll
+    options = db.session.query(Option, func.count(votes.c.id_option)).join(votes).group_by(Option).filter(Option.id_poll==poll_id).order_by('count DESC')
+NameError: name 'func' is not defined
+2019-05-13 21:55:00,622 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-13 21:55:02,375 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
+Traceback (most recent call last):
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\base.py", line 1193, in _execute_context
+    context)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\default.py", line 509, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such column: count
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 194, in viewPoll
     return render_template('vote.html', title='View Poll', options=options, polls=polls)
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\templating.py", line 135, in render_template
     context, ctx.app)
@@ -88,13 +91,29 @@ Traceback (most recent call last):
     {% block content -%}
   File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\base.html", line 52, in block "content"
     {% block app_content %}{% endblock %}
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\vote.html", line 20, in block "app_content"
-    {% include '_voteOption.html' %}
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\_voteOption.html", line 6, in top-level template code
-    <!-- {{ option.votes.count() }} votes -->
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\environment.py", line 430, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'app.models.Option object' has no attribute 'votes'
-2019-05-13 20:49:54,404 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-13 21:02:07,483 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-13 21:05:51,317 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\vote.html", line 13, in block "app_content"
+    {% for option in options %}
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\query.py", line 2995, in __iter__
+    return self._execute_and_instances(context)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\query.py", line 3018, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\base.py", line 948, in execute
+    return meth(self, multiparams, params)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\sql\elements.py", line 269, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\base.py", line 1060, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\base.py", line 1200, in _execute_context
+    context)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\util\compat.py", line 265, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\util\compat.py", line 248, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\base.py", line 1193, in _execute_context
+    context)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\default.py", line 509, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: count [SQL: 'SELECT option.id AS option_id, option.body AS option_body, option.timestamp AS option_timestamp, option.id_poll AS option_id_poll, count(votes.id_option) AS count_1 \nFROM option JOIN votes ON option.id = votes.id_option \nWHERE option.id_poll = ? GROUP BY option.id, option.body, option.timestamp, option.id_poll ORDER BY count DESC'] [parameters: ('1',)] (Background on this error at: http://sqlalche.me/e/e3q8)
+2019-05-13 21:56:00,828 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
