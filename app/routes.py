@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, url_for, flash
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, EditProfileForm, PollForm, OptionForm
+from app.forms import LoginForm, RegistrationForm, EditProfileForm, PollForm, OptionForm, EditPollForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Poll, Option, votes
 from werkzeug.urls import url_parse
@@ -138,6 +138,24 @@ def edit_profile():
         form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', title='Edit Profile',form=form)
 
+@app.route('/edit_poll/<poll_id>', methods=['GET', 'POST'])
+@login_required
+def edit_poll(poll_id):
+    form = EditPollForm()
+    poll = db.session.query(Poll).filter(Poll.id==poll_id).all()[0]
+    if form.validate_on_submit():
+        poll.title = form.title.data
+        poll.body = form.body.data
+        poll.image_url = form.image_url.data
+        db.session.commit()
+        flash('Your changes have been saved.')
+        return redirect(url_for('edit_poll', poll_id = poll_id))
+    elif request.method == 'GET':
+        form.title.data = poll.title
+        form.body.data = poll.body
+        form.image_url.data = poll.image_url
+    return render_template('edit_poll.html', title='Edit Poll', form=form)
+
 @app.route('/follow/<username>')
 @login_required
 def follow(username):
@@ -186,7 +204,7 @@ def viewPoll(poll_id):
     result = db.session.query(Option, func.count(votes.c.id_option).label('total_count')).outerjoin(votes).group_by(Option.id).filter(Option.id_poll==poll_id).order_by('total_count DESC').all()
     options = [i[0] for i in result] # returns only the objects as a list
     
-    return render_template('vote.html', title='View Poll', options=options, polls=polls)
+    return render_template('viewPoll.html', title='View Poll', options=options, polls=polls)
 
 @app.route('/reset_password_request', methods=['GET', 'POST'])
 def reset_password_request():

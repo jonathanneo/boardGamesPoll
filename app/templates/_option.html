@@ -1,7 +1,21 @@
 <table class="table table-hover">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+</head>
         <tr>
             <td>
                 {{ option.body }} 
+                <a href="{{ url_for('addOption', poll_id=polls.id, option_id=option.id) }}" class="button"> Edit </a>
+                <a href="" id = "{{ option.id }}" class="button"> Delete </a>
             </td>
         </tr>
     </table>
+
+<script>
+$("#{{ option.id }}").click(function(){
+    var result = window.confirm('Are you sure?'); 
+    if(result){
+        "{{ url_for('addOption', poll_id=polls.id, option_id=option.id) }}"
+    }
+})
+</script>

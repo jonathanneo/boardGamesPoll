@@ -1,0 +1,29 @@
+<table class="table table-hover">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <tr id = "{{ poll.id }}">
+            <td width="70px">
+                <a href="{{ url_for('user', username=poll.author.username) }}">
+                    <img src="{{ poll.author.avatar(70) }}" />
+                </a>
+            </td>
+            <td>
+                <a href="{{ url_for('user', username=poll.author.username) }}">
+                    {{ poll.author.username }}
+                </a>
+                started a poll:
+                <br>
+                {{ poll.title }}
+                <a href="{{ url_for('addOption', poll_id=poll.id) }}"> Edit Options </a>
+                <a href="{{ url_for('edit_poll', poll_id=poll.id) }}"> Edit Poll </a>
+                <br>
+                <img src="{{ poll.image_url }}" width="150" height="150"/> 
+                {{ poll.body }}
+            </td>
+        </tr>
+    </table>
+
+<script>
+$("#{{ poll.id }}").click(function(){
+    window.location.href = "{{ url_for('viewPoll', poll_id=poll.id) }}";
+});
+</script>

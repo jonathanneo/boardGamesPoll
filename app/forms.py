@@ -42,13 +42,20 @@ class EditProfileForm(FlaskForm):
             if user is not None:
                 raise ValidationError('Please use a different username.')
 
+class EditPollForm(FlaskForm):
+    title = TextAreaField('Poll title', validators=[
+        DataRequired(), Length(min=1, max=140)])
+    body = TextAreaField('Poll description', validators=[
+        DataRequired(), Length(min=1, max=140)])
+    image_url = TextAreaField('Image URL')
+    submit = SubmitField('Submit')
+
 class PollForm(FlaskForm):
     title = TextAreaField('Poll title', validators=[
         DataRequired(), Length(min=1, max=140)])
     body = TextAreaField('Poll description', validators=[
         DataRequired(), Length(min=1, max=140)])
-    image_url = TextAreaField('Image URL', validators=[
-        DataRequired(), Length(min=1, max=255)])
+    image_url = TextAreaField('Image URL')
     submit = SubmitField('Submit')
 
 class OptionForm(FlaskForm):
