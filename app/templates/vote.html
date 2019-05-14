@@ -9,10 +9,13 @@
     
     <br>
     
-    {% for option in options %}
-	<!-- add sorting method here -->
-        {% include '_voteOption.html' %}     
-    {% endfor %}
-
-    
+    {% if current_user.has_voted_poll(polls) %}
+        {% for option in options %}
+            {% include '_unvoteOption.html' %}     
+        {% endfor %}
+    {% else %}
+        {% for option in options %}
+            {% include '_voteOption.html' %}     
+        {% endfor %}
+    {% endif %}
 {% endblock %}

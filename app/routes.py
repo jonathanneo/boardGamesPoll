@@ -2,11 +2,12 @@ from flask import render_template, request, redirect, url_for, flash
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, PollForm, OptionForm
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User, Poll, Option
+from app.models import User, Poll, Option, votes
 from werkzeug.urls import url_parse
 from datetime import datetime
 from app.forms import ResetPasswordRequestForm
 from app.email import send_password_reset_email
+from sqlalchemy import func
 
 @app.before_request
 def before_request():
@@ -51,29 +52,27 @@ def addOption(poll_id):
 
     return render_template('addOption.html', title='View Poll', form=form, options=options, polls=polls)
 
-@app.route('/vote/<option_id>-<poll_id>')
+@app.route('/vote/<poll_id>/<option_id>')
 @login_required
-def vote(option_id, poll_id):
+def vote(poll_id, option_id):
     user = current_user
-    option = db.session.query(Option).filter(Option.id==option_id).all()
-    user.vote(option[0])
+    option = db.session.query(Option).filter(Option.id==option_id).all()[0]
+    user.vote(option)
     db.session.commit()
-    flash('You have voted for  {}!'.format(option[0].body))
+    flash('You have voted for {}'.format(option.body))
     
-    options = db.session.query(Option).filter(Option.id_poll==poll_id).all()
-    polls = db.session.query(Poll).filter(Poll.id==poll_id).all()[0]
+    return viewPoll(poll_id)
 
-    return render_template('vote.html', title='View Poll', options=options, polls=polls)
-
-@app.route('/unvote/<option_id>')
+@app.route('/unvote/<poll_id>/<option_id>')
 @login_required
-def unvote(option_id):
+def unvote(poll_id, option_id):
     user = current_user
-    option = db.session.query(Option).filter(Option.id==option_id).all()
+    option = db.session.query(Option).filter(Option.id==option_id).all()[0]
     user.unvote(option)
     db.session.commit()
-    flash('Your vote has been canceled.'.format(option))
-    return redirect(url_for('user', username=username))
+    flash('You have unvoted for {}'.format(option.body))
+    
+    return viewPoll(poll_id)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -183,8 +182,10 @@ def explore():
 @login_required
 def viewPoll(poll_id):
     polls = db.session.query(Poll).filter(Poll.id==poll_id).all()[0]
-    options = db.session.query(Option).filter(Option.id_poll==poll_id).all()
-
+    # sorts list
+    result = db.session.query(Option, func.count(votes.c.id_option).label('total_count')).outerjoin(votes).group_by(Option.id).filter(Option.id_poll==poll_id).order_by('total_count DESC').all()
+    options = [i[0] for i in result] # returns only the objects as a list
+    
     return render_template('vote.html', title='View Poll', options=options, polls=polls)
 
 @app.route('/reset_password_request', methods=['GET', 'POST'])
