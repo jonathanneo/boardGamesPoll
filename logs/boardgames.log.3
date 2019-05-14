@@ -1,4 +1,4 @@
-2019-05-11 15:31:07,716 ERROR: Exception on /index [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
+2019-05-13 22:01:08,898 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
 Traceback (most recent call last):
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,8 +14,8 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 36, in index
-    return render_template("index.html", title='Home Page', form=form, polls=polls.items, next_url=next_url, prev_url=prev_url)
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 194, in viewPoll
+    return render_template('vote.html', title='View Poll', options=options, polls=polls)
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\templating.py", line 135, in render_template
     context, ctx.app)
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\templating.py", line 117, in _render
@@ -28,8 +28,8 @@ Traceback (most recent call last):
     reraise(exc_type, exc_value, tb)
   File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\index.html", line 2, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\vote.html", line 1, in top-level template code
+    {% extends "base.html" %}
   File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\base.html", line 1, in top-level template code
     {% extends 'bootstrap/base.html' %}
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
@@ -40,28 +40,18 @@ Traceback (most recent call last):
     {% block body -%}
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
     {% block content -%}
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\base.html", line 48, in block "content"
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\base.html", line 52, in block "content"
     {% block app_content %}{% endblock %}
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\index.html", line 11, in block "app_content"
-    {% include '_poll.html' %}
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\_poll.html", line 18, in top-level template code
-    <a href="{{ url_for('addOption', poll_id=poll.id) }}">
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\helpers.py", line 356, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2061, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\_compat.py", line 35, in reraise
-    raise value
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\helpers.py", line 345, in url_for
-    force_external=external)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\werkzeug\routing.py", line 1776, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'addOption' with values ['poll_id']. Did you mean 'static' instead?
-2019-05-11 15:31:33,354 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-11 15:35:19,005 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-11 15:44:10,657 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-11 15:47:52,975 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-11 15:48:04,503 ERROR: Exception on /explore [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\vote.html", line 15, in block "app_content"
+    {% include '_unvoteOption.html' %}
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\_unvoteOption.html", line 5, in top-level template code
+    {% if current_user.has_voted_option(option) %}
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\models.py", line 54, in has_voted_option
+    return db.session.query(votes).filter(votes.c.id_option == option.id, votes.c.id_user == self.id).count() > 0
+AttributeError: 'result' object has no attribute 'id'
+2019-05-13 22:01:25,489 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-13 22:02:35,071 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-13 22:02:35,916 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
 Traceback (most recent call last):
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -77,8 +67,8 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 166, in explore
-    return render_template('explore.html', title='Explore', polls=polls.items, next_url=next_url, prev_url=prev_url)
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 194, in viewPoll
+    return render_template('vote.html', title='View Poll', options=options, polls=polls)
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\templating.py", line 135, in render_template
     context, ctx.app)
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\templating.py", line 117, in _render
@@ -91,8 +81,8 @@ Traceback (most recent call last):
     reraise(exc_type, exc_value, tb)
   File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\explore.html", line 2, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\vote.html", line 1, in top-level template code
+    {% extends "base.html" %}
   File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\base.html", line 1, in top-level template code
     {% extends 'bootstrap/base.html' %}
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
@@ -103,21 +93,13 @@ Traceback (most recent call last):
     {% block body -%}
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
     {% block content -%}
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\base.html", line 48, in block "content"
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\base.html", line 52, in block "content"
     {% block app_content %}{% endblock %}
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\explore.html", line 11, in block "app_content"
-    {% include '_poll.html' %}
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\_poll.html", line 18, in top-level template code
-    <a href="{{ url_for('vote', poll_id=poll.id) }}">
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\helpers.py", line 356, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2061, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\_compat.py", line 35, in reraise
-    raise value
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\helpers.py", line 345, in url_for
-    force_external=external)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\werkzeug\routing.py", line 1776, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'vote' with values ['poll_id']. Did you forget to specify values ['option']?
-2019-05-11 15:48:58,225 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\vote.html", line 15, in block "app_content"
+    {% include '_unvoteOption.html' %}
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\_unvoteOption.html", line 5, in top-level template code
+    {% if current_user.has_voted_option(option) %}
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\models.py", line 54, in has_voted_option
+    return db.session.query(votes).filter(votes.c.id_option == option.id, votes.c.id_user == self.id).count() > 0
+AttributeError: 'result' object has no attribute 'id'
+2019-05-13 22:03:31,018 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]

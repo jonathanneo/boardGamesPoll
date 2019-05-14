@@ -2,7 +2,8 @@
         <tr>
             <td>
                 {{ option.body }} 
-                <input type="button" href="{{ url_for('vote', option_id=option.id) }}" value = "Vote"/>
+                <a href="{{ url_for('vote', poll_id=polls.id, option_id=option.id) }}" class="button"> Vote </a>
+		{{ option.voters.count() }}
             </td>
         </tr>
-    </table>
+</table>
