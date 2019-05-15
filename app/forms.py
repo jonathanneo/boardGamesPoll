@@ -50,6 +50,11 @@ class EditPollForm(FlaskForm):
     image_url = TextAreaField('Image URL')
     submit = SubmitField('Submit')
 
+class EditOptionForm(FlaskForm):
+    body = TextAreaField('Option', validators=[
+        DataRequired(), Length(min=1, max=140)])
+    submit = SubmitField('Submit')
+
 class PollForm(FlaskForm):
     title = TextAreaField('Poll title', validators=[
         DataRequired(), Length(min=1, max=140)])

@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, url_for, flash
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, EditProfileForm, PollForm, OptionForm, EditPollForm
+from app.forms import LoginForm, RegistrationForm, EditProfileForm, PollForm, OptionForm, EditPollForm, EditOptionForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Poll, Option, votes
 from werkzeug.urls import url_parse
@@ -155,6 +155,22 @@ def edit_poll(poll_id):
         form.body.data = poll.body
         form.image_url.data = poll.image_url
     return render_template('edit_poll.html', title='Edit Poll', form=form)
+
+@app.route('/edit_option/<poll_id>/<option_id>', methods=['GET', 'POST'])
+@login_required
+def edit_option(poll_id, option_id):
+    form = EditOptionForm()
+    edit_option = db.session.query(Option).filter(Option.id==option_id).all()[0]
+    polls = db.session.query(Poll).filter(Poll.id==poll_id).all()[0]
+    options = db.session.query(Option).filter(Option.id_poll==poll_id).all()
+    if form.validate_on_submit():
+        edit_option.body = form.body.data
+        db.session.commit()
+        flash('Your changes have been saved.')
+        return redirect(url_for('edit_option.html', poll_id = poll_id, option_id=option_id))
+    elif request.method == 'GET':
+        form.body.data = edit_option.body
+    return render_template('editOption.html', title='View Poll', form=form, options=options, polls=polls, edit_option= edit_option)
 
 @app.route('/follow/<username>')
 @login_required
