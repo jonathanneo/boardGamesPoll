@@ -27,6 +27,7 @@
 
 $("#deletePoll_{{ poll.id }}").click(function(){
     if(window.confirm('Are you sure?')){
+        event.stopPropagation();
         window.location.href = "{{ url_for('deletePoll', poll_id=poll.id) }}";
     }
 });
