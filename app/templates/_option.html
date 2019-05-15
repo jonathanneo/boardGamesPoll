@@ -13,9 +13,9 @@
 
 <script>
 $("#{{ option.id }}").click(function(){
-    var result = window.confirm('Are you sure?'); 
-    if(result){
-        "{{ url_for('addOption', poll_id=polls.id, option_id=option.id) }}"
-    }
-})
+    if(window.confirm('Are you sure?')){
+        alert('test')
+        window.location.href = "{{ url_for('deleteOption', poll_id=polls.id, option_id=option.id) }}";
+    };
+});
 </script>

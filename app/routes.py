@@ -81,16 +81,19 @@ def deleteOption(poll_id, option_id):
     option = db.session.query(Option).filter(Option.id==option_id).all()[0]
     db.session.delete(option)
     db.session.commit()
-    flash('You have deleted {}'.format(option.body))
+    flash('You have deleted option:{}'.format(option.body))
     
     return viewPoll(poll_id)
 
 @app.route('/deletePoll/<poll_id>')
 @login_required
 def deletePoll(poll_id):
-    ##
+    poll = db.session.query(Poll).filter(Poll.id==poll_id).all()[0]
+    db.session.delete(poll)
+    db.session.commit()
+    flash('You have deleted poll: {}'.format(poll.title))
     
-    return 
+    return explore()
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
