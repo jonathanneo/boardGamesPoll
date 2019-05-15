@@ -6,16 +6,15 @@
             <td>
                 {{ option.body }} 
                 <a href="{{ url_for('edit_option', poll_id=polls.id, option_id=option.id) }}" class="button"> Edit </a>
-                <a href="" id = "{{ option.id }}" class="button"> Delete </a>
+                <a id = "deleteOption_{{ option.id }}" class="button"> Delete </a>
             </td>
         </tr>
     </table>
 
 <script>
-$("#{{ option.id }}").click(function(){
+$("#deleteOption_{{ option.id }}").click(function(){
     if(window.confirm('Are you sure?')){
-        alert('test')
         window.location.href = "{{ url_for('deleteOption', poll_id=polls.id, option_id=option.id) }}";
-    };
+    }
 });
 </script>

@@ -61,7 +61,7 @@ def vote(poll_id, option_id):
     db.session.commit()
     flash('You have voted for {}'.format(option.body))
     
-    return viewPoll(poll_id)
+    return redirect(url_for('viewPoll',poll_id=poll_id))
 
 @app.route('/unvote/<poll_id>/<option_id>')
 @login_required
@@ -72,7 +72,7 @@ def unvote(poll_id, option_id):
     db.session.commit()
     flash('You have unvoted for {}'.format(option.body))
     
-    return viewPoll(poll_id)
+    return redirect(url_for('viewPoll', poll_id=poll_id))
 
 @app.route('/deleteOption/<poll_id>/<option_id>')
 @login_required
@@ -83,7 +83,7 @@ def deleteOption(poll_id, option_id):
     db.session.commit()
     flash('You have deleted option:{}'.format(option.body))
     
-    return viewPoll(poll_id)
+    return redirect(url_for('addOption', poll_id=poll_id))
 
 @app.route('/deletePoll/<poll_id>')
 @login_required
@@ -93,7 +93,7 @@ def deletePoll(poll_id):
     db.session.commit()
     flash('You have deleted poll: {}'.format(poll.title))
     
-    return explore()
+    return redirect(url_for('index'))
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
