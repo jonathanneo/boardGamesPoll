@@ -23,6 +23,7 @@ class Option(db.Model):
     body = db.Column(db.String(140))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     id_poll = db.Column(db.Integer, db.ForeignKey('poll.id'))
+    poll = db.relationship("Poll", backref=db.backref("options", cascade="all, delete-orphan"))
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -40,8 +41,8 @@ class User(UserMixin, db.Model):
     votes = db.relationship(
         'Option', secondary = votes, 
         primaryjoin=(votes.c.id_user == id),
-        backref=db.backref('voters', lazy='dynamic'), lazy='dynamic')
-
+        backref=db.backref('voters',lazy='dynamic'), lazy='dynamic')
+    
     def vote(self, option):
         if not self.has_voted_option(option):
             self.votes.append(option)
@@ -54,7 +55,8 @@ class User(UserMixin, db.Model):
         return db.session.query(votes).filter(votes.c.id_option == option.id, votes.c.id_user == self.id).count() > 0
 
     def has_voted_poll(self, poll):
-        return Option.query.join(votes, Option.id == votes.c.id_option).filter(Option.id_poll == poll.id).count() > 0
+        return Option.query.join(votes, Option.id == votes.c.id_option).filter(Option.id_poll == poll.id, 
+            votes.c.id_user == self.id).count() > 0
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -110,7 +112,8 @@ class Poll(db.Model):
     image_url = db.Column(db.String(255))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    
+    option = db.relationship("Option", cascade="all, delete-orphan")
+
     def __repr__(self):
         return '<Poll {}>'.format(self.body)
 

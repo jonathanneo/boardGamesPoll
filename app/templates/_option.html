@@ -5,7 +5,7 @@
         <tr>
             <td>
                 {{ option.body }} 
-                <a href="{{ url_for('addOption', poll_id=polls.id, option_id=option.id) }}" class="button"> Edit </a>
+                <a href="{{ url_for('edit_option', poll_id=polls.id, option_id=option.id) }}" class="button"> Edit </a>
                 <a href="" id = "{{ option.id }}" class="button"> Delete </a>
             </td>
         </tr>

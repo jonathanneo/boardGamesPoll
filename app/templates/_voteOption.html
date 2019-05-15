@@ -3,7 +3,7 @@
             <td>
                 {{ option.body }} 
                 <a href="{{ url_for('vote', poll_id=polls.id, option_id=option.id) }}" class="button"> Vote </a>
-		{{ option.voters.count() }}
+		        {{ option.voters.count() }}
             </td>
         </tr>
 </table>

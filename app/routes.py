@@ -74,6 +74,23 @@ def unvote(poll_id, option_id):
     
     return viewPoll(poll_id)
 
+@app.route('/deleteOption/<poll_id>/<option_id>')
+@login_required
+def deleteOption(poll_id, option_id):
+    user = current_user
+    option = db.session.query(Option).filter(Option.id==option_id).all()[0]
+    db.session.delete(option)
+    db.session.commit()
+    flash('You have deleted {}'.format(option.body))
+    
+    return viewPoll(poll_id)
+
+@app.route('/deletePoll/<poll_id>')
+@login_required
+def deletePoll(poll_id):
+    ##
+    
+    return 
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -159,18 +176,22 @@ def edit_poll(poll_id):
 @app.route('/edit_option/<poll_id>/<option_id>', methods=['GET', 'POST'])
 @login_required
 def edit_option(poll_id, option_id):
-    form = EditOptionForm()
+    edit_option_form = EditOptionForm()
     edit_option = db.session.query(Option).filter(Option.id==option_id).all()[0]
     polls = db.session.query(Poll).filter(Poll.id==poll_id).all()[0]
     options = db.session.query(Option).filter(Option.id_poll==poll_id).all()
-    if form.validate_on_submit():
-        edit_option.body = form.body.data
+
+    if edit_option_form.validate_on_submit():
+        edit_option.body = edit_option_form.body.data
         db.session.commit()
         flash('Your changes have been saved.')
-        return redirect(url_for('edit_option.html', poll_id = poll_id, option_id=option_id))
+        return redirect(url_for('addOption', poll_id = poll_id))
     elif request.method == 'GET':
-        form.body.data = edit_option.body
-    return render_template('editOption.html', title='View Poll', form=form, options=options, polls=polls, edit_option= edit_option)
+        edit_option_form.body.data = edit_option.body
+    
+    return render_template('editOption.html', title='View Poll', 
+        edit_option_form=edit_option_form, options=options, 
+        polls=polls, edit_option = edit_option)
 
 @app.route('/follow/<username>')
 @login_required
@@ -203,7 +224,7 @@ def unfollow(username):
     return redirect(url_for('user', username=username))
 
 @app.route('/explore')
-@login_required
+# @login_required
 def explore():
     page = request.args.get('page',1,type=int)
     polls = Poll.query.order_by(Poll.timestamp.desc()).paginate(
@@ -213,14 +234,15 @@ def explore():
     return render_template('explore.html', title='Explore', polls=polls.items, next_url=next_url, prev_url=prev_url)
 
 @app.route('/viewPoll/<poll_id>')
-@login_required
+# @login_required
 def viewPoll(poll_id):
     polls = db.session.query(Poll).filter(Poll.id==poll_id).all()[0]
     # sorts list
     result = db.session.query(Option, func.count(votes.c.id_option).label('total_count')).outerjoin(votes).group_by(Option.id).filter(Option.id_poll==poll_id).order_by('total_count DESC').all()
+    # result = db.session.query(Option, func.count(votes.c.id_option).label('total_count')).outerjoin(votes).group_by(Option.id).filter(Option.id_poll==poll_id).order_by('total_count DESC').all()
     options = [i[0] for i in result] # returns only the objects as a list
     
-    return render_template('viewPoll.html', title='View Poll', options=options, polls=polls)
+    return render_template('viewPoll.html', title='View Poll', current_user = current_user, options=options, polls=polls)
 
 @app.route('/reset_password_request', methods=['GET', 'POST'])
 def reset_password_request():

@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 
 {% block app_content %}
-    <h1>Hi, {{ current_user.username }}!</h1>
-    
+	{% if current_user.is_anonymous %}
+	<h1>Hi there! Please <a href="{{ url_for('login') }}">sign in</a> or <a href="{{ url_for('register') }}">register</a> to vote.</h1>
+	{% else %}
+	<h1>Hi, {{ current_user.username }}!</h1>
+	{% endif %}
     {% for poll in polls %}
         {% include '_poll.html' %}
     {% endfor %}
