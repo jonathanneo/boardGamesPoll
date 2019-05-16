@@ -36,6 +36,9 @@ def index():
     
     return render_template("index.html", title='Home Page', form=form, polls=polls.items, next_url=next_url, prev_url=prev_url)
 
+@app.route('/about')
+def about():
+	return redirect(url_for('about'))
 
 @app.route('/addOption/<poll_id>', methods=['GET', 'POST'])
 @login_required
@@ -73,7 +76,6 @@ def unvote(poll_id, option_id):
     flash('You have unvoted for {}'.format(option.body))
     
     return viewPoll(poll_id)
-
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -169,7 +171,6 @@ def unfollow(username):
     return redirect(url_for('user', username=username))
 
 @app.route('/explore')
-@login_required
 def explore():
     page = request.args.get('page',1,type=int)
     polls = Poll.query.order_by(Poll.timestamp.desc()).paginate(
@@ -179,7 +180,6 @@ def explore():
     return render_template('explore.html', title='Explore', polls=polls.items, next_url=next_url, prev_url=prev_url)
 
 @app.route('/viewPoll/<poll_id>')
-@login_required
 def viewPoll(poll_id):
     polls = db.session.query(Poll).filter(Poll.id==poll_id).all()[0]
     # sorts list
