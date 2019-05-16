@@ -6,13 +6,13 @@
             <td width="256px"><img src="{{ user.avatar(256) }}"></td>
             <td>
                 <h1>User: {{ user.username }}</h1>
-			{% if current_user.check_admin() %}
+		    {% if current_user.check_admin() %}
 		    	{% if user.check_admin() %}
-		       	<p><a href="{{ url_for('removeAdmin', username=user.username) }}" class="button"> Remove Admin </a></p>
+		        <p><a href="{{ url_for('removeAdmin', username=user.username) }}" class="button"> Remove Admin </a></p>
 		    	{% else %}
-				<p><a href="{{ url_for('makeAdmin', username=user.username) }}" class="button"> Make Admin </a></p>
+			<p><a href="{{ url_for('makeAdmin', username=user.username) }}" class="button"> Make Admin </a></p>
 		    	{% endif %}		
-			{% endif %}
+		    {% endif %}
                 {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
                 {% if user.last_seen %}<p>Last seen on: {{ user.last_seen }}</p>{% endif %}
                 <p>{{ user.followers.count() }} followers, {{ user.followed.count() }} following.</p>
