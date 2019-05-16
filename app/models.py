@@ -60,7 +60,7 @@ class User(UserMixin, db.Model):
             votes.c.id_user == self.id).count() > 0
 
     def	check_admin(self):
-	return self.is_admin
+		return self.is_admin
 
     def make_admin(self, user):
         user.is_admin = True
