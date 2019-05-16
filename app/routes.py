@@ -1,13 +1,14 @@
 from flask import render_template, request, redirect, url_for, flash
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, EditProfileForm, PollForm, OptionForm, EditPollForm, EditOptionForm
+from app.forms import LoginForm, RegistrationForm, EditProfileForm, PollForm, OptionForm, ResetPasswordRequestForm
+from app.forms import EditPollForm, EditOptionForm, DeleteUserForm, MakeUserAdminForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Poll, Option, votes
 from werkzeug.urls import url_parse
 from datetime import datetime
-from app.forms import ResetPasswordRequestForm
 from app.email import send_password_reset_email
 from sqlalchemy import func
+from flask import request
 
 @app.before_request
 def before_request():
@@ -29,7 +30,7 @@ def index():
         return redirect(url_for('index')) # return redirect instead of render_template as that will refresh the page and re-submit the form and causes duplicates 
     
     page = request.args.get('page',1,type=int) 
-    polls = current_user.followed_polls().paginate(
+    polls = db.session.query(Poll).filter(Poll.user_id == current_user.id).paginate(
         page, app.config['POLLS_PER_PAGE'], False)
     next_url = url_for('index', page=polls.next_num) if polls.has_next else None 
     prev_url = url_for('index', page=polls.prev_num) if polls.has_prev else None
@@ -39,6 +40,79 @@ def index():
 @app.route('/about')
 def about():
     return render_template("about.html", title='About Us')
+
+@app.route('/admin')
+def admin():
+    return render_template("admin.html", title = 'Admin Page')
+
+@app.route('/manage_users')
+def manage_users():
+    return render_template("manage_users.html", title='Manage Users')
+
+@app.route('/delete_user',methods=['GET', 'POST'])
+def delete_user():
+    form = DeleteUserForm()
+    header_content = 'Delete User'
+    if current_user.is_anonymous == True or current_user.is_admin == False:
+        flash('You have to be logged in as an admin to access this feature.')
+        return redirect(url_for('explore'))
+    if form.validate_on_submit():
+        username = form.username.data
+        user = db.session.query(User).filter(User.username == username).first()
+        if user is None:
+            flash('Could not find user. Please try again.')
+            return redirect(url_for('delete_user')) 
+        else: 
+            db.session.delete(user)
+            db.session.commit()
+            flash(user.username + ' has been deleted!')
+            return redirect(url_for('delete_user'))
+    
+    page = request.args.get('page',1,type=int)
+    users=db.session.query(User).order_by(User.last_seen.desc()).paginate(
+        page, app.config['POLLS_PER_PAGE'], False)
+    next_url = url_for('delete_user',page=users.next_num) if users.has_next else None
+    prev_url = url_for('delete_user',page=users.prev_num) if users.has_prev else None
+    
+    return render_template("change_or_delete_user.html", title='Delete Users', users=users.items, 
+        form=form,header_content=header_content,next_url=next_url, prev_url=prev_url)
+
+@app.route('/make_user_admin',methods=['GET', 'POST'])
+def make_user_admin():
+    page = request.args.get('page',1,type=int)
+    users=db.session.query(User).order_by(User.last_seen.desc()).paginate(
+        page, app.config['POLLS_PER_PAGE'], False)
+    next_url = url_for('delete_user',page=users.next_num) if users.has_next else None
+    prev_url = url_for('delete_user',page=users.prev_num) if users.has_prev else None
+    form = MakeUserAdminForm()
+    header_content = 'Make User Admin'
+    if current_user.is_anonymous == True or current_user.is_admin == False:
+        flash('You have to be logged in as an admin to access this feature.')
+        return redirect(url_for('explore'))
+    if form.validate_on_submit():
+        user = db.session.query(User).filter(User.username == form.username.data).first()
+        if user is None:
+            flash('Could not find user. Please try again.')
+            return redirect(url_for('make_user_admin')) 
+        elif user.is_admin:
+            flash(user.username + ' is already an admin!')
+            redirect(url_for('make_user_admin'))
+        elif current_user.is_admin: 
+            current_user.make_admin(user)
+            db.session.commit()
+            flash(user.username + ' is now an admin!')
+            return redirect(url_for("make_user_admin"))
+    return render_template("change_or_delete_user.html", title='Delete Users', users=users.items, 
+        form=form,header_content=header_content,next_url=next_url, prev_url=prev_url)
+
+@app.route('/manage_polls')
+def manage_polls():
+    page = request.args.get('page',1,type=int)
+    polls = Poll.query.order_by(Poll.timestamp.desc()).paginate(
+        page, app.config['POLLS_PER_PAGE'], False)
+    next_url = url_for('manage_polls', page=polls.next_num) if polls.has_next else None 
+    prev_url = url_for('manage_polls', page=polls.prev_num) if polls.has_prev else None
+    return render_template('manage_poll.html', title='Manage Polls', polls=polls.items, next_url=next_url, prev_url=prev_url) 
 
 @app.route('/user/<username>/promote')
 @login_required
@@ -114,7 +188,7 @@ def deletePoll(poll_id):
     db.session.commit()
     flash('You have deleted poll: {}'.format(poll.title))
     
-    return redirect(url_for('index'))
+    return redirect(request.referrer) or redirect(url_for('index')) # request.referrer redirects "Back"
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -152,7 +226,22 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
-@app.route('/user/<username>')
+@app.route('/register_new_user', methods=['GET', 'POST'])
+def register_new_user():
+    if current_user.is_anonymous == True or current_user.is_admin == False:
+        flash('You have to be logged in as an admin to access this feature.')
+        return redirect(url_for('index'))
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        user = User(username=form.username.data, email=form.email.data)
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flash(user.username + ' has been registered.')
+        return redirect(url_for('manage_users'))
+    return render_template('register.html', title='Register', form=form)
+
+@app.route('/user/<username>',methods=['GET', 'POST'])
 @login_required
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
