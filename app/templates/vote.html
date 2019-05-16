@@ -2,20 +2,36 @@
 
 {% block app_content %}
 
-    <h1>{{ polls.title }}</h1>
-    
-    <br>
-    <p> <b>Poll Description:</b> {{ polls.body }} </p>
-    
-    <br>
-    
-    {% if current_user.has_voted_poll(polls) %}
-        {% for option in options %}
-            {% include '_unvoteOption.html' %}     
-        {% endfor %}
-    {% else %}
-        {% for option in options %}
-            {% include '_voteOption.html' %}     
-        {% endfor %}
-    {% endif %}
+	{% if current_user.is_anonymous %}
+		<h1>Hi there! Please <a href="{{ url_for('login') }}">sign in</a> or <a href="{{ url_for('register') }}">register</a> to vote.</h1>
+    	<h1>{{ polls.title }}</h1>
+    	<br>
+	    <p> <b>Poll Description:</b> {{ polls.body }} </p>
+   		<br>
+		{% for option in options %}
+			<table class="table table-hover">
+    		<tr>
+    	   		<td>
+    	        {{ option.body }} 
+				Count:
+    	        {{ option.voters.count() }}
+    	    	</td>
+   			</tr>
+			</table>
+		{% endfor %}
+	{% else %}
+    	<h1>{{ polls.title }}</h1>
+    	<br>	
+    	<p> <b>Poll Description:</b> {{ polls.body }} </p>
+	    <br>
+    	{% if current_user.has_voted_poll(polls) %}
+        	{% for option in options %}
+        	    {% include '_unvoteOption.html' %}     
+        	{% endfor %}
+    	{% else %}
+        	{% for option in options %}
+           		{% include '_voteOption.html' %}     
+        	{% endfor %}
+    	{% endif %}
+	{% endif %}
 {% endblock %}
