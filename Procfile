@@ -1,1 +1,1 @@
-web: flask db upgrade; gunicorn board-games-poll:app
+web: flask db upgrade; gunicorn boardgames:app
