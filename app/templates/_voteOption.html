@@ -1,13 +1,13 @@
-<div class="card mb-3" style="max-width: 540px;">
+<div class="card bg-light mb-3" style="max-width: 1080px;">
   <div class="row no-gutters">
-    <div class="col-md-4">
+    <div class="col-md-2">
       <img src="{{ option.url }}" width="150" height="150" class="card-img">
     </div>
-    <div class="col-md-8">
+    <div class="col-md-10">
       <div class="card-body">
         <h5 class="card-title">{{ option.body }}</h5>
-        <a class="btn btn-primary btn-lg" href="{{ url_for('vote', poll_id=polls.id, option_id=option.id) }}" role="button"> Vote </a>
-        <p class="card-text"><small class="text-muted">Count: {{ option.voters.count() }}</small></p>
+        <a class="btn btn-primary btn-lg float-right" href="{{ url_for('vote', poll_id=polls.id, option_id=option.id) }}" role="button"> Vote </a>
+        <h5 class="card-text"><small class="text-muted">Votes: {{ option.voters.count() }}</small></h5>
       </div>
     </div>
   </div>

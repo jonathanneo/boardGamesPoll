@@ -30,7 +30,7 @@ def index():
         return redirect(url_for('index')) # return redirect instead of render_template as that will refresh the page and re-submit the form and causes duplicates 
     
     page = request.args.get('page',1,type=int) 
-    polls = db.session.query(Poll).filter(Poll.user_id == current_user.id).paginate(
+    polls = db.session.query(Poll).filter(Poll.user_id == current_user.id).order_by(Poll.timestamp.desc()).paginate(
         page, app.config['POLLS_PER_PAGE'], False)
     next_url = url_for('index', page=polls.next_num) if polls.has_next else None 
     prev_url = url_for('index', page=polls.prev_num) if polls.has_prev else None
@@ -351,7 +351,7 @@ def explore():
 @app.route('/viewPoll/<poll_id>')
 # @login_required
 def viewPoll(poll_id):
-    polls = db.session.query(Poll).filter(Poll.id==poll_id).all()[0]
+    polls = db.session.query(Poll).filter(Poll.id==poll_id).first()
     # sorts list
     result = db.session.query(Option, func.count(votes.c.id_option).label('total_count')).outerjoin(votes).group_by(Option.id).filter(Option.id_poll==poll_id).order_by(desc('total_count')).all()
     # result = db.session.query(Option, func.count(votes.c.id_option).label('total_count')).outerjoin(votes).group_by(Option.id).filter(Option.id_poll==poll_id).order_by('total_count DESC').all()

@@ -54,7 +54,10 @@ class User(UserMixin, db.Model):
             self.votes.remove(option)
 
     def has_voted_option(self, option):
-        return db.session.query(votes).filter(votes.c.id_option == option.id, votes.c.id_user == self.id).count() > 0
+        if db.session.query(votes).filter(votes.c.id_option == option.id, votes.c.id_user == self.id).first() != None: 
+            return True 
+        else:
+            return False
 
     def has_voted_poll(self, poll):
         return Option.query.join(votes, Option.id == votes.c.id_option).filter(Option.id_poll == poll.id, 

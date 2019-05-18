@@ -1,45 +1,49 @@
 {% extends "base.html" %}
 
 {% block app_content %}
-
-	{% if current_user.is_anonymous %}
-	<h1>Hi there! Please <a href="{{ url_for('login') }}">sign in</a> or <a href="{{ url_for('register') }}">register</a> to vote.</h1>
-    <h1>{{ polls.title }}</h1>
-    <br>
-    <p> <b>Poll Description:</b> {{ polls.body }} </p>
-    <br>
-		{% for option in options %}
-			<div class="card mb-3" style="max-width: 540px;">
-  				<div class="row no-gutters">
-    				<div class="col-md-4">
-      					<img src="{{ option.url }}" width="150" height="150" class="card-img">
-    				</div>
-    				<div class="col-md-8">
-      					<div class="card-body">
-        					<h5 class="card-title">{{ option.body }}</h5>
-        					<p class="card-text"><small class="text-muted">Count: {{ option.voters.count() }}</small></p>
-      					</div>
-    				</div>
-  				</div>
+	<div class="fluid-container">
+		{% if current_user.is_anonymous %}
+			<div class="alert alert-primary" role="alert">
+				Please <a href="{{ url_for('login') }}">sign in</a> or <a href="{{ url_for('register') }}">register </a> to vote.
 			</div>
-		{% endfor %}
-	{% else %}
-	<h1>{{ polls.title }}</h1>
+			<br>
+		{% endif %}	
 
-    <br>
-    <p> <b>Poll Description:</b> {{ polls.body }} </p>
-    
-    <br>
+		<div class="card bg-light mb-3" style="max-width: 1080px;">
+			<div class="row no-gutters">
+				<div class="col-md-3">
+					<img src="{{ polls.image_url }}" class="card-img">
+				</div>
+				<div class="col-md-8">
+					<div class="card-body">
+						<h1>{{ polls.title }}</h1>
+						<b>Description</b> <br>
+						<p> {{ polls.body }} </p>
+					</div>
+				</div>
+				{% if not current_user.is_anonymous %}
+					<img src="{{ current_user.avatar(256) }}">
+				{% endif %}	
+			</div>
+		</div>
 
-	   	{% if current_user.has_voted_poll(polls) %}
-        	{% for option in options %}
-        	    {% include '_unvoteOption.html' %}     
-        	{% endfor %}
-    	{% else %}
-        	{% for option in options %}
-           		{% include '_voteOption.html' %}     
-        	{% endfor %}
-    	{% endif %}
+		<br>
+		{% if not current_user.is_anonymous %}
+			{% if current_user.has_voted_poll(polls) %}
+				{% for option in options %}
+					{% include '_unvoteOption.html' %}     
+				{% endfor %}
+			{% else %}
+				{% for option in options %}
+					{% include '_voteOption.html' %}     
+				{% endfor %}
+			{% endif %}	
+		{% else %}
+			{% for option in options %}
+				{% include '_renderOption.html' %}
+			{% endfor %}
+		{% endif %}
+		
+	</div>
 
-	{% endif %}
 {% endblock %}
