@@ -8,22 +8,26 @@
 			</div>
 			<br>
 		{% endif %}	
-
-		<div class="card bg-light mb-3" style="max-width: 1080px;">
-			<div class="row no-gutters">
-				<div class="col-md-3">
-					<img src="{{ polls.image_url }}" class="card-img">
+		
+		<div class="card bg-light" >
+			<div class="row no-gutters"> 
+				<div class="col-3">
+					<img src="{{ polls.image_url }}" class="card-img"> 
 				</div>
-				<div class="col-md-8">
+				<div class="col-6">
 					<div class="card-body">
 						<h1>{{ polls.title }}</h1>
 						<b>Description</b> <br>
 						<p> {{ polls.body }} </p>
 					</div>
 				</div>
-				{% if not current_user.is_anonymous %}
-					<img src="{{ current_user.avatar(256) }}">
-				{% endif %}	
+				<div class="col-3">
+					<div class="card-body"></div>
+						<img src="{{ user.avatar(256) }}"class="img-thumbnail align-right ml-4" height="75px" width="75px">
+						<br>
+						<a href="{{ url_for('user', username=user.username) }}" class="align-right ml-4"><b>{{ user.username }}</b></a>
+					</div>
+				</div>
 			</div>
 		</div>
 

@@ -6,24 +6,22 @@
     
 
 <div class="container-fluid">
-
-    <h1>Create a Poll</h1>
-    <br>
-    {% if form %}
-    {{ wtf.quick_form(form) }}
-    <br>
-    {% endif %}
-    <br>
-    <div class="row justify-content-center">
-        <div class="col-9">
-            <h1>Manage Your Polls</h1>
-            <br>
+    <div class="col-12">
+        <h1>Create a Poll</h1>
+        <br>
+        {% if form %}
+        {{ wtf.quick_form(form) }}
+        <br>
+        {% endif %}
+        <br>
+        <h1>Manage Your Polls</h1>
+        <br>
+        <div class="row justify-content-center">
             <div class="card-columns text-center">
                 {% for poll in polls %}
                     {% include '_selectPoll.html' %}
                 {% endfor %}
             </div>
-
             <div>
                 <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center">
@@ -40,10 +38,8 @@
                     </ul>
                 </nav>
             </div>  
+            
         </div>
     </div>
 </div>
-    {% block footer %}
-        {% include "footer.html" %}
-    {% endblock %}
 {% endblock %}

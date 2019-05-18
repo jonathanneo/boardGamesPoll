@@ -1,20 +1,28 @@
 
-<div class="card bg-light mb-3" style="max-width: 1080px;">
-  <div class="row no-gutters">
-    <div class="col-md-2">
-      <img src="{{ option.url }}" width="150" height="150" class="card-img">
+<div class="card bg-light mb-3">
+    <div class="row no-gutters align-items-center">
+        <div class="col-2">
+        <img src="{{ option.url }}" width="150" height="150" class="card-img">
+        </div>
+        <div class="col-8">
+            <div class="card-body">
+                <h5 class="card-title">{{ option.body }}</h5>
+                <h5 class="card-text"><small class="text-muted">Votes: {{ option.voters.count() }}</small></h5>    
+            </div>
+        </div>
+        <div class="col-2 text-center">
+            <div class="row">    
+                <a href="{{ url_for('edit_option', poll_id=polls.id, option_id=option.id) }}" class="btn btn-secondary btn-md"> Edit </a>
+            </div> 
+            <br>
+            <div class="row">  
+            <button type="button" class="btn btn-secondary btn-md" data-toggle="modal" data-target="#deleteOption_{{ option.id }}">Delete Option</button> 
+            </div>
+        </div>
     </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">{{ option.body }}</h5>
-        <a href="{{ url_for('edit_option', poll_id=polls.id, option_id=option.id) }}" class="button"> Edit </a>
-        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#deleteOption_{{ option.id }}">Delete Option</button> 
-        <p class="card-text"><small class="text-muted">Count: {{ option.voters.count() }}</small></p>
-      </div>
-    </div>
-  </div>
 </div>
 
+    
 <!-- Modal -->
 <div class="modal fade" id="deleteOption_{{ option.id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModal"
   aria-hidden="true">

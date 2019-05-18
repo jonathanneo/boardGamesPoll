@@ -3,19 +3,6 @@
 
 {% block app_content %}
 
-    <h1>{{ polls.title }}</h1>
-    
-    <br>
-    <p> <b>Poll Description:</b> {{ polls.body }} </p>
-    
-    <br>
-    
-    {% for option in options %}
-        {% if option.id == edit_option.id %}
-            {% include '_edit_option.html' %}
-        {% else %}
-            {% include '_option.html' %} 
-        {% endif %}
-    {% endfor %}
+{{ wtf.quick_form(edit_option_form) }}
     
 {% endblock %}

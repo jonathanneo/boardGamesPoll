@@ -2,22 +2,43 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
+    <div class="fluid container">
+        <div class ="row-12">
+            <div class="card bg-light" >
+                <div class="row no-gutters"> 
+                    <div class="col-3">
+                        <img src="{{ polls.image_url }}" class="card-img"> 
+                    </div>
+                    <div class="col-6">
+                        <div class="card-body">
+                            <h1>{{ polls.title }}</h1>
+                            <b>Description</b> <br>
+                            <p> {{ polls.body }} </p>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="card-body">
+                            <img src="{{ user.avatar(256) }}"class="img-thumbnail align-right ml-4" height="75px" width="75px">
+                            <br>
+                            <a href="{{ url_for('user', username=user.username) }}" class="align-right ml-4"><b>{{ user.username }}</b></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <br>
 
-    <h1>{{ polls.title }}</h1>
-    
-    <br>
-    <p> <b>Poll Description:</b> {{ polls.body }} </p>
-    
-    <br>
 
-    {% if form %}
-        {{ wtf.quick_form(form) }}
-    {% endif %}
-    <br>
-    
-    {% for option in options %}
-        {% include '_option.html' %}    
-    {% endfor %}
+            {% if form %}
+                {{ wtf.quick_form(form) }}
+            {% endif %}
+            <br>
+            <hr>
+            <br>
 
-    
+            {% for option in options %}
+                {% include '_option.html' %}    
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

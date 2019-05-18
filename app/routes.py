@@ -137,6 +137,7 @@ def removeAdmin(username):
 def addOption(poll_id):
     form = OptionForm()
     polls = db.session.query(Poll).filter(Poll.id==poll_id).all()[0]
+    user = db.session.query(User).filter(User.id == polls.user_id).first()
     if form.validate_on_submit():
         option = Option(body=form.body.data, id_poll=poll_id)
         db.session.add(option)
@@ -145,7 +146,7 @@ def addOption(poll_id):
     
     options = db.session.query(Option).filter(Option.id_poll==poll_id).all()
 
-    return render_template('addOption.html', title='View Poll', form=form, options=options, polls=polls)
+    return render_template('addOption.html', title='View Poll', form=form, options=options, polls=polls, user=user)
 
 @app.route('/vote/<poll_id>/<option_id>')
 @login_required
@@ -352,12 +353,13 @@ def explore():
 # @login_required
 def viewPoll(poll_id):
     polls = db.session.query(Poll).filter(Poll.id==poll_id).first()
+    user = db.session.query(User).filter(User.id == polls.user_id).first()
     # sorts list
     result = db.session.query(Option, func.count(votes.c.id_option).label('total_count')).outerjoin(votes).group_by(Option.id).filter(Option.id_poll==poll_id).order_by(desc('total_count')).all()
     # result = db.session.query(Option, func.count(votes.c.id_option).label('total_count')).outerjoin(votes).group_by(Option.id).filter(Option.id_poll==poll_id).order_by('total_count DESC').all()
     options = [i[0] for i in result] # returns only the objects as a list
     
-    return render_template('viewPoll.html', title='View Poll', current_user = current_user, options=options, polls=polls)
+    return render_template('viewPoll.html', title='View Poll', current_user = current_user, options=options, polls=polls,user=user)
 
 @app.route('/reset_password_request', methods=['GET', 'POST'])
 def reset_password_request():
