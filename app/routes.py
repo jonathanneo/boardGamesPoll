@@ -296,11 +296,13 @@ def edit_option(poll_id, option_id):
 
     if edit_option_form.validate_on_submit():
         edit_option.body = edit_option_form.body.data
+        edit_option.url = edit_option_form.url.data 
         db.session.commit()
         flash('Your changes have been saved.')
         return redirect(url_for('addOption', poll_id = poll_id))
     elif request.method == 'GET':
         edit_option_form.body.data = edit_option.body
+        edit_option_form.url.data = edit_option.url
     
     return render_template('editOption.html', title='View Poll', 
         edit_option_form=edit_option_form, options=options, 
