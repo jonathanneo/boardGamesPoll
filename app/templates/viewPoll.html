@@ -40,16 +40,6 @@
     				</div>
   				</div>
 			</div>
-    {%endfor%}
-	
-    	{% if current_user.has_voted_poll(polls) %}
-        	{% for option in options %}
-        	    {% include '_unvoteOption.html' %}     
-        	{% endfor %}
-    	{% else %}
-        	{% for option in options %}
-           		{% include '_voteOption.html' %}     
-        	{% endfor %}
-    	{% endif %}
-	{% endif %}
+    {% endfor %}
+
 {% endblock %}
