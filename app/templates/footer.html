@@ -1,6 +1,8 @@
-{%- block content %}
+{% extends "bootstrap/base.html" %}
+
+{% block app_content %}
 {{super()}}
-{%- block footer %}
+{% block footer %}
 <footer>&copy; 2016 Awesome, Inc.</footer>
-{%- endblock footer %}
-{%- endblock content %}
+{% endblock footer %}
+{% endblock  %}
