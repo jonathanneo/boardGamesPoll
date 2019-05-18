@@ -15,17 +15,33 @@
       <div class="card-body">
         <h5 class="card-title">{{ option.body }}</h5>
         <a href="{{ url_for('edit_option', poll_id=polls.id, option_id=option.id) }}" class="button"> Edit </a>
-        <a id = "deleteOption_{{ option.id }}" class="button"> Delete </a>
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#deleteOption_{{ option.id }}">Delete Option</button> 
         <p class="card-text"><small class="text-muted">Count: {{ option.voters.count() }}</small></p>
       </div>
     </div>
   </div>
 </div>
 
-<script>
-$("#deleteOption_{{ option.id }}").click(function(){
-    if(window.confirm('Are you sure?')){
-        window.location.href = "{{ url_for('deleteOption', poll_id=polls.id, option_id=option.id) }}";
-    }
-});
-</script>
+
+
+<!-- Modal -->
+<div class="modal fade" id="deleteOption_{{ option.id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModal"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Option</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete option: "{{ option.body }}"?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

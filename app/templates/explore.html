@@ -14,11 +14,11 @@
         </div>
 	{% else %}
         <div class="jumbotron text-center">
-            <h1 class="display-4">Welcome back, {{ current_user.username }}. </h1>
+            <h1 class="display-4">Welcome back, {{ current_user.username }}</h1>
         </div>
     {% endif %}
     <br>
-
+    
     <div class="card-columns text-center">
         {% for poll in polls %}
             {% include '_poll.html' %}
