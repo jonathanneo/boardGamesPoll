@@ -16,7 +16,7 @@ def before_request():
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
 
-@app.route('/', methods=['GET', 'POST'])
+
 @app.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
@@ -339,8 +339,8 @@ def unfollow(username):
     flash('You are not following {}.'.format(username))
     return redirect(url_for('user', username=username))
 
+@app.route('/', methods=['GET', 'POST'])
 @app.route('/explore')
-# @login_required
 def explore():
     page = request.args.get('page',1,type=int)
     polls = Poll.query.order_by(Poll.timestamp.desc()).paginate(
