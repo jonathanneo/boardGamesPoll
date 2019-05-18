@@ -14,8 +14,8 @@
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title">{{ option.body }}</h5>
-         {% if current_user.has_voted_option(option) %}
-            <a href="{{ url_for('unvote', poll_id=polls.id, option_id=option.id) }}" class="button"> Unvote </a>
+        <a href="{{ url_for('edit_option', poll_id=polls.id, option_id=option.id) }}" class="button"> Edit </a>
+        <a id = "deleteOption_{{ option.id }}" class="button"> Delete </a>
          {% endif %}
         <p class="card-text"><small class="text-muted">Count: {{ option.voters.count() }}</small></p>
       </div>
