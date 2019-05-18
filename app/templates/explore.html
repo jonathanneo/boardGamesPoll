@@ -1,26 +1,42 @@
 {% extends "base.html" %}
 
 {% block app_content %}
+    
 	{% if current_user.is_anonymous %}
-	<h1>Hi there! Please <a href="{{ url_for('login') }}">sign in</a> or <a href="{{ url_for('register') }}">register</a> to vote.</h1>
+        <div class="jumbotron">
+            <h2 class="display-4">The eminent board games community.</h2>
+            <p class="lead">Join our community in just a few clicks. </p>
+            <a class="btn btn-primary btn-lg" href="{{ url_for('register') }}" role="button">Sign up</a>
+            <a class="btn btn-secondary btn-lg" href= "{{ url_for('about') }}" role="button">About</a>
+        </div>
 	{% else %}
-	<h1>Hi, {{ current_user.username }}!</h1>
-	{% endif %}
-    {% for poll in polls %}
-        {% include '_poll.html' %}
-    {% endfor %}
-    <nav aria-label="...">
-        <ul class="pager">
-            <li class="previous{% if not prev_url %} disabled{% endif %}">
-                <a href="{{ prev_url or '#' }}">
-                    <span aria-hidden="true">&larr;</span> Newer polls
-                </a>
-            </li>
-            <li class="next{% if not next_url %} disabled{% endif %}">
-                <a href="{{ next_url or '#' }}">
-                    Older polls <span aria-hidden="true">&rarr;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+        <div class="jumbotron">
+            <h1 class="display-4">Welcome back, {{ current_user.username }}. </h1>
+        </div>
+    {% endif %}
+    <div class="card-group">
+        {% for poll in polls %}
+            {% include '_poll.html' %}
+        {% endfor %}
+    </div>
+
+    <div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item{% if not prev_url %} disabled{% endif %}">
+                    <a class="page-link" href="{{ prev_url or '#' }}">
+                        <span aria-hidden="true">&larr;</span> Previous polls
+                    </a>
+                </li>
+                <li class="page-item{% if not next_url %} disabled{% endif %}">
+                    <a class="page-link" href="{{ next_url or '#' }}">
+                        Older polls <span aria-hidden="true">&rarr;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>  
+    {% block footer %}
+        {% include "footer.html" %}
+    {% endblock %}
 {% endblock %}

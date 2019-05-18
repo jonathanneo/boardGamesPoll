@@ -7,7 +7,7 @@ import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 import os
 from flask_mail import Mail
-from flask_bootstrap import Bootstrap # a bootstrap/base.html will become available after initialisation
+from flask_bs4 import Bootstrap # a bootstrap/base.html will become available after initialisation
 
 app = Flask(__name__)
 app.config.from_object(Config)
