@@ -2,7 +2,7 @@
         <tr>
             <td>
                 {{ option.body }} 
-                <a href="{{ url_for('vote', poll_id=polls.id, option_id=option.id) }}" class="button"> Vote </a>
+                <a class="btn btn-primary btn-lg" href="{{ url_for('vote', poll_id=polls.id, option_id=option.id) }}" role="button"> Vote </a>
 		{{ option.voters.count() }}
             </td>
         </tr>
