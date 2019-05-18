@@ -1,8 +1,8 @@
-"""empty message
+"""create flask db
 
-Revision ID: 55c7ae9f89a3
+Revision ID: 32725f7c62b9
 Revises: 
-Create Date: 2019-05-11 14:59:42.803619
+Create Date: 2019-05-19 03:01:21.578149
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '55c7ae9f89a3'
+revision = '32725f7c62b9'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -25,6 +25,7 @@ def upgrade():
     sa.Column('password_hash', sa.String(length=128), nullable=True),
     sa.Column('about_me', sa.String(length=140), nullable=True),
     sa.Column('last_seen', sa.DateTime(), nullable=True),
+    sa.Column('is_admin', sa.Boolean(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_user_email'), 'user', ['email'], unique=True)
@@ -49,6 +50,7 @@ def upgrade():
     op.create_table('option',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('body', sa.String(length=140), nullable=True),
+    sa.Column('url', sa.String(length=255), nullable=True),
     sa.Column('timestamp', sa.DateTime(), nullable=True),
     sa.Column('id_poll', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['id_poll'], ['poll.id'], ),
