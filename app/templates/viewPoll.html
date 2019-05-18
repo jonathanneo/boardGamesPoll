@@ -27,19 +27,15 @@
     
     <br>
 
-	{% for option in options %}
-		<div class="card mb-3" style="max-width: 540px;">
-  			<div class="row no-gutters">
-    			<div class="col-md-4">
-     				 <img src="{{option.url}}" class="card-img" alt="image">
-    			</div>
-    			<div class="col-md-8">
-	      			<div class="card-body">
-        				<p class="card-text">{{option.body}}</p>
-      				</div>
-    			</div>
-  			</div>
-		</div>
-    {% endfor %}
+	   	{% if current_user.has_voted_poll(polls) %}
+        	{% for option in options %}
+        	    {% include '_unvoteOption.html' %}     
+        	{% endfor %}
+    	{% else %}
+        	{% for option in options %}
+           		{% include '_voteOption.html' %}     
+        	{% endfor %}
+    	{% endif %}
+
 	{% endif %}
 {% endblock %}

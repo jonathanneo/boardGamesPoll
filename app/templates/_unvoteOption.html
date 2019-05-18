@@ -1,11 +1,15 @@
-<table class="table table-hover">
-    <tr>
-        <td>
-            {{ option.body }} 
-            {% if current_user.has_voted_option(option) %}
-                <a href="{{ url_for('unvote', poll_id=polls.id, option_id=option.id) }}" class="button"> Unvote </a>
-            {% endif %}
-            {{ option.voters.count() }}
-        </td>
-    </tr>
-</table>
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="..." class="card-img" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <p class="card-text">{{ option.body }}</p>
+         {% if current_user.has_voted_option(option) %}
+            <a href="{{ url_for('unvote', poll_id=polls.id, option_id=option.id) }}" class="button"> Unvote </a>
+        <p class="card-text"><small class="text-muted">Count: {{ option.voters.count() }}</small></p>
+      </div>
+    </div>
+  </div>
+</div>
