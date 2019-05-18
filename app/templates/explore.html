@@ -1,7 +1,14 @@
 {% extends "base.html" %}
 
 {% block app_content %}
-    
+
+<style>
+    .card-columns {
+        column-count: 3;
+    }
+
+</style>
+    <br> 
 	{% if current_user.is_anonymous %}
         <div class="jumbotron">
             <h2 class="display-4">The eminent board games community.</h2>
@@ -14,7 +21,9 @@
             <h1 class="display-4">Welcome back, {{ current_user.username }}. </h1>
         </div>
     {% endif %}
-    <div class="card-group">
+    <br>
+
+    <div class="card-columns">
         {% for poll in polls %}
             {% include '_poll.html' %}
         {% endfor %}
