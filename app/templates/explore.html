@@ -1,29 +1,25 @@
 {% extends "base.html" %}
 
 {% block app_content %}
+<link rel="stylesheet" type="text/css" href="/styles/explore.css" media="screen">
 
-<style>
-    .card-columns {
-        column-count: 3;
-    }
+<div class="container-fluid">
 
-</style>
-    <br> 
 	{% if current_user.is_anonymous %}
-        <div class="jumbotron">
-            <h2 class="display-4">The eminent board games community.</h2>
-            <p class="lead">Join our community in just a few clicks. </p>
+        <div class="jumbotron text-center">
+            <h2 class="display-4">The eminent board games community</h2>
+            <p class="lead">Join our community in just a few clicks</p>
             <a class="btn btn-primary btn-lg" href="{{ url_for('register') }}" role="button">Sign up</a>
             <a class="btn btn-secondary btn-lg" href= "{{ url_for('about') }}" role="button">About</a>
         </div>
 	{% else %}
-        <div class="jumbotron">
+        <div class="jumbotron text-center">
             <h1 class="display-4">Welcome back, {{ current_user.username }}. </h1>
         </div>
     {% endif %}
     <br>
 
-    <div class="card-columns">
+    <div class="card-columns text-center">
         {% for poll in polls %}
             {% include '_poll.html' %}
         {% endfor %}
@@ -31,7 +27,7 @@
 
     <div>
         <nav aria-label="Page navigation example">
-            <ul class="pagination">
+            <ul class="pagination justify-content-center">
                 <li class="page-item{% if not prev_url %} disabled{% endif %}">
                     <a class="page-link" href="{{ prev_url or '#' }}">
                         <span aria-hidden="true">&larr;</span> Previous polls
@@ -45,6 +41,7 @@
             </ul>
         </nav>
     </div>  
+</div>
     {% block footer %}
         {% include "footer.html" %}
     {% endblock %}
