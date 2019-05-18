@@ -7,7 +7,7 @@
       <div class="card-body">
         <h5 class="card-title">{{ option.body }}</h5>
          {% if current_user.has_voted_option(option) %}
-            <a href="{{ url_for('unvote', poll_id=polls.id, option_id=option.id) }}" class="button"> Unvote </a>
+         	<a class="btn btn-secondary btn-lg" href="{{ url_for('unvote', poll_id=polls.id, option_id=option.id) }}" role="button"> Unvote </a>
          {% endif %}
         <p class="card-text"><small class="text-muted">Count: {{ option.voters.count() }}</small></p>
       </div>
