@@ -21,7 +21,6 @@ votes = db.Table('votes',
 class Option(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String(140))
-    url = db.Column(db.String(255))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     id_poll = db.Column(db.Integer, db.ForeignKey('poll.id'))
     poll = db.relationship("Poll", backref=db.backref("options", cascade="all, delete-orphan"))
@@ -54,10 +53,7 @@ class User(UserMixin, db.Model):
             self.votes.remove(option)
 
     def has_voted_option(self, option):
-        if db.session.query(votes).filter(votes.c.id_option == option.id, votes.c.id_user == self.id).first() != None: 
-            return True 
-        else:
-            return False
+        return db.session.query(votes).filter(votes.c.id_option == option.id, votes.c.id_user == self.id).count() > 0
 
     def has_voted_poll(self, poll):
         return Option.query.join(votes, Option.id == votes.c.id_option).filter(Option.id_poll == poll.id, 
