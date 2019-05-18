@@ -139,7 +139,7 @@ def addOption(poll_id):
     polls = db.session.query(Poll).filter(Poll.id==poll_id).all()[0]
     user = db.session.query(User).filter(User.id == polls.user_id).first()
     if form.validate_on_submit():
-        option = Option(body=form.body.data, id_poll=poll_id)
+        option = Option(body=form.body.data, id_poll=poll_id, url=form.url.data)
         db.session.add(option)
         db.session.commit()
         return redirect(url_for('addOption', poll_id=poll_id))
