@@ -6,7 +6,7 @@
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title">{{ option.body }}</h5>
-         <a href="{{ url_for('vote', poll_id=polls.id, option_id=option.id) }}" class="button"> Vote </a>
+        <a class="btn btn-primary btn-lg" href="{{ url_for('vote', poll_id=polls.id, option_id=option.id) }}" role="button"> Vote </a>
         <p class="card-text"><small class="text-muted">Count: {{ option.voters.count() }}</small></p>
       </div>
     </div>
