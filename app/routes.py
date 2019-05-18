@@ -7,7 +7,7 @@ from app.models import User, Poll, Option, votes
 from werkzeug.urls import url_parse
 from datetime import datetime
 from app.email import send_password_reset_email
-from sqlalchemy import func
+from sqlalchemy import func, desc
 from flask import request
 
 
@@ -353,7 +353,7 @@ def explore():
 def viewPoll(poll_id):
     polls = db.session.query(Poll).filter(Poll.id==poll_id).all()[0]
     # sorts list
-    result = db.session.query(Option, func.count(votes.c.id_option).label('total_count')).outerjoin(votes).group_by(Option.id).filter(Option.id_poll==poll_id).order_by('total_count DESC').all()
+    result = db.session.query(Option, func.count(votes.c.id_option).label('total_count')).outerjoin(votes).group_by(Option.id).filter(Option.id_poll==poll_id).order_by(desc('total_count')).all()
     # result = db.session.query(Option, func.count(votes.c.id_option).label('total_count')).outerjoin(votes).group_by(Option.id).filter(Option.id_poll==poll_id).order_by('total_count DESC').all()
     options = [i[0] for i in result] # returns only the objects as a list
     
