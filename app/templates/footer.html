@@ -1,8 +1,18 @@
 {% extends "bootstrap/base.html" %}
 
-{%- block app_content %}
+{%- block content %}
 {{super()}}
 {%- block footer %}
-<footer>&copy; 2016 Awesome, Inc.</footer>
+<!-- Footer -->
+<footer class="page-footer font-small blue">
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+      <a href="https://board-games-poll.herokuapp.com/"> Board Games Poll </a>
+    </div>
+    <!-- Copyright -->
+  
+  </footer>
+  <!-- Footer -->
 {%- endblock footer %}
-{%- endblock %}
+{%- endblock content %}

@@ -1,5 +1,4 @@
 {% extends 'bootstrap/base.html' %}
-
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 </head>
@@ -9,40 +8,38 @@
 {% endblock %}
 
 {% block navbar %}
-    <nav class="navbar navbar-default">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="{{ url_for('explore') }}" class="navbar-brand"> Board Games Poll</a>
-            </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url_for('explore') }}"><span class="glyphicon glyphicon-globe"></span> Explore</a></li>
-                    <li><a href="{{ url_for('index') }}"><span class="glyphicon glyphicon-th-list"></span> My Polls</a></li>
-                    <li><a href="{{ url_for('about') }}"><span class="glyphicon glyphicon-list-alt"></span> About</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{{ url_for('explore') }}">Board Games Poll</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('explore') }}">Explore <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('about') }}">About</a>
+                    </li>
                     {% if current_user.is_anonymous %}
-                    <li><a href="{{ url_for('login') }}"><span class="glyphicon glyphicon-off"></span> Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}"><span class="glyphicon glyphicon-off"></span> Login</a></li>
                     {% else %}
                     {% if current_user.check_admin() %}
-                    <li><a href="{{ url_for('admin') }}"><span class="glyphicon glyphicon-flag"></span> Admin</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin') }}"><span class="glyphicon glyphicon-flag"></span> Admin</a></li>
                     {% endif %}
-                    <li><a href="{{ url_for('user', username=current_user.username) }}"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
-                    <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('user', username=current_user.username) }}"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
                     {% endif %}
                 </ul>
-            </div>
+                
         </div>
     </nav>
 {% endblock %}
 
 {% block content %}
+
+
     <div class="container">
         {% with messages = get_flashed_messages() %}
         {% if messages %}

@@ -10,8 +10,6 @@ from app.email import send_password_reset_email
 from sqlalchemy import func, desc
 from flask import request
 
-
-
 @app.before_request
 def before_request():
     if current_user.is_authenticated:
