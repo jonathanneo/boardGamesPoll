@@ -21,19 +21,19 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('explore') }}">Explore <span class="sr-only">(current)</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}"> My Polls</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('explore') }}"><i class="fas fa-chess-rook"></i> Explore <span class="sr-only">(current)</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}"><i class="fas fa-chess-rook"></i> My Polls</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}"><i class="fas fa-chess-rook"></i> About</a></li>
                 </ul>
                 <ul class="navbar-nav justify-content-end">
                     {% if current_user.is_anonymous %}
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}"><span class="glyphicon glyphicon-off"></span> Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}"><i class="fas fa-chess-rook"></i> Login</a></li>
                     {% else %}
                     {% if current_user.check_admin() %}
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin') }}"><span class="glyphicon glyphicon-flag"></span> Admin</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin') }}"><i class="fas fa-chess-rook"></i> Admin</a></li>
                     {% endif %}
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('user', username=current_user.username) }}"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('user', username=current_user.username) }}"><i class="fas fa-chess-rook"></i> Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('logout') }}"><span class="fas fa-chess-rook"></span> Logout</a></li>
                     {% endif %}
                 </ul>
                 
