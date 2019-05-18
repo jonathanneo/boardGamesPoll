@@ -61,6 +61,7 @@ class EditPollForm(FlaskForm):
 class EditOptionForm(FlaskForm):
     body = TextAreaField('Option', validators=[
         DataRequired(), Length(min=1, max=140)])
+    url = TextAreaField('Image URL')
     submit = SubmitField('Submit')
 
 class PollForm(FlaskForm):
@@ -74,6 +75,7 @@ class PollForm(FlaskForm):
 class OptionForm(FlaskForm):
     body = TextAreaField('Option', validators=[
         DataRequired(), Length(min=1, max=140)])
+    url = TextAreaField('Image URL')
     submit = SubmitField('Submit')
 
 class ResetPasswordRequestForm(FlaskForm):
