@@ -30,7 +30,7 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
-    polls = db.relationship('Poll', backref='author', lazy='dynamic')
+    polls = db.relationship('Poll', backref='author', lazy='dynamic', cascade="all, delete-orphan")
     about_me = db.Column(db.String(140))
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
     is_admin = db.Column(db.Boolean, unique=False, default=False)

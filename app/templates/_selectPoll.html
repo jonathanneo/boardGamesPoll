@@ -32,8 +32,5 @@ $("#deletePoll_{{ poll.id }}").click(function(){
     }
 });
 
-$("#{{ poll.id }}").click(function(){
-    window.location.href = "{{ url_for('viewPoll', poll_id=poll.id) }}";
-});
 
 </script>

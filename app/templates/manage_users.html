@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <h1>Manage Users</h1>
+    <br>
+    <a href="{{ url_for('register_new_user') }}" class="button"> Register User </a>
+    <br>
+    <a href="{{ url_for('delete_user') }}" class="button"> Delete User </a>
+    <br>
+    <a href="{{ url_for('make_user_admin') }}" class="button"> Make User Admin </a>
+
+{% endblock %}
