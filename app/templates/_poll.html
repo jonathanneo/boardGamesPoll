@@ -3,6 +3,6 @@
     <div class="card-body text-white">
         <h5 class="card-title">{{ poll.title }}</h5>
         <p class="card-text">{{ poll.body }}</p>
-        <a href= "{{ url_for('viewPoll', poll_id=poll.id) }}" class="btn btn-primary">View Poll</a>
+        <a class="btn btn-secondary btn-lg" href= "{{ url_for('viewPoll', poll_id=poll.id) }}" role="button">View Poll</a>
     </div>
 </div>
