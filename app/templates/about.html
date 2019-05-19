@@ -1,4 +1,6 @@
-{% extends "base.html" %} {% import 'bootstrap/wtf.html' as wtf %} {% block app_content %}
+{% extends "base.html" %} 
+{% import 'bootstrap/wtf.html' as wtf %} 
+{% block app_content %}
 
 <div class="fluid-container">
   <br><br>
@@ -54,7 +56,7 @@
   <br><br>
   <div class="col-12 text-center">
     <h2 class="display-4">How does polling work here?</h2>
-    <p class="lead">We use a first-past-the-post voting system, in which voters indicate on a poll the option of their choice, and the option who receives the most votes wins. Read more about it <a href="https://en.wikipedia.org/wiki/First-past-the-post_voting">here</a>.</p>
+    <p class="lead">We use a first-past-the-post voting system, in which voters indicate on a poll the option of their choice, and the option who receives the most votes wins. This method is easy to understand and produces a majority rule which allows for socially beneficial outcomes. Read more about it <a href="https://en.wikipedia.org/wiki/First-past-the-post_voting">here</a>.</p>
     <a class="btn btn-secondary btn-lg" href="{{ url_for('explore') }}" role="button">Explore Polls</a>
   </div>
   <br><br><br><br>
