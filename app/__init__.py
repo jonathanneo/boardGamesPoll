@@ -11,6 +11,7 @@ from flask_bs4 import Bootstrap # a bootstrap/base.html will become available af
 
 app = Flask(__name__)
 app.config.from_object(Config)
+#app.config.from_object(Config.TestingConfig)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
