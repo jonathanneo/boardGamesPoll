@@ -1,0 +1,1174 @@
+commit 576c1676661f882cc576ff4d5220cd4d6a77d49a
+Author: Jonathan <jonathanneo@me.com>
+Date:   Mon May 20 00:07:24 2019 +0800
+
+    updated app.db and about/footer
+
+commit b7743c4abaf1968ee2750df210bf04a2ff16bfaa
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sun May 19 23:38:27 2019 +0800
+
+    python tests
+
+commit 7de91a7c847c1b453b69256167de51ef724fee0e
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sun May 19 23:22:53 2019 +0800
+
+    Update README.md
+
+commit 7cfc5a6ed94392fe2e1338691b0e4e132d10c81a
+Merge: 8a47597 b507550
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sun May 19 23:21:20 2019 +0800
+
+    Merge pull request #8 from jonathanneo/jon_branch
+    
+    Jon branch merge to master
+
+commit 8a47597a66f4161ad4254c9b4ae6c62e577ba2bf
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sun May 19 23:18:58 2019 +0800
+
+    updated tests
+
+commit b507550d1a91707c2c2765a37111779cc853b3cf
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Sun May 19 23:16:05 2019 +0800
+
+    Update README.md
+
+commit 67d1d19ff066b4b4ed81757bc3ddd954caa42e51
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Sun May 19 23:14:33 2019 +0800
+
+    Add files via upload
+
+commit e22670a958585850dccf6a2b456abca09aff10d3
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sun May 19 22:35:04 2019 +0800
+
+    create mock entries into the DB
+
+commit c2d5cc84a51f3774967d7f04f568e9c6042a51e2
+Merge: f2e5e92 6e02f30
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sun May 19 21:39:11 2019 +0800
+
+    Merge branch 'jon_branch'
+
+commit f2e5e92c5ac1c07c5dc8693c20690c55e70d390b
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sun May 19 21:37:50 2019 +0800
+
+    log
+
+commit c7413fc2808acf3387bcd0f4d17aa1552f19a6fb
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sun May 19 21:37:28 2019 +0800
+
+    updated db
+
+commit 6e02f30bfe73dffc48cd3d77cedf6e7cd50929e4
+Merge: edbc621 c80adaa
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sun May 19 21:35:51 2019 +0800
+
+    Merge branch 'jon_branch' of https://github.com/jonathanneo/boardGamesPoll into jon_branch
+
+commit edbc621b0cdec203981cc42e3f3bbc0e89eae824
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sun May 19 21:35:31 2019 +0800
+
+    updated pycache
+
+commit c80adaa125ae6c940930e1ff7db47565d5b8b90c
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Sun May 19 21:34:35 2019 +0800
+
+    selenium test file for local host
+
+commit 8caf2a980d5d96889e415cc5955071f191df6828
+Merge: 6dec8d3 ea5efd3
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sun May 19 21:33:28 2019 +0800
+
+    Merge branch 'jon_branch' of https://github.com/jonathanneo/boardGamesPoll into jon_branch
+
+commit 6dec8d3fa0c633db10ba810bec100b9290e3235c
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sun May 19 21:33:24 2019 +0800
+
+    added security
+
+commit ea5efd3b2785d10025d58148637f6754aac662cf
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sun May 19 21:17:41 2019 +0800
+
+    Update README.md
+
+commit 745eb8913cc0c7dc6d2dbdf100f3bf0434b5d6c0
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sun May 19 21:13:08 2019 +0800
+
+    Update README.md
+
+commit 1650c5429c01104de6cf7536decbc1b27eefecd3
+Merge: 93c2d75 0ef1d9e
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sun May 19 18:26:51 2019 +0800
+
+    Merge branch 'jon_branch' of https://github.com/jonathanneo/boardGamesPoll into jon_branch
+
+commit 0ef1d9e8e6d88c651203f909235b95184a87c6c7
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sun May 19 18:24:36 2019 +0800
+
+    Update README.md
+
+commit 361a3cd0a532b7c2dbc59f2996ae2fd04b93e508
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sun May 19 18:18:57 2019 +0800
+
+    Update README.md
+
+commit 14cb0174a92943b5efae06ac7c2e45826210c58f
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sun May 19 18:12:00 2019 +0800
+
+    Update README.md
+
+commit 74671053a8b162fd654341f94e0f4985eac272ce
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sun May 19 18:11:16 2019 +0800
+
+    updated
+
+commit 5c5e14ca60cd81a6a54bbb0c05c187bc11de6d73
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sun May 19 18:08:43 2019 +0800
+
+    update
+
+commit 251f30b09dc77728708dff996af5dc4822334ce8
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sun May 19 17:56:56 2019 +0800
+
+    updated
+
+commit b0b520a23f4ff8786573f7622eb1491856953e15
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sun May 19 17:55:47 2019 +0800
+
+    updated
+
+commit 93c2d757ee44075656973e19b40e891cc0d85298
+Merge: d1f4f74 db46f8c
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sun May 19 17:21:19 2019 +0800
+
+    Merge branch 'jon_branch' of https://github.com/jonathanneo/boardGamesPoll into jon_branch
+
+commit d1f4f74fdfc9168385afa1b25e1c5c1c790d4ca2
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sun May 19 17:19:39 2019 +0800
+
+    updated app.db
+
+commit db46f8cae3c230d963227239377c6ad432861ff5
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sun May 19 17:14:47 2019 +0800
+
+    jsfiddle formatting
+
+commit d412191548e53e9de4e2fa2643b906825cc4f587
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sun May 19 17:09:36 2019 +0800
+
+    jsfiddle tidy
+
+commit c4635e7cc8d0ab37bd4e673739a97cf386aaef27
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Sun May 19 17:01:09 2019 +0800
+
+    added selenium test file
+
+commit 54bc753465ded0c6f2a7b3bf4b1e0efa5f259827
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Sun May 19 16:56:04 2019 +0800
+
+    need to finish python script test file
+
+commit 8417917d128d75e5acb1d382bec603b87569b8ef
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Sun May 19 16:43:37 2019 +0800
+
+    Update setup.py
+
+commit 757f81149ca0c8cd1ab7389c8364a3421bfb03a2
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Sun May 19 15:24:57 2019 +0800
+
+    testing scripts
+
+commit 3f6e676ba359acce043028b0e125f8aeda840a6e
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Sun May 19 15:21:40 2019 +0800
+
+    testing files
+
+commit 04afef616f3f3ea67c7e9453c4b984f59d65ae56
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sun May 19 14:38:22 2019 +0800
+
+    Add Heroku generated app.json
+
+commit 6771180a3eb737f0fe041714d5fb1eaf6234c7a7
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sun May 19 14:18:15 2019 +0800
+
+    updated DB
+
+commit c010964a52cf0d7af748368855f0eddb8c034409
+Merge: 9720750 f3ccca2
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sun May 19 14:09:41 2019 +0800
+
+    Merge branch 'jon_branch'
+
+commit 1c9116f9c9c20a5633fc71496caf8f8c2cae7b48
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Sun May 19 13:06:46 2019 +0800
+
+    updated with flask-bs4 package, need testing
+
+commit cd3b20cc4e91c7ae34986812c5974c46e5372e9a
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Sun May 19 12:12:04 2019 +0800
+
+    readme not finished
+
+commit f3ccca262ef70d4fb1c933a7c336f7717ad41402
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sun May 19 03:44:11 2019 +0800
+
+    changed routes
+
+commit 9be2d7a5b2b715560cece6d21f5b06d18ea149d9
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sun May 19 03:23:55 2019 +0800
+
+    update option
+
+commit 87950677108405ac32c5aeda547304e8cb3f0487
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sun May 19 03:21:55 2019 +0800
+
+    deleteOption
+
+commit 088ac1bf2ef4586e22076f15286e4e866f3397e6
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sun May 19 03:18:05 2019 +0800
+
+    addOption url
+
+commit 978555f6cce7f0accf6835a02d0b940292b764e3
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sun May 19 03:01:36 2019 +0800
+
+    updated db
+
+commit 858abfe30ad5e43fb49d0c2758bbc3616528750c
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sun May 19 02:39:41 2019 +0800
+
+    most pages done including about
+
+commit 032d9a83c3227b189ff30e6768372c8123cb808c
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 22:01:41 2019 +0800
+
+    whatthef
+
+commit a4b89c0ef15bd43bcda77e87c4530721e2f40a3f
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 21:56:02 2019 +0800
+
+    bootstrap
+
+commit fdc17be4666cdc3c1bf633ca19f0a9a56d084c80
+Merge: 9420067 6fa4bc1
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 20:12:52 2019 +0800
+
+    Merge branch 'jon_branch' of https://github.com/jonathanneo/boardGamesPoll into jon_branch
+
+commit 94200674702bb6e7f5255ab98db339fd42b2ef32
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 20:12:48 2019 +0800
+
+    push
+
+commit b3014d17c6a0e217069a2e7a86ee2c19475b334d
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 20:09:09 2019 +0800
+
+    bootstrp
+
+commit 6fa4bc1d44f39d1ceb635fd480ba35d08f37a89a
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 19:48:18 2019 +0800
+
+    test
+
+commit d21732971c22d3dd0e031991579644fa905c18a0
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 19:39:02 2019 +0800
+
+    test
+
+commit 7f30df7f4ce6e707f99bbbefcbcd38c3ce46f26d
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 19:35:12 2019 +0800
+
+    test icon
+
+commit 500e40230d435068b669bdccd21f8b2df03355ed
+Merge: 29b942c 487891f
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 19:31:48 2019 +0800
+
+    Merge branch 'jon_branch' of https://github.com/jonathanneo/boardGamesPoll into jon_branch
+
+commit 29b942c23118f1701fdc1625ef9d49861e152d1f
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 19:31:43 2019 +0800
+
+    bootstrap theme
+
+commit 487891f9173645442efff3ed4517e491d418a53a
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Sat May 18 19:29:44 2019 +0800
+
+    Update base.html
+
+commit 110aa4c36c95d4eb43fad5a58102923f862e5acf
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Sat May 18 19:26:35 2019 +0800
+
+    Update base.html
+
+commit 7c315faa471da38fbde089389544197d310febec
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Sat May 18 19:24:30 2019 +0800
+
+    iconic implementation
+
+commit 4c247443f1361ef217da906ced9251cd3426e2c5
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Sat May 18 19:22:07 2019 +0800
+
+    iconic
+
+commit 44d8a79b9108e6c3b27a4025924c2724f73c0a05
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Sat May 18 19:20:29 2019 +0800
+
+    Update base.html
+
+commit b3cbd0a6900f5bf116d7453d27637356f92cf4e3
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 18:36:25 2019 +0800
+
+    test home logo
+
+commit 40170bd886743d1819219c558000dfc47dacefec
+Merge: a7477ca 2f72edf
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 18:34:49 2019 +0800
+
+    Merge branch 'jon_branch' of https://github.com/jonathanneo/boardGamesPoll into jon_branch
+
+commit a7477cab16637ca8b8fab770bea965cec9a47145
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 18:33:51 2019 +0800
+
+    html
+
+commit 2f72edfeb2337d0dd5331150cfc3f218c675a5b9
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 18:33:12 2019 +0800
+
+    test logo
+
+commit 098af2dc1e476863feb9482c8b77a4f63d3122d3
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 18:31:37 2019 +0800
+
+    update
+
+commit ec664302ec501bab1329643e69a2eb6ded3f12ef
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 18:22:07 2019 +0800
+
+    fixed button in _poll
+
+commit 640b9c2af3ffff814a28bb14e213488512d23c42
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Sat May 18 18:14:16 2019 +0800
+
+    Update _unvoteOption.html
+
+commit 7197f6224d82b5aa09b54fb5bfdfc7c5e341bf88
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Sat May 18 18:12:56 2019 +0800
+
+    Update _voteOption.html
+
+commit 972075002b21ca8dc7f38d76eb4b7c97eae17be0
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 18:09:02 2019 +0800
+
+    updated vote
+
+commit 9ad19ffd366a0438abf62990160747402fcac196
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 18:08:16 2019 +0800
+
+    updated _unvote
+
+commit da55129e2f5abc6926c2f083e8c120faa2b93066
+Merge: c7784a8 fb4bbc9
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 17:55:15 2019 +0800
+
+    Merge branch 'julian_branch' into jon_branch
+
+commit c7784a88d84ba06e314b7bc2bf4f7c3e11f6bca8
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 17:53:13 2019 +0800
+
+    updated init
+
+commit 8ac32501bb84c1b388fac836b82d24ea0c47043f
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 17:48:49 2019 +0800
+
+    updated requirements
+
+commit b71cf6f63628ef1b09707c36663a00224125b7ce
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 17:37:00 2019 +0800
+
+    flask bootstrap
+
+commit dbd427a6eb824523a7c76884ce5fa9a73ac045ad
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 17:34:14 2019 +0800
+
+    updated requirements
+
+commit 936f7095adc6d4df92b526e39b836e107974d1fc
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 17:30:24 2019 +0800
+
+    upgraded for bootstrap 4
+
+commit fb4bbc90cabeb36de75f96ec58c7441ecd25b523
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 16:57:31 2019 +0800
+
+    jquery
+
+commit 235c4e5bd9116f942648f77d798d45845538179c
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 16:19:39 2019 +0800
+
+    test
+
+commit e0e17fbefaec6ae2b38fda8841d8592e94a93b17
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 16:11:05 2019 +0800
+
+    fix
+
+commit 30de15974de09d3215f28e445c401668e4bc5ed9
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 16:10:29 2019 +0800
+
+    _option fixed
+
+commit 6a78aa25a3f2a9c18c6eaf97c8a9cb342b88f943
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 16:08:40 2019 +0800
+
+    _option updated
+
+commit 4cb6fd8126021a76cfe0084f11ab63d428581e7e
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 15:57:23 2019 +0800
+
+    image implemented
+
+commit ea37e8f842966707f6d11d30bf48157d6d32cbd0
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 15:50:12 2019 +0800
+
+    form update
+
+commit 330c1b1633980df8812a32c1d233a97f71219c30
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 15:48:33 2019 +0800
+
+    a
+
+commit 120653a96dc150f71373b087971657e66628ddef
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 15:45:46 2019 +0800
+
+    woo
+
+commit a8bcb1e424c41d4b6ee5dc30994450b94e3a334a
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 15:44:52 2019 +0800
+
+    woo
+
+commit 795df13f501f482fc1a184b284752a86efd863ea
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 15:44:23 2019 +0800
+
+    a
+
+commit e7d01d25082e42a8d128388691837cc6d9a668d0
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 15:38:18 2019 +0800
+
+    test
+
+commit 9effc12336701d0c9038b9fd9bd5397c1b398f8e
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 15:36:53 2019 +0800
+
+    bootstrap script
+
+commit 5303e826dcaf14e92a7924d8f8d18a6cbb0e2db0
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 15:33:51 2019 +0800
+
+    bootstrap
+
+commit 3fcb40e2b887a53aa97c70af9a767d5adb6f21bf
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 15:31:50 2019 +0800
+
+    boostrap script
+
+commit aa9f06bd515ff2d7580533dc682992d3bb82c93c
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 15:28:42 2019 +0800
+
+    A
+
+commit 4a44796c67a8afb177dab4c86b91fc8113f30a3c
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 15:24:46 2019 +0800
+
+    a
+
+commit 99c3ddcee9d850d28202bae54bd9e305ebc3bdf3
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 15:23:38 2019 +0800
+
+    a
+
+commit f739837b5f91e4f10716ed3c6fa4dae756ab34ca
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 15:19:08 2019 +0800
+
+    a
+
+commit 283ae9d53cb2aae2321bd1a78cad497ebc6018c2
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 15:15:14 2019 +0800
+
+    a
+
+commit e67f4e4adeb7524127378eca65d770d8f95ed04d
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 15:12:21 2019 +0800
+
+    a
+
+commit 62259161ac41ff22623c1cfd39821603a993bba3
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 15:10:30 2019 +0800
+
+    a
+
+commit 147be3c12c58a09b2ebf836dc257fc7ab536734d
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 15:08:02 2019 +0800
+
+    a
+
+commit 679fbb30d6e1ce8b39327ec2a03d3ce54cbca316
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 15:06:35 2019 +0800
+
+    test
+
+commit c09fb23a512060e3a60b9e9721c59731a0352457
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 14:59:25 2019 +0800
+
+    asd
+
+commit 4a8d93ff4c31478b114ea50d305d13342100ceb8
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 14:56:24 2019 +0800
+
+    test
+
+commit 07461b78fcb41f633c75802260bd3465b6324634
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 14:43:31 2019 +0800
+
+    footer
+
+commit c368d108c28266153d71ef0f601346ec3018da0f
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 14:37:10 2019 +0800
+
+    footer
+
+commit f2894aa34a1c2c957f451aff82ec8e3004b26dbc
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 14:34:24 2019 +0800
+
+    footer
+
+commit cc2051a961563e574f3a7e0294eb4125d5a2cdae
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 14:32:33 2019 +0800
+
+    footer
+
+commit 27046be021eebc0fe1a15a1e5c4f678e038ca90c
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 14:28:56 2019 +0800
+
+    footer
+
+commit 19a9ab4aec029d14b3052fdb5ab5893dad6acb17
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 14:27:29 2019 +0800
+
+    footer
+
+commit 98b984f4385372268367a52b4c08bf04814e9f16
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 14:23:19 2019 +0800
+
+    footer
+
+commit 06574bc4442c4fd3f87e416bfd0ffe7ea6957d98
+Merge: 0916e25 1428b5c
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 14:06:17 2019 +0800
+
+    Merge branch 'jon_branch' of https://github.com/jonathanneo/boardGamesPoll into jon_branch
+
+commit 0916e2560172f6c1a1130fc07071710ea9928759
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 14:06:13 2019 +0800
+
+    log changes
+
+commit 1428b5cc3829c5a24828bfaf61b7baadfa32a28e
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 14:05:18 2019 +0800
+
+    implemented desc()
+
+commit ad0a9d5440e9b36b6336f48dc6417d2ef3b19441
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 11:50:14 2019 +0800
+
+    updated index
+
+commit 73a649b8a9dce8044258e7317b2d0201ea96fe27
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 11:48:51 2019 +0800
+
+    updated index
+
+commit 5ede866a8dcefab8bb8e15edc03e0a0bf2788852
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 11:47:11 2019 +0800
+
+    update procfile
+
+commit 1f8b54ce25c256bdf04e6ba4439a74d0c7ec403c
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 11:43:59 2019 +0800
+
+    updated procfile
+
+commit 6fd655db1c69b9e3d751ff900f380ce065c8ca0b
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 11:39:57 2019 +0800
+
+    updated requirements
+
+commit e93266fad905312567a3c75c4a7fbe32abce8db4
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 11:35:45 2019 +0800
+
+    updated procfile
+
+commit a63aa527022f36bedd5491afd1e6ddd9f4627698
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 11:19:35 2019 +0800
+
+    updated requiremetns
+
+commit a5800c0f30fb9c8ff48104873db1196684443143
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 11:17:42 2019 +0800
+
+    updated requirements
+
+commit 6a0942a504a66c239833b05c2b1b3d42d9d8887e
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 11:12:37 2019 +0800
+
+    updated requirements
+
+commit e3e5eb212d7773f769e88fce97de45a21024030f
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 11:10:25 2019 +0800
+
+    updated conda environment version
+
+commit 5bcf85acfb234b1d54df879dd3bbcb1f3356a0f5
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 11:01:11 2019 +0800
+
+    updated requirement.txt
+
+commit dd7040e61dd8bb3f06166000e49fce713a24faf4
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 10:59:11 2019 +0800
+
+    log commit
+
+commit e2e00cb1a5f2c55eb90283fe3f7b8883a77a9653
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 10:52:04 2019 +0800
+
+    library changes
+
+commit c5d792c9dfe9f6db1e3e3e9b2bc8b4e86802d165
+Merge: 029f1f7 e4ab138
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 10:51:34 2019 +0800
+
+    Merge branch 'jon_branch' into julian_branch
+
+commit e4ab1380da23855ece50e3892101f52527fb5108
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 18 10:50:56 2019 +0800
+
+    log changes
+
+commit 029f1f7095d533f492bfa42681764f5c31b1ebcd
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 10:28:26 2019 +0800
+
+    heroku test run
+
+commit 59226ef3bed1cfbf47c99bca4510b32eec7397c0
+Author: Julian <juliankristandi@yahoo.com>
+Date:   Sat May 18 10:19:39 2019 +0800
+
+    install
+
+commit 209c675c91599d93bc00983f767729f4a5126868
+Author: Jonathan <jonathanneo@me.com>
+Date:   Fri May 17 01:18:53 2019 +0800
+
+    made some actions
+
+commit 792bf36445f65e026b61bd93f81f735a836d121c
+Author: Jonathan <jonathanneo@me.com>
+Date:   Fri May 17 01:17:56 2019 +0800
+
+    delete back.py
+
+commit 4cf177f15873faf472a8adeb232ff68196088ae0
+Author: Jonathan <jonathanneo@me.com>
+Date:   Fri May 17 01:17:22 2019 +0800
+
+    adminstrator view done
+
+commit 291884ef43d2400d7468a946cc3f3bdca19a5300
+Merge: 22f82c2 c981c21
+Author: Jonathan <jonathanneo@me.com>
+Date:   Thu May 16 22:16:20 2019 +0800
+
+    Merge branch 'julian_branch' of https://github.com/jonathanneo/boardGamesPoll into julian_branch
+
+commit 22f82c2ab282c99b394657bbfbe7926d0944909e
+Author: Jonathan <jonathanneo@me.com>
+Date:   Thu May 16 22:16:16 2019 +0800
+
+    push_just_cause_i_have_to
+
+commit c981c21cba8fa116401522d5b9cf92bfa19e1fee
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Thu May 16 21:27:32 2019 +0800
+
+    Update user.html
+
+commit bd7c95634e8832f4f92e097e074e2c328aa9af9c
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Thu May 16 21:26:00 2019 +0800
+
+    updated with spaces
+
+commit 86f734e641db47855d060a73fcb694e29e30a9e2
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Thu May 16 21:25:00 2019 +0800
+
+    spaces updated
+
+commit b7f8d6791a71376a3f215ec15e10d46c5448ead0
+Author: Jonathan <jonathanneo@me.com>
+Date:   Thu May 16 21:22:34 2019 +0800
+
+    log changes
+
+commit f3df525c883079ff6930cf82f32197f4a884d27e
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Thu May 16 21:19:43 2019 +0800
+
+    updated with spaces
+
+commit a405d2a036578210c113412d63914913f77f28b7
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Thu May 16 21:18:53 2019 +0800
+
+    updated with correct spaces
+
+commit f9ee91c603ac7bab85c2851d2dc10aaa095a11ce
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Thu May 16 20:32:07 2019 +0800
+
+    about and admin view done
+
+commit d255d39936ce9abcdfd88c9a85af883c233b432a
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Thu May 16 20:31:39 2019 +0800
+
+    about and admin view done
+
+commit 72318a5076239c657f2dcc57982f0d2b69a25413
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Thu May 16 20:31:25 2019 +0800
+
+    about and admin view done
+
+commit a4b33f6bfc25e789697bcc1f85850c3535f91563
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Thu May 16 20:24:32 2019 +0800
+
+    Add files via upload
+
+commit 7a9abe3e96aebf51b912d1bea4b4bfeaddb65bd4
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Thu May 16 20:23:57 2019 +0800
+
+    Delete routes.py
+
+commit 1542c4a14d5ce7871ecb4da5b8071d3bccaf4635
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Thu May 16 20:23:36 2019 +0800
+
+    Delete about.html
+
+commit 7647b57d2adac7d5ede5a38ff3ea1fe373acd351
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Thu May 16 20:22:39 2019 +0800
+
+    Delete base.html
+
+commit 271024346c89c1aa5d40a57010d9266754400e19
+Author: Jonathan <jonathanneo@me.com>
+Date:   Thu May 16 20:15:28 2019 +0800
+
+    re-commit from 12am
+
+commit bed57a7925cf47dad59f6b4ab37efcc58da3412e
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Thu May 16 19:50:49 2019 +0800
+
+    admin not working yet
+
+commit ce85df797c37bab10b7d71eeb4fc3d917d6cad31
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Thu May 16 19:50:16 2019 +0800
+
+    admin not working yet
+
+commit 61c1eabfe860a3ca7a22ca1e656d0f6231dd1e94
+Author: Jonathan <jonathanneo@me.com>
+Date:   Thu May 16 00:17:34 2019 +0800
+
+    delete poll done
+
+commit bbc43e74a3f84f74fff772f8a0984f387c161916
+Merge: aa0913c 9851723
+Author: Jonathan <jonathanneo@me.com>
+Date:   Thu May 16 00:01:15 2019 +0800
+
+    Merge branch 'jon_branch' of https://github.com/jonathanneo/boardGamesPoll into jon_branch
+
+commit aa0913c622a38bc0bdb53c8c0410a621b989f2b7
+Author: Jonathan <jonathanneo@me.com>
+Date:   Thu May 16 00:01:11 2019 +0800
+
+    minor changes
+
+commit 985172365e8afbb8e40d778776cc4ac2bfc8d8a0
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Wed May 15 23:57:09 2019 +0800
+
+    added 'About' draft page
+
+commit df793f7b17be33ab6fcd597f18965612c6d91752
+Author: Jonathan <jonathanneo@me.com>
+Date:   Wed May 15 23:24:03 2019 +0800
+
+    linking delete
+
+commit ea9890ba729d4e4cc379adc563793420ef92c7df
+Author: Jonathan <jonathanneo@me.com>
+Date:   Wed May 15 22:37:49 2019 +0800
+
+    updated relationships for cascade delete
+
+commit 4dc478d9f57a38a0af80d56f3f7fc00a91e5b2a7
+Author: Jonathan <jonathanneo@me.com>
+Date:   Wed May 15 20:39:44 2019 +0800
+
+    fixed viewPoll bug
+
+commit 320d949fb256530a40b676827de0ba8f8ab157b7
+Author: Jonathan <jonathanneo@me.com>
+Date:   Wed May 15 00:35:42 2019 +0800
+
+    edit poll
+
+commit ccca9a774d692a0016cc66aafe7615d9abe8aadb
+Author: Jonathan <jonathanneo@me.com>
+Date:   Tue May 14 22:13:31 2019 +0800
+
+    commit log
+
+commit aa2b0f5c9cd8bb9fe925404ce70ddc63a9bf21d3
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Tue May 14 21:32:16 2019 +0800
+
+    updated icons
+
+commit a47105233faf69fb00f18ee83023bd59e863890e
+Merge: 9e911c8 9bc61e1
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Tue May 14 10:19:34 2019 +0800
+
+    Merge pull request #2 from jonathanneo/master
+    
+    test pull
+
+commit 9bc61e1f214b35233473bc12b8363cbf65c441a7
+Merge: 62ca156 cd8aaf1
+Author: Jonathan <jonathanneo@me.com>
+Date:   Tue May 14 08:22:17 2019 +0800
+
+    Merge pull request #1 from jonathanneo/jon_branch
+    
+    Jon branch merge to master
+
+commit cd8aaf17d0b6e53424da7488d9095ccae84f10ca
+Author: Jonathan <jonathanneo@me.com>
+Date:   Mon May 13 23:39:49 2019 +0800
+
+    update vote.html
+
+commit ab31164ede9141433e6d2d786ee32898ff2881da
+Author: Jonathan <jonathanneo@me.com>
+Date:   Mon May 13 23:12:08 2019 +0800
+
+    updated db
+
+commit c0e02c6613a65a1f9fc4ebf0ce1f90f5a268b9bb
+Author: Jonathan <jonathanneo@me.com>
+Date:   Mon May 13 23:06:33 2019 +0800
+
+    sorted complete
+
+commit d9018583b646663a1fd8871c66552811802708cc
+Author: Jonathan <jonathanneo@me.com>
+Date:   Mon May 13 21:30:19 2019 +0800
+
+    updated voting
+
+commit 5fbd1bcb85218ba768cb53a96b6baf44c335a734
+Author: Jonathan <jonathanneo@me.com>
+Date:   Mon May 13 21:16:56 2019 +0800
+
+    updated db
+
+commit 49a05d1549335de9bf200f1fdbdd9b3b4d8692d3
+Author: Jonathan <jonathanneo@me.com>
+Date:   Mon May 13 20:51:10 2019 +0800
+
+    fixed voting/unvoting
+
+commit 9e911c8b738bd1e985815ac6eae0254228de9d1d
+Author: Jonathan <jonathanneo@me.com>
+Date:   Mon May 13 15:39:48 2019 +0800
+
+    some changes to vote
+    
+    some changes to vote as discussed
+
+commit 539f342d6782c03ea7cc00002a4f65e5bd0bceb2
+Author: Jonathan <jonathanneo@me.com>
+Date:   Mon May 13 15:26:49 2019 +0800
+
+    test commit
+
+commit 9b1864ea18f8b58a09b9b602ff7ff939f0493dd1
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Mon May 13 15:23:28 2019 +0800
+
+    Add files via upload
+
+commit 62ca15672727271018b838a69b81022ff4c2bd4e
+Author: Jonathan <jonathanneo@me.com>
+Date:   Mon May 13 11:41:19 2019 +0800
+
+    updated app.db
+
+commit 565dd97e9d728c9943bf6abb025b33944e0414dd
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 11 17:06:30 2019 +0800
+
+    row link
+
+commit 0cd03f59c831a1a2ad97c9146d2e02178afb621c
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 11 16:45:10 2019 +0800
+
+    fixed vote
+
+commit 0d36a01e2d0e9430f886f14c4127d0b29f84809e
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Sat May 11 16:33:09 2019 +0800
+
+    Update README.md
+
+commit 583f01040300eaceaae092ac4808113240bb5bda
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 11 16:06:50 2019 +0800
+
+    added voting
+    
+    added voting
+
+commit 59f6baabe7bbe3776cbc33b9c2ac21020cfb5ec6
+Merge: 1843e34 983b8b8
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 11 14:55:22 2019 +0800
+
+    Merge branch 'master' of https://github.com/jonathanneo/boardGamesPoll
+
+commit 1843e3446d88395a45088e35fba81c2466fc58dd
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 11 14:55:18 2019 +0800
+
+    add option relationship
+    
+    option relationship
+
+commit 983b8b87145450c2ddea897dcc49174077b8f3f5
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Sat May 11 12:43:07 2019 +0800
+
+    Update README.md
+
+commit 352e429ac3c76c515ba356eb802c45cd3add59c1
+Merge: dcebe85 b8cc91e
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 11 12:36:21 2019 +0800
+
+    Merge branch 'master' of https://github.com/jonathanneo/boardGamesPoll
+
+commit dcebe852251ebc1cb12766bb53501717fe6f9480
+Author: Jonathan <jonathanneo@me.com>
+Date:   Sat May 11 12:36:14 2019 +0800
+
+    Added options
+    
+    - added options
+
+commit b8cc91e1fa0d0fcf6a5373b037f5c723c9c4e7e9
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Sat May 11 11:02:24 2019 +0800
+
+    Update README.md
+
+commit 04cc56bfd5c947f214decdf082d20b16cd12191b
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Sat May 11 09:22:09 2019 +0800
+
+    Update README.md
+
+commit 7ba58a31ae7d50cec8e3a397c474633e9cd4c6a4
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Sat May 11 09:08:51 2019 +0800
+
+    Update README.md
+
+commit ba66e192b8da8def85a9eaadabc2ec5eb92d06b3
+Author: Ignatius Julian Kristandi <43329777+juliankristandi@users.noreply.github.com>
+Date:   Sat May 11 08:58:02 2019 +0800
+
+    Update README.md
+
+commit 501ef1c851cfb7f2a01a57e9490dacaf2a9a43b0
+Author: Jonathan <jonathanneo@me.com>
+Date:   Thu May 9 23:49:42 2019 +0800
+
+    Update routes.py
+
+commit 3b9347fd2d2c79ff2d42fc6e8cea4b0b20adf2f1
+Author: Jonathan <jonathanneo@me.com>
+Date:   Thu May 9 23:41:51 2019 +0800
+
+    First commit
+    
+    Completed the following items:
+    - html templates
+    - database config
+    - forms
+    - email support
+    - error handling
+    - pages: poll, explore, login, register, reset password, user
+
+commit 68d4fcf29395422aa6c00f04bcf42d7d689f3152
+Author: Jonathan <jonathanneo@me.com>
+Date:   Thu May 9 23:33:03 2019 +0800
+
+    Initial commit
