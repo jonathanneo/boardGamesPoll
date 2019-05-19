@@ -19,7 +19,10 @@ flask run
 The web application should be hosted at http://localhost:5000.  
 
 ## Tests  
-We have included a python and a Selenium test script for our web application. To run the Selenium test, simply go to the Selenium IDE in the browser and open the 'test.side' file. To run the python app, NEED TO BE COMPLETED, ADD JSFIDDLE TOO
+We have included a python and a Selenium test script for our web application. To run the Selenium test, simply go to the Selenium IDE in the browser and open the 'test.side' file for the heroku link, and 'test-local.side' for local hosting. To run the python test, simply run the following commands in the project directory:  
+```
+python ./tests.py
+```
 
 ## Deployment on Heroku
 We have deployed the application on Heroku servers into two seperate environments:
@@ -30,7 +33,7 @@ Staging will be used for testing purposes before promoting to production. We hav
 
 ## Pipelines on Heroku
 We have created automated CI [pipelines on Heroku](https://www.heroku.com/continuous-delivery). When a pull request is created, an app will automatically be created to allow developers to view and test the app. 
-After testing is performed on the new app and pushed to Staging, the staging-app sits there for more testing and review until it is ready to be pushed into production using the CLI by: 
+After testing is performed on the new app and pushed to Staging, the staging-app can be pushed into production using the CLI by: 
 ```
 heroku pipelines:promote -a board-games-poll --to boardgamespoll
 ```
@@ -38,9 +41,7 @@ Or the Heroku GUI by:
 1. Promote to production 
 2. Promote
 3. App is now in production and the staging branch merged into master branch
-
-Note: You will need to be granted access to Heroku first. 
-
+    
 ![ImageOfHeroku](https://github.com/jonathanneo/images/blob/master/heroku_1_annotated.png?raw=true) 
 ![ImageOfHeroku](https://github.com/jonathanneo/images/blob/master/heroku_2_annotated.png?raw=true)
 

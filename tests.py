@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 import unittest
 from app import app, db
-from app.models import User, Poll
+from app.models import User, Poll, Option
 
 class UserModelCase(unittest.TestCase):
     def setUp(self):
@@ -84,6 +84,73 @@ class UserModelCase(unittest.TestCase):
         self.assertEqual(f2, [p2, p3])
         self.assertEqual(f3, [p3, p4])
         self.assertEqual(f4, [p4])
+
+    def test_vote(self):
+        u = User(username='john', email='john@example.com')
+        db.session.add(u)
+        option = Option(body='1')
+        db.session.add(option)
+        u.vote(option)
+        db.session.commit()
+        test = u.has_voted_option(option)
+        self.assertTrue(test)
+
+    def test_unvote(self):
+        u = User(username='john', email='john@example.com')
+        db.session.add(u)
+        option = Option(body='1')
+        db.session.add(option)
+        u.vote(option)
+        u.unvote(option)
+        db.session.commit()
+        test = u.has_voted_option(option)
+        self.assertFalse(test)
+
+    def test_makeAdmin(self):
+        u = User(username='susan', email='susan@example.com', is_admin=False)
+        db.session.add(u)
+        u.make_admin(u)
+        db.session.commit()
+        test = u.is_admin
+        self.assertTrue(test)
+
+    def test_removeAdmin(self):
+        u = User(username='susan', email='susan@example.com', is_admin=True)
+        db.session.add(u)
+        u.remove_admin(u)
+        db.session.commit()
+        test = u.is_admin
+        self.assertFalse(test)
+
+    def test_addOption(self):
+        poll = Poll(id=1, title='test', body='test')
+        db.session.add(poll)
+        option = Option(body='1', id_poll=poll.id)
+        db.session.add(option)
+        db.session.commit()
+        self.assertEqual(option.id_poll, poll.id) 
+
+    def test_deleteOption(self):
+        poll = Poll(id=1, title='test', body='test')
+        db.session.add(poll)
+        option = Option(body='1', id_poll=poll.id)
+        db.session.add(option)
+        db.session.delete(option)
+        test=option.id_poll == poll.id
+        db.session.commit()
+        self.assertFalse(test)
+    
+    def test_createPoll(self):
+        poll = Poll(id=1, title='test', body='test')
+        db.session.add(poll)
+        self.assertEqual(poll.id, 1)
+
+    def test_deletePoll(self):
+        poll = Poll(id=1, title='test', body='test')
+        db.session.add(poll)
+        db.session.delete(poll)
+        test=poll.id==1
+        self.assertFalse(test)
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
