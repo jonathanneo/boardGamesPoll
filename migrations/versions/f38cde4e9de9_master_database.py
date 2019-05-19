@@ -1,8 +1,8 @@
-"""create flask db
+"""master database
 
-Revision ID: 32725f7c62b9
+Revision ID: f38cde4e9de9
 Revises: 
-Create Date: 2019-05-19 03:01:21.578149
+Create Date: 2019-05-19 14:17:41.143196
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '32725f7c62b9'
+revision = 'f38cde4e9de9'
 down_revision = None
 branch_labels = None
 depends_on = None
