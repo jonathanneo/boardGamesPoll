@@ -79,7 +79,7 @@ def delete_user():
     next_url = url_for('delete_user',page=users.next_num) if users.has_next else None
     prev_url = url_for('delete_user',page=users.prev_num) if users.has_prev else None
     
-    return render_template("change_or_delete_user.html", title='Delete Users', users=users.items, 
+    return render_template("change_or_delete_user.html", title='Edit Users', users=users.items, 
         form=form,header_content=header_content,next_url=next_url, prev_url=prev_url)
 
 @app.route('/make_user_admin',methods=['GET', 'POST'])
