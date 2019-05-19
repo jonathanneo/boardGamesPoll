@@ -16,6 +16,6 @@ class Config(object):
     POLLS_PER_PAGE = 12
     LOG_TO_STDOUT = os.environ.get('LOG_TO_STDOUT')
     
-class TestingConfig(Config):
-    SQLALCHEMY_DATABSE_URI = 'sqlite:///' + os.path.join(basedir, 'tests/test.db')
+#class TestingConfig(Config):
+#    SQLALCHEMY_DATABSE_URI = 'sqlite:///' + os.path.join(basedir, 'tests/test.db')
  
