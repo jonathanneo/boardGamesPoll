@@ -38,7 +38,9 @@ Or the Heroku GUI by:
 1. Promote to production 
 2. Promote
 3. App is now in production and the staging branch merged into master branch
-    
+
+Note: You will need to be granted access to Heroku first. 
+
 ![ImageOfHeroku](https://github.com/jonathanneo/images/blob/master/heroku_1_annotated.png?raw=true) 
 ![ImageOfHeroku](https://github.com/jonathanneo/images/blob/master/heroku_2_annotated.png?raw=true)
 
