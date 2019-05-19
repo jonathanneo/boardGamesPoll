@@ -33,7 +33,7 @@ Staging will be used for testing purposes before promoting to production. We hav
 
 ## Pipelines on Heroku
 We have created automated CI [pipelines on Heroku](https://www.heroku.com/continuous-delivery). When a pull request is created, an app will automatically be created to allow developers to view and test the app. 
-After testing is performed on the new app and pushed to Staging, the staging-app can be pushed into production using the CLI by: 
+After testing is performed on the new app and pushed to Staging, the staging-app sits there for more testing and review until it is ready to be pushed into production using the CLI by: 
 ```
 heroku pipelines:promote -a board-games-poll --to boardgamespoll
 ```
@@ -41,7 +41,9 @@ Or the Heroku GUI by:
 1. Promote to production 
 2. Promote
 3. App is now in production and the staging branch merged into master branch
-    
+
+Note: Access to Heroku will need to be provisioned first. 
+
 ![ImageOfHeroku](https://github.com/jonathanneo/images/blob/master/heroku_1_annotated.png?raw=true) 
 ![ImageOfHeroku](https://github.com/jonathanneo/images/blob/master/heroku_2_annotated.png?raw=true)
 
