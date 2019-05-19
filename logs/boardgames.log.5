@@ -1,13 +1,4 @@
-2019-05-13 21:56:01,680 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
-Traceback (most recent call last):
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\base.py", line 1193, in _execute_context
-    context)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\default.py", line 509, in do_execute
-    cursor.execute(statement, parameters)
-sqlite3.OperationalError: no such column: count
-
-The above exception was the direct cause of the following exception:
-
+2019-05-15 23:36:14,123 ERROR: Exception on /deleteOption/3/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
 Traceback (most recent call last):
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -23,61 +14,11 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 194, in viewPoll
-    return render_template('vote.html', title='View Poll', options=options, polls=polls)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\templating.py", line 135, in render_template
-    context, ctx.app)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\templating.py", line 117, in _render
-    rv = template.render(context)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\vote.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
-    {%- block html %}
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
-    {% block body -%}
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
-    {% block content -%}
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\base.html", line 52, in block "content"
-    {% block app_content %}{% endblock %}
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\vote.html", line 13, in block "app_content"
-    {% for option in options %}
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\query.py", line 2995, in __iter__
-    return self._execute_and_instances(context)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\orm\query.py", line 3018, in _execute_and_instances
-    result = conn.execute(querycontext.statement, self._params)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\base.py", line 948, in execute
-    return meth(self, multiparams, params)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\sql\elements.py", line 269, in _execute_on_connection
-    return connection._execute_clauseelement(self, multiparams, params)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\base.py", line 1060, in _execute_clauseelement
-    compiled_sql, distilled_params
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\base.py", line 1200, in _execute_context
-    context)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\base.py", line 1413, in _handle_dbapi_exception
-    exc_info
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\util\compat.py", line 265, in raise_from_cause
-    reraise(type(exception), exception, tb=exc_tb, cause=cause)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\util\compat.py", line 248, in reraise
-    raise value.with_traceback(tb)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\base.py", line 1193, in _execute_context
-    context)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\sqlalchemy\engine\default.py", line 509, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: count [SQL: 'SELECT option.id AS option_id, option.body AS option_body, option.timestamp AS option_timestamp, option.id_poll AS option_id_poll, count(votes.id_option) AS count_1 \nFROM option JOIN votes ON option.id = votes.id_option GROUP BY option.id, option.body, option.timestamp, option.id_poll ORDER BY count DESC'] (Background on this error at: http://sqlalche.me/e/e3q8)
-2019-05-13 21:58:02,049 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-13 21:58:02,999 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 81, in deleteOption
+    option = db.session.query(Option).filter(Option.id==option_id).all()[0]
+IndexError: list index out of range
+2019-05-15 23:38:40,553 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-15 23:38:40,904 ERROR: Exception on /deleteOption/3/3 [POST] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
 Traceback (most recent call last):
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -93,38 +34,103 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 194, in viewPoll
-    return render_template('vote.html', title='View Poll', options=options, polls=polls)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\templating.py", line 135, in render_template
-    context, ctx.app)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\templating.py", line 117, in _render
-    rv = template.render(context)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 81, in deleteOption
+    option = db.session.query(Option).filter(Option.id==option_id).all()[0]
+IndexError: list index out of range
+2019-05-15 23:38:52,017 ERROR: Exception on /deleteOption/3/3 [POST] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
+Traceback (most recent call last):
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
     reraise(exc_type, exc_value, tb)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\vote.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
-    {%- block html %}
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
-    {% block body -%}
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
-    {% block content -%}
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\base.html", line 52, in block "content"
-    {% block app_content %}{% endblock %}
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\vote.html", line 15, in block "app_content"
-    {% include '_unvoteOption.html' %}
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\_unvoteOption.html", line 5, in top-level template code
-    {% if current_user.has_voted_option(option) %}
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\models.py", line 54, in has_voted_option
-    return db.session.query(votes).filter(votes.c.id_option == option.id, votes.c.id_user == self.id).count() > 0
-AttributeError: 'result' object has no attribute 'id'
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 81, in deleteOption
+    option = db.session.query(Option).filter(Option.id==option_id).all()[0]
+IndexError: list index out of range
+2019-05-15 23:42:14,613 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-15 23:42:28,002 ERROR: Exception on /deleteOption/3/3 [POST] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
+Traceback (most recent call last):
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 81, in deleteOption
+    option = db.session.query(Option).filter(Option.id==option_id).all()[0]
+IndexError: list index out of range
+2019-05-15 23:43:44,921 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-15 23:44:07,169 ERROR: Exception on /deleteOption/3/3 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
+Traceback (most recent call last):
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 81, in deleteOption
+    option = db.session.query(Option).filter(Option.id==option_id).all()[0]
+IndexError: list index out of range
+2019-05-15 23:47:20,584 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-15 23:49:19,303 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-15 23:49:31,503 ERROR: Exception on /deleteOption/3/3 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
+Traceback (most recent call last):
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 86, in deleteOption
+    return redirect(url_for('addOption'))
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\helpers.py", line 356, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2061, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\helpers.py", line 345, in url_for
+    force_external=external)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\werkzeug\routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'addOption'. Did you forget to specify values ['poll_id']?
+2019-05-15 23:50:32,393 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-15 23:51:50,738 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-15 23:53:01,116 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-16 00:01:47,572 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-16 00:11:33,744 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-16 21:20:51,285 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-16 21:21:18,283 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]

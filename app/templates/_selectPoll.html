@@ -1,0 +1,37 @@
+
+<div class="card text-white bg-light mb-3" style="width: 18rem;">
+    <img class="card-img-top text-dark" src="{{ poll.image_url }}" alt="Card image cap">
+    <div class="card-body text-dark">
+        <h5 class="card-title">{{ poll.title }}</h5>
+        <p class="card-text">{{ poll.body }}</p>
+        <div class="btn-group-sm" role="group" aria-label="Basic example">
+            <a href= "{{ url_for('viewPoll', poll_id=poll.id) }}" class="btn btn-secondary" >View Poll</a>
+            <a href= "{{ url_for('addOption', poll_id=poll.id) }}" class="btn btn-secondary" >Edit Options</a>
+            <br><br>
+            <a href= "{{ url_for('edit_poll', poll_id=poll.id) }}" class="btn btn-secondary" >Edit Poll</a>
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#delete_{{ poll.id }}">Delete Poll</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="delete_{{ poll.id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModal"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Poll</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete: "{{ poll.title }}"?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <a href="{{ url_for('deletePoll', poll_id=poll.id) }}" type="button" class="btn btn-primary">Delete</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <h1>Admin Page</h1>
+    <br>
+    <a href="{{ url_for('manage_users') }}" class="button"> Manage Users </a>
+    <br>
+    <a href="{{ url_for('manage_polls') }}" class="button"> Manage Polls </a>
+
+{% endblock %}

@@ -9,6 +9,14 @@ class LoginForm(FlaskForm):
     remember_me = BooleanField('Remember Me')
     submit = SubmitField('Sign In')
 
+class DeleteUserForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired()])
+    submit = SubmitField('Delete')
+
+class MakeUserAdminForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired()])
+    submit = SubmitField('Make Admin')
+
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
@@ -30,7 +38,7 @@ class RegistrationForm(FlaskForm):
 class EditProfileForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     about_me = TextAreaField('About me', validators=[Length(min=0, max=140)])
-    submit = SubmitField('Submit')
+    submit = SubmitField('Save Changes')
 
     def __init__(self, original_username, *args, **kwargs):
         super(EditProfileForm, self).__init__(*args, **kwargs)
@@ -42,19 +50,33 @@ class EditProfileForm(FlaskForm):
             if user is not None:
                 raise ValidationError('Please use a different username.')
 
+class EditPollForm(FlaskForm):
+    title = TextAreaField('Poll title', validators=[
+        DataRequired(), Length(min=1, max=140)])
+    body = TextAreaField('Poll description', validators=[
+        DataRequired(), Length(min=1, max=140)])
+    image_url = TextAreaField('Image URL')
+    submit = SubmitField('Save Changes')
+
+class EditOptionForm(FlaskForm):
+    body = TextAreaField('Option Description', validators=[
+        DataRequired(), Length(min=1, max=140)])
+    url = TextAreaField('Image URL')
+    submit = SubmitField('Save Changes')
+
 class PollForm(FlaskForm):
     title = TextAreaField('Poll title', validators=[
         DataRequired(), Length(min=1, max=140)])
     body = TextAreaField('Poll description', validators=[
         DataRequired(), Length(min=1, max=140)])
-    image_url = TextAreaField('Image URL', validators=[
-        DataRequired(), Length(min=1, max=255)])
+    image_url = TextAreaField('Image URL')
     submit = SubmitField('Submit')
 
 class OptionForm(FlaskForm):
     body = TextAreaField('Option', validators=[
         DataRequired(), Length(min=1, max=140)])
-    submit = SubmitField('Submit')
+    url = TextAreaField('Image URL')
+    submit = SubmitField('Add Option')
 
 class ResetPasswordRequestForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])

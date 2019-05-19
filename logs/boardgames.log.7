@@ -1,4 +1,4 @@
-2019-05-13 21:21:38,672 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
+2019-05-15 00:25:24,024 ERROR: Exception on /addOption/bootbox.min.js [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
 Traceback (most recent call last):
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,8 +14,34 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 192, in viewPoll
-    return render_template('vote.html', title='View Poll', options=options, polls=polls)
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 44, in addOption
+    polls = db.session.query(Poll).filter(Poll.id==poll_id).all()[0]
+IndexError: list index out of range
+2019-05-15 00:27:00,476 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-15 00:29:07,077 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-15 00:30:24,625 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-15 00:30:48,584 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-15 00:32:00,380 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-15 20:17:01,123 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-15 20:19:52,223 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-15 20:19:59,477 ERROR: Exception on /addOption/2 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
+Traceback (most recent call last):
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 53, in addOption
+    return render_template('addOption.html', title='View Poll', form=form, options=options, polls=polls)
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\templating.py", line 135, in render_template
     context, ctx.app)
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\templating.py", line 117, in _render
@@ -28,8 +54,8 @@ Traceback (most recent call last):
     reraise(exc_type, exc_value, tb)
   File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\vote.html", line 1, in top-level template code
-    {% extends "base.html" %}
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\addOption.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
   File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\base.html", line 1, in top-level template code
     {% extends 'bootstrap/base.html' %}
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
@@ -42,14 +68,13 @@ Traceback (most recent call last):
     {% block content -%}
   File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\base.html", line 52, in block "content"
     {% block app_content %}{% endblock %}
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\vote.html", line 15, in block "app_content"
-    {% include '_unvoteOption.html' %}
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\_unvoteOption.html", line 8, in top-level template code
-    {{ option.voters() }}
-TypeError: 'AppenderBaseQuery' object is not callable
-2019-05-13 21:23:50,146 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-13 21:25:16,447 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-13 21:25:19,403 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\addOption.html", line 24, in block "app_content"
+    $("#{{ option.id }}").click(function(){
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\environment.py", line 430, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'option' is undefined
+2019-05-15 20:21:20,277 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-15 20:21:23,259 ERROR: Exception on /addOption/2 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
 Traceback (most recent call last):
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -65,8 +90,8 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 192, in viewPoll
-    return render_template('vote.html', title='View Poll', options=options, polls=polls)
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 53, in addOption
+    return render_template('addOption.html', title='View Poll', form=form, options=options, polls=polls)
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\templating.py", line 135, in render_template
     context, ctx.app)
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\templating.py", line 117, in _render
@@ -79,8 +104,8 @@ Traceback (most recent call last):
     reraise(exc_type, exc_value, tb)
   File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\vote.html", line 1, in top-level template code
-    {% extends "base.html" %}
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\addOption.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
   File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\base.html", line 1, in top-level template code
     {% extends 'bootstrap/base.html' %}
   File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
@@ -93,32 +118,13 @@ Traceback (most recent call last):
     {% block content -%}
   File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\base.html", line 52, in block "content"
     {% block app_content %}{% endblock %}
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\vote.html", line 15, in block "app_content"
-    {% include '_unvoteOption.html' %}
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\_unvoteOption.html", line 8, in top-level template code
-    {{ option.voters() }}
-TypeError: 'AppenderBaseQuery' object is not callable
-2019-05-13 21:27:07,116 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-13 21:28:32,864 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-13 21:29:48,688 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-13 21:35:20,035 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
-2019-05-13 21:35:22,921 ERROR: Exception on /viewPoll/1 [GET] [in C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py:1761]
-Traceback (most recent call last):
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\_compat.py", line 35, in reraise
-    raise value
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask\app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "C:\Users\jonat\Anaconda3\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\routes.py", line 190, in viewPoll
-    options = db.session.query(Option).filter(Option.id_poll==poll_id).all().order_by(Option.voters.count())
-AttributeError: 'list' object has no attribute 'order_by'
-2019-05-13 21:53:21,278 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+  File "C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\templates\addOption.html", line 24, in block "app_content"
+    $("#{{ option.id }}").click(function(){
+  File "C:\Users\jonat\Anaconda3\lib\site-packages\jinja2\environment.py", line 430, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'option' is undefined
+2019-05-15 20:23:46,139 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-15 20:39:29,602 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-15 20:50:31,462 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-15 20:51:29,614 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]
+2019-05-15 20:51:55,611 INFO: Board Games startup [in C:\Users\jonat\Documents\GitHub\boardGamesPoll\app\__init__.py:45]

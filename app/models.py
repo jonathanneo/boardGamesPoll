@@ -21,17 +21,20 @@ votes = db.Table('votes',
 class Option(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String(140))
+    url = db.Column(db.String(255))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     id_poll = db.Column(db.Integer, db.ForeignKey('poll.id'))
+    poll = db.relationship("Poll", backref=db.backref("options", cascade="all, delete-orphan"))
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
-    polls = db.relationship('Poll', backref='author', lazy='dynamic')
+    polls = db.relationship('Poll', backref='author', lazy='dynamic', cascade="all, delete-orphan")
     about_me = db.Column(db.String(140))
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
+    is_admin = db.Column(db.Boolean, unique=False, default=False)
     followed = db.relationship(
         'User', secondary=followers,
         primaryjoin=(followers.c.follower_id == id),
@@ -40,8 +43,8 @@ class User(UserMixin, db.Model):
     votes = db.relationship(
         'Option', secondary = votes, 
         primaryjoin=(votes.c.id_user == id),
-        backref=db.backref('voters', lazy='dynamic'), lazy='dynamic')
-
+        backref=db.backref('voters',lazy='dynamic'), lazy='dynamic')
+    
     def vote(self, option):
         if not self.has_voted_option(option):
             self.votes.append(option)
@@ -54,7 +57,17 @@ class User(UserMixin, db.Model):
         return db.session.query(votes).filter(votes.c.id_option == option.id, votes.c.id_user == self.id).count() > 0
 
     def has_voted_poll(self, poll):
-        return Option.query.join(votes, Option.id == votes.c.id_option).filter(Option.id_poll == poll.id).count() > 0
+        return Option.query.join(votes, Option.id == votes.c.id_option).filter(Option.id_poll == poll.id, 
+            votes.c.id_user == self.id).count() > 0
+
+    def	check_admin(self):
+        return self.is_admin
+
+    def make_admin(self, user):
+        user.is_admin = True
+
+    def remove_admin(self,user):
+        user.is_admin = False
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -77,7 +90,7 @@ class User(UserMixin, db.Model):
     def unfollow(self, user):
         if self.is_following(user):
             self.followed.remove(user)
-
+    
     def is_following(self, user):
         return self.followed.filter(
             followers.c.followed_id == user.id).count() > 0
@@ -110,7 +123,8 @@ class Poll(db.Model):
     image_url = db.Column(db.String(255))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    
+    option = db.relationship("Option", cascade="all, delete-orphan")
+
     def __repr__(self):
         return '<Poll {}>'.format(self.body)
 
