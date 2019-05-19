@@ -1,32 +1,21 @@
-{% extends "base.html" %}
-{% import 'bootstrap/wtf.html' as wtf %}
+{% extends "base.html" %} {% import 'bootstrap/wtf.html' as wtf %} {% block app_content %}
+<h1>{{ header_content }}</h1>
+<br> {% if form %} {{ wtf.quick_form(form) }} {% endif %}
 
-{% block app_content %}
-	<h1>{{ header_content }}</h1>
-    <br>
+<br> {% for user in users %} {% include '_user.html' %} {% endfor %}
 
-    {% if form %}
-        {{ wtf.quick_form(form) }}
-    {% endif %}
-
-    <br>
-
-    {% for user in users %}
-        {% include '_user.html' %}
-    {% endfor %}
-
-    <nav aria-label="...">
-        <ul class="pager">
-            <li class="previous{% if not prev_url %} disabled{% endif %}">
-                <a href="{{ prev_url or '#' }}">
+<nav aria-label="...">
+  <ul class="pager">
+    <li class="previous{% if not prev_url %} disabled{% endif %}">
+      <a href="{{ prev_url or '#' }}">
                     <span aria-hidden="true">&larr;</span> Recent users
                 </a>
-            </li>
-            <li class="next{% if not next_url %} disabled{% endif %}">
-                <a href="{{ next_url or '#' }}">
+    </li>
+    <li class="next{% if not next_url %} disabled{% endif %}">
+      <a href="{{ next_url or '#' }}">
                     Older users <span aria-hidden="true">&rarr;</span>
                 </a>
-            </li>
-        </ul>
-    </nav>
+    </li>
+  </ul>
+</nav>
 {% endblock %}
