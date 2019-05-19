@@ -6,7 +6,7 @@ The purpose of this web application is to provide a board games ranking website 
 The architectural pattern that we are using is the Model View Controller, where the we have three separate aspects: the model, controller, and the view. The model is where data storage and database related actions take place, demonstrated in "models.py". The controller is the link that is responsible to build from the database, prepares the view and updates the models back to the database, which takes place ini "routes.py" as well as "forms.py". The view is what the user sees, which is included in the .html files. 
 
 ## Local Launch
-go to the project directory and launch the following:  
+go to the project directory and type the following commands in your CLI:  
 ```
 virtualenv venv
 source venv/bin/activate OR venv\Scripts\activate (Windows)
