@@ -1,8 +1,5 @@
-{% extends "base.html" %}
-{% import 'bootstrap/wtf.html' as wtf %}
-
-{% block app_content %}
-
-{{ wtf.quick_form(edit_option_form) }}
-    
+{% extends "base.html" %} 
+{% import 'bootstrap/wtf.html' as wtf %} 
+{% block app_content %} 
+    {{ wtf.quick_form(edit_option_form) }} 
 {% endblock %}

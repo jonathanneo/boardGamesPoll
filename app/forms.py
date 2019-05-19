@@ -55,13 +55,13 @@ class EditPollForm(FlaskForm):
         DataRequired(), Length(min=1, max=140)])
     body = TextAreaField('Poll description', validators=[
         DataRequired(), Length(min=1, max=140)])
-    image_url = TextAreaField('Image URL')
+    image_url = TextAreaField('Image URL',validators=[Length(max=255)])
     submit = SubmitField('Save Changes')
 
 class EditOptionForm(FlaskForm):
     body = TextAreaField('Option Description', validators=[
         DataRequired(), Length(min=1, max=140)])
-    url = TextAreaField('Image URL')
+    url = TextAreaField('Image URL',validators=[Length(max=255)])
     submit = SubmitField('Save Changes')
 
 class PollForm(FlaskForm):
@@ -69,13 +69,13 @@ class PollForm(FlaskForm):
         DataRequired(), Length(min=1, max=140)])
     body = TextAreaField('Poll description', validators=[
         DataRequired(), Length(min=1, max=140)])
-    image_url = TextAreaField('Image URL')
+    image_url = TextAreaField('Image URL',validators=[Length(max=255)])
     submit = SubmitField('Submit')
 
 class OptionForm(FlaskForm):
     body = TextAreaField('Option', validators=[
         DataRequired(), Length(min=1, max=140)])
-    url = TextAreaField('Image URL')
+    url = TextAreaField('Image URL',validators=[Length(max=255)])
     submit = SubmitField('Add Option')
 
 class ResetPasswordRequestForm(FlaskForm):

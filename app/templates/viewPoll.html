@@ -1,53 +1,50 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block app_content %}
+<div class="fluid-container">
+  {% if current_user.is_anonymous %}
+  <div class="alert alert-primary" role="alert">
+    Please <a href="{{ url_for('login') }}">sign in</a> or <a href="{{ url_for('register') }}">register </a> to vote.
+  </div>
+  <br> {% endif %}
 
-{% block app_content %}
-	<div class="fluid-container">
-		{% if current_user.is_anonymous %}
-			<div class="alert alert-primary" role="alert">
-				Please <a href="{{ url_for('login') }}">sign in</a> or <a href="{{ url_for('register') }}">register </a> to vote.
-			</div>
-			<br>
-		{% endif %}	
-		
-		<div class="card bg-light" >
-			<div class="row no-gutters"> 
-				<div class="col-3">
-					<img src="{{ polls.image_url }}" class="card-img"> 
-				</div>
-				<div class="col-6">
-					<div class="card-body">
-						<h1>{{ polls.title }}</h1>
-						<b>Description</b> <br>
-						<p> {{ polls.body }} </p>
-					</div>
-				</div>
-				<div class="col-3">
-					<div class="card-body"></div>
-						<img src="{{ user.avatar(256) }}"class="img-thumbnail align-right ml-4" height="75px" width="75px">
-						<br>
-						<a href="{{ url_for('user', username=user.username) }}" class="align-right ml-4"><b>{{ user.username }}</b></a>
-					</div>
-				</div>
-			</div>
-		</div>
+  <div class="card bg-light">
+    <div class="row no-gutters">
+      <div class="col-3">
+        <img src="{{ polls.image_url }}" class="card-img">
+      </div>
+      <div class="col-6">
+        <div class="card-body">
+          <h1>{{ polls.title }}</h1>
+          <b>Description</b> <br>
+          <p> {{ polls.body }} </p>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="card-body"></div>
+        <img src="{{ user.avatar(256) }}" class="img-thumbnail align-right ml-4" height="75px" width="75px">
+        <br>
+        <a href="{{ url_for('user', username=user.username) }}" class="align-right ml-4"><b>{{ user.username }}</b></a>
+      </div>
+    </div>
+  </div>
+</div>
 
-		<br>
-		{% if not current_user.is_anonymous %}
-			{% if current_user.has_voted_poll(polls) %}
-				{% for option in options %}
-					{% include '_unvoteOption.html' %}     
-				{% endfor %}
-			{% else %}
-				{% for option in options %}
-					{% include '_voteOption.html' %}     
-				{% endfor %}
-			{% endif %}	
-		{% else %}
-			{% for option in options %}
-				{% include '_renderOption.html' %}
-			{% endfor %}
-		{% endif %}
-		
-	</div>
+<br> 
+{% if not current_user.is_anonymous %} 
+  {% if current_user.has_voted_poll(polls) %} 
+    {% for option in options %} 
+      {% include '_unvoteOption.html' %} 
+    {% endfor %} 
+  {% else %} 
+    {% for option in options %} 
+      {% include '_voteOption.html' %} 
+    {% endfor %} 
+  {% endif %}
+{% else %} 
+  {% for option in options %} 
+    {% include '_renderOption.html' %} 
+  {% endfor %} 
+{% endif %}
+
+</div>
 
 {% endblock %}

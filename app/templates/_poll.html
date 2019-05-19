@@ -1,9 +1,8 @@
-
 <div class="card text-white bg-light mb-3" style="width: 18rem;">
-    <img class="card-img-top text-dark" src="{{ poll.image_url }}" alt="Card image cap">
-    <div class="card-body text-dark">
-        <h5 class="card-title">{{ poll.title }}</h5>
-        <p class="card-text">{{ poll.body }}</p>
-        <a href= "{{ url_for('viewPoll', poll_id=poll.id) }}" class="btn btn-secondary" >View Poll</a>
-    </div>
+  <img class="card-img-top text-dark" src="{{ poll.image_url }}" alt="Card image cap">
+  <div class="card-body text-dark">
+    <h5 class="card-title">{{ poll.title }}</h5>
+    <p class="card-text">{{ poll.body }}</p>
+    <a href="{{ url_for('viewPoll', poll_id=poll.id) }}" class="btn btn-secondary">View Poll</a>
+  </div>
 </div>
