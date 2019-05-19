@@ -176,45 +176,6 @@
       ],
       "value": ""
     }, {
-      "id": "72d05c04-4279-4a79-8606-60f05fb54c05",
-      "comment": "",
-      "command": "type",
-      "target": "id=username",
-      "targets": [
-        ["id=username", "id"],
-        ["name=username", "name"],
-        ["css=#username", "css:finder"],
-        ["xpath=//input[@id='username']", "xpath:attributes"],
-        ["xpath=//input", "xpath:position"]
-      ],
-      "value": "asd"
-    }, {
-      "id": "dbcb09fb-d21f-48d6-a992-ac882bb7924e",
-      "comment": "",
-      "command": "type",
-      "target": "id=password",
-      "targets": [
-        ["id=password", "id"],
-        ["name=password", "name"],
-        ["css=#password", "css:finder"],
-        ["xpath=//input[@id='password']", "xpath:attributes"],
-        ["xpath=//div[2]/input", "xpath:position"]
-      ],
-      "value": "asd"
-    }, {
-      "id": "73a77cc5-021e-4946-974f-f8cbc93187e6",
-      "comment": "",
-      "command": "click",
-      "target": "id=username",
-      "targets": [
-        ["id=username", "id"],
-        ["name=username", "name"],
-        ["css=#username", "css:finder"],
-        ["xpath=//input[@id='username']", "xpath:attributes"],
-        ["xpath=//input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
       "id": "03896eff-46f1-4173-9fca-b65f20b782d1",
       "comment": "",
       "command": "type",
@@ -692,20 +653,11 @@
       ],
       "value": ""
     }, {
-      "id": "c1d552cb-c8f6-4cc3-b21b-bca80b4cc726",
+      "id": "0781815d-53a3-47f6-8acd-44b04e0a525a",
       "comment": "",
       "command": "click",
       "target": "linkText=Delete",
-      "targets": [
-        ["linkText=Delete", "linkText"],
-        ["css=.btn-primary", "css:finder"],
-        ["xpath=//a[contains(text(),'Delete')]", "xpath:link"],
-        ["xpath=//a[@type='button']", "xpath:attributes"],
-        ["xpath=//div[@id='delete_12']/div/div/div[3]/a", "xpath:idRelative"],
-        ["xpath=//a[contains(@href, '/deletePoll/12')]", "xpath:href"],
-        ["xpath=//div[3]/a", "xpath:position"],
-        ["xpath=//a[contains(.,'Delete')]", "xpath:innerText"]
-      ],
+      "targets": [],
       "value": ""
     }, {
       "id": "7a44c4fe-b4ab-4d35-bf47-36f656370aa9",
@@ -723,7 +675,35 @@
       ],
       "value": ""
     }, {
-      "id": "1dedc5db-f3bc-442f-9f8f-1df9340de854",
+      "id": "4daa9c22-ea5e-40af-8638-ab0876d2d5aa",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Login",
+      "targets": [
+        ["linkText=Login", "linkText"],
+        ["css=.justify-content-end .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Login')]", "xpath:link"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul[2]/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/login')]", "xpath:href"],
+        ["xpath=//ul[2]/li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f9a79ad7-0a1b-4456-85cb-617d0ba05ca2",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4bc2bca7-a466-4c6d-9c53-f742a70613b5",
       "comment": "",
       "command": "type",
       "target": "id=username",
@@ -734,9 +714,9 @@
         ["xpath=//input[@id='username']", "xpath:attributes"],
         ["xpath=//input", "xpath:position"]
       ],
-      "value": "asd"
+      "value": "admin"
     }, {
-      "id": "c11220c3-0fee-4095-a1cd-848b4e92661d",
+      "id": "306a66fd-ed61-40bc-80ca-fecdde970389",
       "comment": "",
       "command": "type",
       "target": "id=password",
@@ -747,7 +727,117 @@
         ["xpath=//input[@id='password']", "xpath:attributes"],
         ["xpath=//div[2]/input", "xpath:position"]
       ],
-      "value": "asd"
+      "value": "test"
+    }, {
+      "id": "76ddc1e2-3140-47aa-90ca-26f34fafdfbe",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "bcc68ba3-6f8c-48d4-90fc-2c55954e2ea5",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Admin",
+      "targets": [
+        ["linkText=Admin", "linkText"],
+        ["css=.justify-content-end > .nav-item:nth-child(1) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Admin')]", "xpath:link"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul[2]/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/admin')]", "xpath:href"],
+        ["xpath=//ul[2]/li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Admin')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "689ab710-7226-45b9-a1be-3630940ef4f4",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Manage Users",
+      "targets": [
+        ["linkText=Manage Users", "linkText"],
+        ["css=.btn:nth-child(3)", "css:finder"],
+        ["xpath=//a[contains(text(),'Manage Users')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/manage_users')]", "xpath:href"],
+        ["xpath=//div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Manage Users')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7f8f7e96-11b1-4cdf-a680-e3a7f952b80f",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Delete User",
+      "targets": [
+        ["linkText=Delete User", "linkText"],
+        ["css=.btn:nth-child(6)", "css:finder"],
+        ["xpath=//a[contains(text(),'Delete User')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/delete_user')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Delete User')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "06cb20c2-12d7-4298-87ff-af2b0dd62ba1",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2eb25bcf-9100-44e4-8797-823d76e967b2",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "seleniumtest"
+    }, {
+      "id": "479fa1c7-5032-49bf-b7bc-3c85e8c29a39",
+      "comment": "",
+      "command": "click",
+      "target": "id=submit",
+      "targets": [
+        ["id=submit", "id"],
+        ["name=submit", "name"],
+        ["css=#submit", "css:finder"],
+        ["xpath=//input[@id='submit']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "efd0766b-e77e-41b3-a70b-b24f1b273e03",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Logout",
+      "targets": [
+        ["linkText=Logout", "linkText"],
+        ["css=.justify-content-end > .nav-item:nth-child(3) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Logout')]", "xpath:link"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul[2]/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/logout')]", "xpath:href"],
+        ["xpath=//ul[2]/li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Logout')]", "xpath:innerText"]
+      ],
+      "value": ""
     }]
   }],
   "suites": [{
