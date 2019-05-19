@@ -1,4 +1,6 @@
-{% extends "base.html" %} {% import 'bootstrap/wtf.html' as wtf %} {% block app_content %}
+{% extends "base.html" %} 
+{% import 'bootstrap/wtf.html' as wtf %} 
+{% block app_content %}
 <div class="fluid container">
   <div class="row-12">
     <div class="card bg-light">
@@ -23,10 +25,16 @@
       </div>
     </div>
 
-    <br> {% if form %} {{ wtf.quick_form(form) }} {% endif %}
+    <br> 
+    {% if form %} 
+      {{ wtf.quick_form(form) }} 
+    {% endif %}
     <br>
     <hr>
-    <br> {% for option in options %} {% include '_option.html' %} {% endfor %}
+    <br> 
+    {% for option in options %} 
+      {% include '_option.html' %} 
+    {% endfor %}
   </div>
 </div>
 {% endblock %}

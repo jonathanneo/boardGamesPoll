@@ -16,7 +16,6 @@ def before_request():
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
 
-
 @app.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
@@ -43,10 +42,16 @@ def about():
 
 @app.route('/admin')
 def admin():
+    if current_user.is_anonymous == True or current_user.is_admin == False:
+        flash('You have to be logged in as an admin to access this feature.')
+        return redirect(url_for('login'))
     return render_template("admin.html", title = 'Admin Page')
 
 @app.route('/manage_users')
 def manage_users():
+    if current_user.is_anonymous == True or current_user.is_admin == False:
+        flash('You have to be logged in as an admin to access this feature.')
+        return redirect(url_for('login'))
     return render_template("manage_users.html", title='Manage Users')
 
 @app.route('/delete_user',methods=['GET', 'POST'])
@@ -55,7 +60,7 @@ def delete_user():
     header_content = 'Delete User'
     if current_user.is_anonymous == True or current_user.is_admin == False:
         flash('You have to be logged in as an admin to access this feature.')
-        return redirect(url_for('explore'))
+        return redirect(url_for('login'))
     if form.validate_on_submit():
         username = form.username.data
         user = db.session.query(User).filter(User.username == username).first()
@@ -79,6 +84,9 @@ def delete_user():
 
 @app.route('/make_user_admin',methods=['GET', 'POST'])
 def make_user_admin():
+    if current_user.is_anonymous == True or current_user.is_admin == False:
+        flash('You have to be logged in as an admin to access this feature.')
+        return redirect(url_for('login'))
     page = request.args.get('page',1,type=int)
     users=db.session.query(User).order_by(User.last_seen.desc()).paginate(
         page, app.config['POLLS_PER_PAGE'], False)
@@ -86,9 +94,6 @@ def make_user_admin():
     prev_url = url_for('delete_user',page=users.prev_num) if users.has_prev else None
     form = MakeUserAdminForm()
     header_content = 'Make User Admin'
-    if current_user.is_anonymous == True or current_user.is_admin == False:
-        flash('You have to be logged in as an admin to access this feature.')
-        return redirect(url_for('explore'))
     if form.validate_on_submit():
         user = db.session.query(User).filter(User.username == form.username.data).first()
         if user is None:
@@ -107,6 +112,9 @@ def make_user_admin():
 
 @app.route('/manage_polls')
 def manage_polls():
+    if current_user.is_anonymous == True or current_user.is_admin == False:
+        flash('You have to be logged in as an admin to access this feature.')
+        return redirect(url_for('login'))
     page = request.args.get('page',1,type=int)
     polls = Poll.query.order_by(Poll.timestamp.desc()).paginate(
         page, app.config['POLLS_PER_PAGE'], False)
@@ -117,6 +125,9 @@ def manage_polls():
 @app.route('/user/<username>/promote')
 @login_required
 def makeAdmin(username):
+    if current_user.is_anonymous == True or current_user.is_admin == False:
+        flash('You have to be logged in as an admin to access this feature.')
+        return redirect(url_for('login'))
     u = User.query.filter_by(username=username).first()
     current_user.make_admin(u)
     db.session.commit()
@@ -126,6 +137,9 @@ def makeAdmin(username):
 @app.route('/user/<username>/remove')
 @login_required
 def removeAdmin(username):
+    if current_user.is_anonymous == True or current_user.is_admin == False:
+        flash('You have to be logged in as an admin to access this feature.')
+        return redirect(url_for('login'))
     u = User.query.filter_by(username=username).first()
     current_user.remove_admin(u)
     db.session.commit()
@@ -135,9 +149,12 @@ def removeAdmin(username):
 @app.route('/addOption/<poll_id>', methods=['GET', 'POST'])
 @login_required
 def addOption(poll_id):
-    form = OptionForm()
-    polls = db.session.query(Poll).filter(Poll.id==poll_id).all()[0]
+    polls = db.session.query(Poll).filter(Poll.id==poll_id).first()
     user = db.session.query(User).filter(User.id == polls.user_id).first()
+    if current_user.is_anonymous == True or current_user.username != user.username:
+        flash('You have to be logged in as the owner of this poll to make changes.')
+        return redirect(url_for('login'))
+    form = OptionForm()
     if form.validate_on_submit():
         option = Option(body=form.body.data, id_poll=poll_id, url=form.url.data)
         db.session.add(option)
@@ -152,7 +169,14 @@ def addOption(poll_id):
 @login_required
 def vote(poll_id, option_id):
     user = current_user
-    option = db.session.query(Option).filter(Option.id==option_id).all()[0]
+    option = db.session.query(Option).filter(Option.id==option_id).first()
+    poll = db.session.query(Poll).filter(Poll.id==poll_id).first()
+    if option == None: 
+        flash('The option does not exist. Please try again later')
+        return redirect(url_for('explore'))
+    elif poll == None: 
+        flash('The poll does not exist')
+        return redirect(url_for('explore'))
     user.vote(option)
     db.session.commit()
     flash('You have voted for {}'.format(option.body))
@@ -163,7 +187,14 @@ def vote(poll_id, option_id):
 @login_required
 def unvote(poll_id, option_id):
     user = current_user
-    option = db.session.query(Option).filter(Option.id==option_id).all()[0]
+    option = db.session.query(Option).filter(Option.id==option_id).first()
+    poll = db.session.query(Poll).filter(Poll.id==poll_id).first()
+    if option == None: 
+        flash('The option does not exist. Please try again later')
+        return redirect(url_for('explore'))
+    elif poll == None: 
+        flash('The poll does not exist')
+        return redirect(url_for('explore'))
     user.unvote(option)
     db.session.commit()
     flash('You have unvoted for {}'.format(option.body))
@@ -173,8 +204,21 @@ def unvote(poll_id, option_id):
 @app.route('/deleteOption/<poll_id>/<option_id>')
 @login_required
 def deleteOption(poll_id, option_id):
-    user = current_user
-    option = db.session.query(Option).filter(Option.id==option_id).all()[0]
+    if current_user.is_anonymous == True:
+        flash('You have to be logged in as the owner of this poll to make changes.')
+        return redirect(url_for('login'))
+    option = db.session.query(Option).filter(Option.id==option_id).first()
+    poll = db.session.query(Poll).filter(Poll.id==poll_id).first()
+    if option == None: 
+        flash('The option does not exist. Please try again later')
+        return redirect(url_for('explore'))
+    elif poll == None: 
+        flash('The poll does not exist')
+        return redirect(url_for('explore'))
+    user = db.session.query(User).filter(User.id==poll.user_id).first()
+    if current_user.username != user.username:
+        flash('You have to be logged in as the owner of this poll to make changes.')
+        return redirect(url_for('login'))
     db.session.delete(option)
     db.session.commit()
     flash('You have deleted option:{}'.format(option.body))
@@ -184,7 +228,14 @@ def deleteOption(poll_id, option_id):
 @app.route('/deletePoll/<poll_id>')
 @login_required
 def deletePoll(poll_id):
-    poll = db.session.query(Poll).filter(Poll.id==poll_id).all()[0]
+    if current_user.is_anonymous == True:
+        flash('You have to be logged in as the owner of this poll to make changes.')
+        return redirect(url_for('login'))
+    poll = db.session.query(Poll).filter(Poll.id==poll_id).first()
+    user = db.session.query(User).filter(User.id==poll.user_id).first()
+    if current_user.username != user.username:
+        flash('You have to be logged in as the owner of this poll to make changes.')
+        return redirect(url_for('login'))
     db.session.delete(poll)
     db.session.commit()
     flash('You have deleted poll: {}'.format(poll.title))
@@ -272,8 +323,15 @@ def edit_profile():
 @app.route('/edit_poll/<poll_id>', methods=['GET', 'POST'])
 @login_required
 def edit_poll(poll_id):
+    if current_user.is_anonymous == True:
+        flash('You have to be logged in as the owner of this poll to make changes.')
+        return redirect(url_for('login'))
     form = EditPollForm()
-    poll = db.session.query(Poll).filter(Poll.id==poll_id).all()[0]
+    poll = db.session.query(Poll).filter(Poll.id==poll_id).first()
+    user = db.session.query(User).filter(User.id==poll.user_id).first()
+    if current_user.username != user.username:
+        flash('You have to be logged in as the owner of this poll to make changes.')
+        return redirect(url_for('login'))
     if form.validate_on_submit():
         poll.title = form.title.data
         poll.body = form.body.data
@@ -290,11 +348,17 @@ def edit_poll(poll_id):
 @app.route('/edit_option/<poll_id>/<option_id>', methods=['GET', 'POST'])
 @login_required
 def edit_option(poll_id, option_id):
+    if current_user.is_anonymous == True:
+        flash('You have to be logged in as the owner of this poll to make changes.')
+        return redirect(url_for('login'))
     edit_option_form = EditOptionForm()
-    edit_option = db.session.query(Option).filter(Option.id==option_id).all()[0]
-    polls = db.session.query(Poll).filter(Poll.id==poll_id).all()[0]
+    edit_option = db.session.query(Option).filter(Option.id==option_id).first()
+    polls = db.session.query(Poll).filter(Poll.id==poll_id).first()
     options = db.session.query(Option).filter(Option.id_poll==poll_id).all()
-
+    user = db.session.query(User).filter(User.id==polls.user_id).first()
+    if current_user.username != user.username:
+        flash('You have to be logged in as the owner of this poll to make changes.')
+        return redirect(url_for('login'))
     if edit_option_form.validate_on_submit():
         edit_option.body = edit_option_form.body.data
         edit_option.url = edit_option_form.url.data 

@@ -1,6 +1,8 @@
-{% extends "base.html" %} {% block app_content %}
+{% extends "base.html" %} 
+{% block app_content %}
 <h1>Admin Page</h1>
 <br>
-<a href="{{ url_for('manage_users') }}" class="button"> Manage Users </a>
+<a href="{{ url_for('manage_users') }}" class="btn btn-secondary btn-md"> Manage Users </a>
 <br>
-<a href="{{ url_for('manage_polls') }}" class="button"> Manage Polls </a> {% endblock %}
+<br>
+<a href="{{ url_for('manage_polls') }}" class="btn btn-secondary btn-md"> Manage Polls </a> {% endblock %}

@@ -1,5 +1,5 @@
-{% extends "base.html" %} {% block app_content %}
-
+{% extends "base.html" %} 
+{% block app_content %}
 
 <div class="container-fluid">
   <div class="col-12">
@@ -7,7 +7,9 @@
     <br>
     <div class="row justify-content-center">
       <div class="card-columns text-center">
-        {% for poll in polls %} {% include '_selectPoll.html' %} {% endfor %}
+        {% for poll in polls %} 
+          {% include '_selectPoll.html' %} 
+        {% endfor %}
       </div>
       <div>
         <nav aria-label="Page navigation example">

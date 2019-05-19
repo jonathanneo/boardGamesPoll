@@ -28,8 +28,22 @@
   </div>
 </div>
 
-<br> {% if not current_user.is_anonymous %} {% if current_user.has_voted_poll(polls) %} {% for option in options %} {% include '_unvoteOption.html' %} {% endfor %} {% else %} {% for option in options %} {% include '_voteOption.html' %} {% endfor %} {%
-endif %} {% else %} {% for option in options %} {% include '_renderOption.html' %} {% endfor %} {% endif %}
+<br> 
+{% if not current_user.is_anonymous %} 
+  {% if current_user.has_voted_poll(polls) %} 
+    {% for option in options %} 
+      {% include '_unvoteOption.html' %} 
+    {% endfor %} 
+  {% else %} 
+    {% for option in options %} 
+      {% include '_voteOption.html' %} 
+    {% endfor %} 
+  {% endif %}
+{% else %} 
+  {% for option in options %} 
+    {% include '_renderOption.html' %} 
+  {% endfor %} 
+{% endif %}
 
 </div>
 
