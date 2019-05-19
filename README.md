@@ -21,14 +21,14 @@ The web application should be hosted at http://localhost:5000.
 ## Tests  
 We have included a python and a Selenium test script for our web application. To run the Selenium test, simply go to the Selenium IDE in the browser and open the 'test.side' file. To run the python app, NEED TO BE COMPLETED, ADD JSFIDDLE TOO
 
-# Deployment on Heroku
+## Deployment on Heroku
 We have deployed the application on Heroku servers into two seperate environments:
 * Staging: https://board-games-poll.herokuapp.com
 * Production: https://boardgamespoll.herokuapp.com
 
 Staging will be used for testing purposes before promoting to production. We have also enabled automated deployment such that every new git commit to the repository will result in a re-deployment of the application to reflect the latest commit.   
 
-# Pipelines on Heroku
+## Pipelines on Heroku
 We have created automated CI pipelines on Heroku. When a pull request is created, an app will automatically be created to allow developers to view and test the app. 
 After testing is performed on the new app and pushed to Staging, the staging-app can be pushed into production using the Heroku GUI by: 
 1. Promote to production 
@@ -37,3 +37,9 @@ After testing is performed on the new app and pushed to Staging, the staging-app
     
 ![ImageOfHeroku](https://github.com/jonathanneo/images/blob/master/heroku_1_annotated.png?raw=true) 
 ![ImageOfHeroku](https://github.com/jonathanneo/images/blob/master/heroku_2_annotated.png?raw=true)
+
+
+## Product Tracking Board
+Our team uses a Trello Board to manage cards (tasks) with checklists (sub-tasks) to allow us to work more effectively. To gain access to the Trello board, please contact @jonathanneo. 
+
+![ImageOfTrelloBoard](https://github.com/jonathanneo/images/blob/master/Trello_img.PNG?raw=true) 
