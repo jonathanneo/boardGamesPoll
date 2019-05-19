@@ -131,26 +131,32 @@ class UserModelCase(unittest.TestCase):
         self.assertEqual(option.id_poll, poll.id) 
 
     def test_deleteOption(self):
-        poll = Poll(id=1, title='test', body='test')
+        poll = Poll(id=2, title='test', body='test')
         db.session.add(poll)
+        db.session.commit()
         option = Option(body='1', id_poll=poll.id)
         db.session.add(option)
-        db.session.delete(option)
-        test=option.id_poll == poll.id
         db.session.commit()
-        self.assertFalse(test)
+        db.session.delete(option)
+        db.session.commit()
+        test=db.session.query(Option).filter(Option.id_poll==poll.id).first()==None
+        self.assertTrue(test)
     
     def test_createPoll(self):
         poll = Poll(id=1, title='test', body='test')
         db.session.add(poll)
+        db.session.commit()
         self.assertEqual(poll.id, 1)
 
     def test_deletePoll(self):
         poll = Poll(id=1, title='test', body='test')
         db.session.add(poll)
+        db.session.commit()
+        poll = db.session.query(Poll).filter(poll.id==1).first()
         db.session.delete(poll)
-        test=poll.id==1
-        self.assertFalse(test)
+        db.session.commit()
+        test=db.session.query(Poll).filter(poll.id==1).first()==None
+        self.assertTrue(test)
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
