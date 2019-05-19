@@ -1,4 +1,6 @@
 # boardGamesPoll README  
+Julian Kristandi, Jonathan Neo
+
 ## Purpose  
 The purpose of this web application is to provide a board games ranking website for board games players around the world. We saw the lack of polling websites for board games and decided to create a more modern and functional web application for this purpose. The social choice mechanism we used is the first-past-the-post voting, enabling users to create polls where they can then add options which other users (only logged in users) can vote for which option suits the poll best.  
 
