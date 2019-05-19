@@ -8,12 +8,10 @@ The architectural pattern that we are using is the Model View Controller, where 
 ## Local Launch
 go to the project directory and type the following commands in your CLI:  
 ```
-virtualenv venv
-source venv/bin/activate OR venv\Scripts\activate (Windows)
+python -m venv venv
+virtualenv venv *(Linux)*
+source venv/bin/activate OR venv\Scripts\activate *(Windows)*
 python ./setup.py
-flask db init
-flask db migrate
-flask db upgrade
 flask run
 ```
 The web application should be hosted at http://localhost:5000.  
