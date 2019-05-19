@@ -11,7 +11,14 @@
   </style>
 </head>
 
-{% block title %} {% if title %}{{ title }} - Board Games Poll{% else %}Welcome to Board Games Poll{% endif %} {% endblock %} {% block navbar %}
+{% block title %} 
+  {% if title %}
+    {{ title }} - Board Games Poll
+  {% else %}Welcome to Board Games Poll
+  {% endif %} 
+{% endblock %} 
+
+{% block navbar %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="{{ url_for('explore') }}"><i class="fa fa-home"></i>Board Games Poll</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

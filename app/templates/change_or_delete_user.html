@@ -5,7 +5,10 @@
 <div class="fluid-container">
   <div class="col-12">
     <h1>{{ header_content }}</h1>
-    <br> {% if form %} {{ wtf.quick_form(form) }} {% endif %}
+    <br> 
+    {% if form %} 
+      {{ wtf.quick_form(form) }} 
+    {% endif %}
 
     <br> 
     {% for user in users %} 
