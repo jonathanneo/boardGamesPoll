@@ -9,8 +9,8 @@ The architectural pattern that we are using is the Model View Controller, where 
 go to the project directory and type the following commands in your CLI:  
 ```
 python -m venv venv
-virtualenv venv *(Linux)*
-source venv/bin/activate OR venv\Scripts\activate *(Windows)*
+virtualenv venv (Linux)
+source venv/bin/activate OR venv\Scripts\activate (Windows)
 python ./setup.py
 flask run
 ```
